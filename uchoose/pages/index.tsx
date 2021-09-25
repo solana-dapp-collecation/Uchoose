@@ -8,7 +8,7 @@ import "react-multi-carousel/lib/styles.css";
 import CustomCarouselWithCards from "../components/carousel-component/customCarouselComponent";
 import {Button} from "antd";
 import {NoteSchema, NotesListSchema} from '../components/constants';
-const { createDefinition, publishSchema } = require('@ceramicstudio/idx-tools')
+import { createDefinition, publishSchema } from '@ceramicstudio/idx-tools';
 
 
 const Home: NextPage = () => {
@@ -71,17 +71,21 @@ const Home: NextPage = () => {
         console.log('123');
         console.log('going to create schema');
         // Publish the two schemas
+        console.log('before publish');
         const [noteSchema, notesListSchema] = await Promise.all([
-            publishSchema(ceramic, { content: NoteSchema }),
-            publishSchema(ceramic, { content: NotesListSchema }),
+            publishSchema(ceramic.client, { content: NoteSchema }),
+            publishSchema(ceramic.client, { content: NotesListSchema }),
         ])
+        console.log('after publish');
 
+        console.log('before definition');
         // Create the definition using the created schema ID
-        const notesDefinition = await createDefinition(ceramic, {
+        const notesDefinition = await createDefinition(ceramic.client, {
             name: 'notes', // здесь наше название
             description: 'Simple text notes', // здесь наше описание
             schema: notesListSchema.commitId.toUrl(),
         })
+        console.log('after definition');
 
         console.log('Looks like that something happened');
     }
