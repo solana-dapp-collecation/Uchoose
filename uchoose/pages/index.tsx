@@ -1,75 +1,18 @@
 import {useCeramic} from "use-ceramic";
 import type {NextPage} from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from "next/link";
 import styles from '../styles/Home.module.css'
 import React, {useEffect, useState} from "react";
 import topBarStyles from '../styles/top-bar.module.scss';
-import Section from "../components/carousel-component/section";
-import Carousel from 'react-multi-carousel';
-import WithScrollbar from '../components/carousel-component/withScrollbar';
 import "react-multi-carousel/lib/styles.css";
 import CustomCarouselWithCards from "../components/carousel-component/customCarouselComponent";
 
-
-// function SignInWithCeramic(props: React.PropsWithChildren<{}>) {
-//     const ceramic = useCeramic();
-//     const [authenticated, setAuthenticated] = useState(ceramic.isAuthenticated);
-//     const [progress, setProgress] = useState(false);
-//
-//     useEffect(() => {
-//         const subscription = ceramic.isAuthenticated$.subscribe(
-//             (isAuthenticated) => {
-//                 setAuthenticated(isAuthenticated);
-//             }
-//         );
-//
-//         return () => {
-//             subscription.unsubscribe();
-//         };
-//     });
-//
-//     const handleLogin = async () => {
-//         setProgress(true);
-//         try {
-//             const authProvider = await ceramic.connect();
-//             await ceramic.authenticate(authProvider);
-//         } catch (e) {
-//             console.error(e);
-//         } finally {
-//             setProgress(false);
-//         }
-//     };
-//
-//     const renderButton = () => {
-//         if (progress) {
-//             return (
-//                 <>
-//                     <button disabled={true}>Connecting...</button>
-//                 </>
-//             );
-//         } else {
-//             return (
-//                 <>
-//                     <button onClick={handleLogin}>Sign In</button>
-//                 </>
-//             );
-//         }
-//     };
-//
-//     if (authenticated) {
-//         return <>{props.children}</>;
-//     } else {
-//         return renderButton();
-//     }
-// }
 
 const Home: NextPage = () => {
 
     const ceramic = useCeramic();
     const [isAuthenticated, setAuthenticated] = useState(ceramic.isAuthenticated);
-    const [progress, setProgress] = useState(false);
+    const [isInProgress, setProgress] = useState(false);
 
     useEffect(() => {
         const subscription = ceramic.isAuthenticated$.subscribe(
@@ -96,7 +39,7 @@ const Home: NextPage = () => {
     };
 
     const renderButton = () => {
-        if (progress) {
+        if (isInProgress) {
             return (
                 <>
                     <button disabled={true}>Connecting...</button>
@@ -105,7 +48,7 @@ const Home: NextPage = () => {
         } else {
             return (
                 <>
-                    <button onClick={handleLogin}>Sign In</button>
+                    <button onClick={handleLogin}>Connect Wallet</button>
                 </>
             );
         }
@@ -123,7 +66,7 @@ const Home: NextPage = () => {
             <div className={topBarStyles.topBarContainer}>
                 <div className={styles.logo}
                      style={{display: 'inline-block', verticalAlign: 'middle', marginRight: '10px'}}>
-                    <img src="/main-logo-2.png" alt="ReNFTeЯ" style={{width: '100px'}}/>
+                    <img src="/main-logo-2.png" alt="Uch∞se" style={{width: '100px'}}/>
                 </div>
                 <div style={{display: 'inline-block', verticalAlign: 'middle', marginTop: '30px'}}>
                     {/*<SignInWithCeramic>*/}
@@ -138,33 +81,29 @@ const Home: NextPage = () => {
                     {/*        </Link>*/}
                     {/*    </div>*/}
                     {/*</SignInWithCeramic>*/}
+                    {renderButton()}
                 </div>
             </div>
             {/*Main body*/}
             <main className={styles.main}>
                 <div className={styles.grid} style={{marginTop: '0px'}}>
-                    <a className={`${styles.card} ${styles.cardDisabled}`}>
+                    <a href="/manage-collections" className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Manage collections &rarr;</h2>
-                        <p>To create your collection. Доступна всегда, если нет, то окно с аутентификацией</p>
+                        <p>To create your collection.</p>
                     </a>
-                    <a className={`${styles.card} ${styles.cardDisabled}`}>
+                    <a href="/views" className={`${styles.card}`}>
                         <h2>View &rarr;</h2>
-                        <p>View existing collection. Все коллекции видны ниже</p>
+                        <p>View existing collections</p>
                     </a>
-                    <a className={`${styles.card} ${styles.cardDisabled}`}>
+                    <a className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Transactions &rarr;</h2>
-                        <p>See available transactions</p>
+                        <p>See transactions history</p>
                     </a>
-                    <a className={`${styles.card} ${styles.cardDisabled}`}>
+                    <a className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Logs/Statistics &rarr;</h2>
-                        <p>
-                            See logs and statistics
-                        </p>
+                        <p>See logs and statistics</p>
                     </a>
                 </div>
-                {/* <div>
-                    <CarouselWithCards/>
-                </div> */}
                 <div style={{marginTop: '1vh'}}>
                     <CustomCarouselWithCards/>
                 </div>

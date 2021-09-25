@@ -1,8 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2ae22b0a-e587-4d17-bb47-418cdb83b541" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uchoose/pages/logs.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uchoose/pages/manage-collections.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uchoose/pages/mint.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uchoose/pages/transactions.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uchoose/pages/views.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uchoose/public/manage_page.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uchoose/public/pic_1_ex.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uchoose/public/pic_2_ex.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uchoose/public/pic_ex_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uchoose/styles/layout.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uchoose/styles/mint.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uchoose-proj.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uchoose-proj.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uchoose/components/carousel-component/customCarouselComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/components/carousel-component/customCarouselComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uchoose/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uchoose/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uchoose/public/vercel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uchoose/styles/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/styles/Home.module.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ydSNXjZEVTuuf5RWcr44qaDWks" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/uchoose/public" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="D:\Users\dmitr\Documents\nft-project\uchoose-proj\uchoose\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\dmitr\Documents\nft-project\uchoose-proj\uchoose\public" />
+      <recent name="D:\Users\dmitr\Documents\nft-project\uchoose-proj\uchoose\styles" />
+      <recent name="D:\Users\dmitr\Documents\nft-project\uchoose-proj\uchoose\pages" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ae22b0a-e587-4d17-bb47-418cdb83b541" name="Default Changelist" comment="" />
+      <created>1632579933788</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1632579933788</updated>
+      <workItem from="1632579935226" duration="3857000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2907" y="433" width="586" height="534" key="find.popup" timestamp="1632580899478">
+      <screen x="1920" y="0" width="2560" height="1400" />
+    </state>
+    <state x="2907" y="433" width="586" height="534" key="find.popup/0.0.1536.824/1920.0.2560.1400@1920.0.2560.1400" timestamp="1632580899478" />
   </component>
 </project>

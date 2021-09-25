@@ -48,51 +48,55 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-40-px"
             >
-                <div><img
-                    draggable={false}
-                    style={{
-                        width: "90%",
-                        cursor: "pointer",
-                        marginLeft: '10px',
-                        marginRight: '10px',
-                        marginBottom: '30px'
-                    }}
-                    src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                />
+                <div>
+                    <img
+                        draggable={false}
+                        style={{
+                            width: "90%",
+                            cursor: "pointer",
+                            marginLeft: '10px',
+                            marginRight: '10px',
+                            marginBottom: '30px'
+                        }}
+                        src="/pic_1_ex.jpg"
+                    />
                 </div>
-                <div><img
-                    draggable={false}
-                    style={{
-                        width: "90%",
-                        cursor: "pointer",
-                        marginLeft: '10px',
-                        marginRight: '10px',
-                        marginBottom: '30px'
-                    }}
-                    src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                /></div>
-                <div><img
-                    draggable={false}
-                    style={{
-                        width: "90%",
-                        cursor: "pointer",
-                        marginLeft: '10px',
-                        marginRight: '10px',
-                        marginBottom: '30px'
-                    }}
-                    src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                /></div>
-                <div><img
-                    draggable={false}
-                    style={{
-                        width: "90%",
-                        cursor: "pointer",
-                        marginLeft: '10px',
-                        marginRight: '10px',
-                        marginBottom: '30px'
-                    }}
-                    src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                /></div>
+                <div>
+                    <img
+                        draggable={false}
+                        style={{
+                            width: "90%",
+                            cursor: "pointer",
+                            marginLeft: '10px',
+                            marginRight: '10px',
+                            marginBottom: '30px'
+                        }}
+                        src="/pic_2_ex.jpg"
+                    /></div>
+                <div>
+                    <img
+                        draggable={false}
+                        style={{
+                            width: "90%",
+                            cursor: "pointer",
+                            marginLeft: '10px',
+                            marginRight: '10px',
+                            marginBottom: '30px'
+                        }}
+                        src="/pic_ex_3.png"
+                    /></div>
+                <div>
+                    <img
+                        draggable={false}
+                        style={{
+                            width: "90%",
+                            cursor: "pointer",
+                            marginLeft: '10px',
+                            marginRight: '10px',
+                            marginBottom: '30px'
+                        }}
+                        src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+                    /></div>
             </Carousel>
         </div>
     )
