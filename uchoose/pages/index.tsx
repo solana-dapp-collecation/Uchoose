@@ -7,7 +7,7 @@ import topBarStyles from '../styles/top-bar.module.scss';
 import "react-multi-carousel/lib/styles.css";
 import CustomCarouselWithCards from "../components/carousel-component/customCarouselComponent";
 import {Button} from "antd";
-import {NoteSchema, NotesListSchema} from '../components/constants';
+import {CollectionStreamSchema, CollectionsStreamSchema} from '../components/constants';
 import { createDefinition, publishSchema } from '@ceramicstudio/idx-tools';
 
 import { Divider } from 'antd';
@@ -76,18 +76,19 @@ const Home: NextPage = () => {
         console.log('going to create schema');
         // Publish the two schemas
         console.log('before publish');
-        const [noteSchema, notesListSchema] = await Promise.all([
-            publishSchema(ceramic.client, { content: NoteSchema }),
-            publishSchema(ceramic.client, { content: NotesListSchema }),
+        const [collectionStreamSchema, collectionsStreamSchema] = await Promise.all([
+            publishSchema(ceramic.client, { content: CollectionsStreamSchema }),
+            publishSchema(ceramic.client, { content: CollectionStreamSchema }),
         ])
         console.log('after publish');
 
         console.log('before definition');
+
         // Create the definition using the created schema ID
-        const notesDefinition = await createDefinition(ceramic.client, {
-            name: 'notes', // здесь наше название
-            description: 'Simple text notes', // здесь наше описание
-            schema: notesListSchema.commitId.toUrl(),
+        const collectionsStreamDefinition = await createDefinition(ceramic.client, {
+            name: 'CollectionsStream',
+            description: 'Stream with all collections StreamID',
+            schema: collectionsStreamSchema.commitId.toUrl(),
         })
         console.log('after definition');
 
