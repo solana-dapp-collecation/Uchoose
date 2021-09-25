@@ -3,12 +3,14 @@ import Section from "./section";
 import WithScrollbar from "./withScrollbar";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import {Card} from "antd";
 
 // export function CarouselWithCards(props: React.PropsWithChildren<{}>) {
 //     return (<Section>
 //         <WithScrollbar/>
 //     </Section>)
 // }
+const {Meta} = Card;
 
 export default function CustomCarouselWithCards(props: React.PropsWithChildren<{}>) {
     const responsive = {
@@ -38,10 +40,10 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                 ssr={true}
                 infinite={true}
                 autoPlay={true}
-                autoPlaySpeed={3000}
+                autoPlaySpeed={10000}
                 keyBoardControl={true}
                 customTransition="all .5"
-                transitionDuration={600}
+                transitionDuration={300}
                 containerClass="carousel-container"
                 removeArrowOnDeviceType={["tablet", "mobile"]}
                 //   deviceType={this.props.deviceType}
@@ -49,8 +51,9 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                 itemClass="carousel-item-padding-40-px"
             >
                 <div>
-                    <img
-                        draggable={false}
+                    <Card
+                        hoverable
+                        // style={{ width: 240 }}
                         style={{
                             width: "90%",
                             cursor: "pointer",
@@ -58,12 +61,31 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             marginRight: '10px',
                             marginBottom: '30px'
                         }}
-                        src="/pic_1_ex.jpg"
-                    />
+                        cover={<img alt="example" src="/pic_1_ex.jpg"/>}
+                    >
+                        <div>
+                            Author: Noname
+                            <br/>
+                            Collections Params
+                            <br/>
+                            Price: 1$
+                        </div>
+                    </Card>
+                    {/*<img*/}
+                    {/*    draggable={false}*/}
+                    {/*    style={{*/}
+                    {/*        width: "90%",*/}
+                    {/*        cursor: "pointer",*/}
+                    {/*        marginLeft: '10px',*/}
+                    {/*        marginRight: '10px',*/}
+                    {/*        marginBottom: '30px'*/}
+                    {/*    }}*/}
+                    {/*    src="/pic_1_ex.jpg"*/}
+                    {/*/>*/}
                 </div>
                 <div>
-                    <img
-                        draggable={false}
+                    <Card
+                        hoverable
                         style={{
                             width: "90%",
                             cursor: "pointer",
@@ -71,11 +93,20 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             marginRight: '10px',
                             marginBottom: '30px'
                         }}
-                        src="/pic_2_ex.jpg"
-                    /></div>
+                        cover={<img alt="example" src="/pic_2_ex.jpg"/>}
+                    >
+                        <div>
+                            Author: Noname
+                            <br/>
+                            Collections Params
+                            <br/>
+                            Price: 2$
+                        </div>
+                    </Card>
+                </div>
                 <div>
-                    <img
-                        draggable={false}
+                    <Card
+                        hoverable
                         style={{
                             width: "90%",
                             cursor: "pointer",
@@ -83,11 +114,20 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             marginRight: '10px',
                             marginBottom: '30px'
                         }}
-                        src="/pic_ex_3.png"
-                    /></div>
+                        cover={<img alt="example" src="/pic_ex_3.png"/>}
+                    >
+                        <div>
+                            Author: Noname
+                            <br/>
+                            Collections Params
+                            <br/>
+                            Price: 3$
+                        </div>
+                    </Card>
+                </div>
                 <div>
-                    <img
-                        draggable={false}
+                    <Card
+                        hoverable
                         style={{
                             width: "90%",
                             cursor: "pointer",
@@ -95,8 +135,16 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             marginRight: '10px',
                             marginBottom: '30px'
                         }}
-                        src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                    /></div>
+                        cover={<img alt="example" src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"/>}
+                    >
+                        <div>
+                            Author: Noname
+                            <br/>
+                            Collections Params
+                            <br/>
+                            Price: 3$
+                        </div>
+                    </Card></div>
             </Carousel>
         </div>
     )

@@ -14,6 +14,7 @@ import { CeramicProvider, CeramicService, Networks } from "use-ceramic";
 import { Web3Provider, Web3Service } from "../components/use-web3";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { EthereumAuthProvider } from "@ceramicnetwork/blockchain-utils-linking";
+import "antd/dist/antd.css";
 
 const web3Service = new Web3Service({
   network: "rinkeby",

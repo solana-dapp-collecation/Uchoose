@@ -20,25 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ae22b0a-e587-4d17-bb47-418cdb83b541" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uchoose/pages/logs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uchoose/pages/manage-collections.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uchoose/pages/mint.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uchoose/pages/transactions.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uchoose/pages/views.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uchoose/public/manage_page.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uchoose/public/pic_1_ex.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uchoose/public/pic_2_ex.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uchoose/public/pic_ex_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uchoose/styles/layout.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uchoose/styles/mint.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uchoose-proj.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uchoose-proj.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uchoose/components/carousel-component/customCarouselComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/components/carousel-component/customCarouselComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uchoose/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uchoose/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uchoose/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/pages/_app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uchoose/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uchoose/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uchoose/public/vercel.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uchoose/styles/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/styles/Home.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uchoose/pages/manage-collections.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/pages/manage-collections.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uchoose/pages/transactions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/pages/transactions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uchoose/pages/views.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/pages/views.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1632579933788</updated>
-      <workItem from="1632579935226" duration="3857000" />
+      <workItem from="1632579935226" duration="7135000" />
     </task>
     <servers />
   </component>
@@ -99,6 +89,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="2654" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1632594602837">
+      <screen x="1920" y="0" width="2560" height="1400" />
+    </state>
+    <state x="2654" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.2560.1400@1920.0.2560.1400" timestamp="1632594602837" />
     <state x="2907" y="433" width="586" height="534" key="find.popup" timestamp="1632580899478">
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>

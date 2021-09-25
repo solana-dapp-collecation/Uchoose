@@ -6,6 +6,7 @@ import React, {useEffect, useState} from "react";
 import topBarStyles from '../styles/top-bar.module.scss';
 import "react-multi-carousel/lib/styles.css";
 import CustomCarouselWithCards from "../components/carousel-component/customCarouselComponent";
+import {Button} from "antd";
 
 
 const Home: NextPage = () => {
@@ -54,6 +55,10 @@ const Home: NextPage = () => {
         }
     };
 
+    const redirectToLink = () => {
+        console.log('123');
+    }
+
     return (
         <div className={styles.container}>
             <Head>
@@ -69,40 +74,32 @@ const Home: NextPage = () => {
                     <img src="/main-logo-2.png" alt="Uch∞se" style={{width: '100px'}}/>
                 </div>
                 <div style={{display: 'inline-block', verticalAlign: 'middle', marginTop: '30px'}}>
-                    {/*<SignInWithCeramic>*/}
-                    {/*    <div className={"text-center w-full"}>*/}
-                    {/*        <hr/>*/}
-                    {/*        <Link href={"/mint"} shallow={true}>*/}
-                    {/*            Mint*/}
-                    {/*        </Link>{" "}*/}
-                    {/*        or{" "}*/}
-                    {/*        <Link href={"/view"} shallow={true}>*/}
-                    {/*            View*/}
-                    {/*        </Link>*/}
-                    {/*    </div>*/}
-                    {/*</SignInWithCeramic>*/}
                     {renderButton()}
                 </div>
             </div>
             {/*Main body*/}
             <main className={styles.main}>
                 <div className={styles.grid} style={{marginTop: '0px'}}>
-                    <a href="/manage-collections" className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
+                    <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Manage collections &rarr;</h2>
-                        <p>To create your collection.</p>
-                    </a>
-                    <a href="/views" className={`${styles.card}`}>
+                        <p>Use to create your collection. Place orders</p>
+                        <Button disabled={!isAuthenticated} href="/manage-collections" type="primary">Manage</Button>
+                    </div>
+                    <div className={styles.card}>
                         <h2>View &rarr;</h2>
                         <p>View existing collections</p>
-                    </a>
-                    <a className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
+                        <Button href="/views" type="primary">View</Button>
+                    </div>
+                    <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Transactions &rarr;</h2>
                         <p>See transactions history</p>
-                    </a>
-                    <a className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
+                        <Button disabled={!isAuthenticated} type="primary">Transactions</Button>
+                    </div>
+                    <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Logs/Statistics &rarr;</h2>
                         <p>See logs and statistics</p>
-                    </a>
+                        <Button disabled={!isAuthenticated} type="primary">Logs</Button>
+                    </div>
                 </div>
                 <div style={{marginTop: '1vh'}}>
                     <CustomCarouselWithCards/>
@@ -111,7 +108,7 @@ const Home: NextPage = () => {
 
             <footer className={styles.footer}>
                 <a
-                    href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+                    href="#"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
