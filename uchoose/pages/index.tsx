@@ -106,7 +106,7 @@ const Home: NextPage = () => {
             </div>
             {/*Main body*/}
             <main className={styles.main}>
-                <Button onClick={()=>createTestSchema()}>Auth</Button>
+
                 <div className={styles.grid} style={{marginTop: '0px'}}>
                     <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Manage collections &rarr;</h2>
@@ -132,6 +132,8 @@ const Home: NextPage = () => {
                 <div style={{marginTop: '1vh'}}>
                     <CustomCarouselWithCards/>
                 </div>
+
+                <Button onClick={()=>createTestSchema()}>Auth</Button>
             </main>
 
             <footer className={styles.footer}>
