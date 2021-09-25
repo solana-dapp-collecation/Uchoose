@@ -10,6 +10,10 @@ import {Button} from "antd";
 import {NoteSchema, NotesListSchema} from '../components/constants';
 import { createDefinition, publishSchema } from '@ceramicstudio/idx-tools';
 
+import { Divider } from 'antd';
+import { Steps } from 'antd';
+
+const { Step } = Steps;
 
 const Home: NextPage = () => {
 
@@ -137,10 +141,20 @@ const Home: NextPage = () => {
                     <CustomCarouselWithCards/>
                 </div>
 
+                <Divider orientation="left"><b>Roadmap</b></Divider>
+                <div>
+                    <Steps direction="vertical" current={1}>
+                        <Step title="Finished" description="Create MVP on the Hackathon." />
+                        <Step title="In Progress" description="Add NFT Card view." />
+                        <Step title="Waiting" description="Add ability to create dynamic NFT collections." />
+                    </Steps>
+                </div>
+                
+                <Divider orientation="left"><b>For testing (dev) - delete later</b></Divider>
                 <Button onClick={()=>createTestSchema()}>Auth</Button>
             </main>
 
-            <footer className={styles.footer}>
+            <footer>
                 <a
                     href="#"
                     target="_blank"

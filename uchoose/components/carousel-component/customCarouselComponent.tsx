@@ -32,9 +32,11 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
             slidesToSlide: 1 // optional, default to 1.
         }
     };
-    return (<div style={{width: '1000px'}}>
+    return (
+        <div style={{width: '1000px'}}>
             {/* https://www.npmjs.com/package/react-multi-carousel */}
-            <Divider orientation="left"><b>Pixel Dodge Collection #1</b></Divider>
+            <Divider orientation="left"><a href="https://opensea.io/collection/pixeldoges"><b>PixelDoges</b></a></Divider>
+            
             <Carousel
                 swipeable={false}
                 draggable={false}
@@ -69,7 +71,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                         <Meta title="Pixel Doge #3916" description="Generated Dodge 3916" />
                         <br/>
                         <div>
-                            Author: <a href="https://opensea.io/kementari">kementari</a>
+                            <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
                             <Divider>Properties</Divider>
                             <Tag color="green">undershirt</Tag>
                             <Tag color="brown">hat</Tag>
@@ -106,7 +108,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                         <Meta title="Pixel Doge #4954" description="Generated Dodge 4954" />
                         <br/>
                         <div>
-                            Author: <a href="https://opensea.io/kementari">kementari</a>
+                            <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
                             <Divider>Properties</Divider>
                             <Tag color="purple">undershirt</Tag>
                             <Tag color="green">cap</Tag>
@@ -132,7 +134,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                         <Meta title="Pixel Doge #1604" description="Generated Dodge 1604" />
                         <br/>
                         <div>
-                            Author: <a href="https://opensea.io/kementari">kementari</a>
+                            <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
                             <Divider>Properties</Divider>
                             <Tag color="red">scarf</Tag>
                             <Tag color="black">iroquois</Tag>
@@ -158,7 +160,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                         <Meta title="Pixel Doge #715" description="Generated Dodge 715" />
                         <br/>
                         <div>
-                            Author: <a href="https://opensea.io/kementari">kementari</a>
+                            <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
                             <Divider>Properties</Divider>
                             <Tag color="blue">undershirt</Tag>
                             <Tag color="purple">cap</Tag>
@@ -184,7 +186,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                         <Meta title="Pixel Doge #5481" description="Generated Dodge 5481" />
                         <br/>
                         <div>
-                            Author: <a href="https://opensea.io/kementari">kementari</a>
+                            <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
                             <Divider>Properties</Divider>
                             <Tag color="green">undershirt</Tag>
                             <Tag color="red">horns</Tag>
@@ -210,7 +212,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                         <Meta title="Pixel Doge #5154" description="Generated Dodge 5154" />
                         <br/>
                         <div>
-                            Author: <a href="https://opensea.io/kementari">kementari</a>
+                            <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
                             <Divider>Properties</Divider>
                             <Tag color="purple">neckerchief</Tag>
                             <Tag color="brown">arrow</Tag>
@@ -236,7 +238,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                         <Meta title="Pixel Doge #598" description="Generated Dodge 598" />
                         <br/>
                         <div>
-                            Author: <a href="https://opensea.io/kementari">kementari</a>
+                            <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
                             <Divider>Properties</Divider>
                             <Tag color="blue">sweater</Tag>
                             <Tag color="black">iroquois</Tag>
@@ -262,7 +264,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                         <Meta title="Pixel Doge #5447" description="Generated Dodge 5447" />
                         <br/>
                         <div>
-                            Author: <a href="https://opensea.io/kementari">kementari</a>
+                            <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
                             <Divider>Properties</Divider>
                             <Tag color="red">undershirt</Tag>
                             <Tag color="yellow">cap</Tag>
