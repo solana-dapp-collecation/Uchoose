@@ -20,15 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ae22b0a-e587-4d17-bb47-418cdb83b541" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/uchoose/components/constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uchoose/components/carousel-component/customCarouselComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/components/carousel-component/customCarouselComponent.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uchoose/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uchoose/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uchoose/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/pages/_app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uchoose/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/pages/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uchoose/pages/manage-collections.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/pages/manage-collections.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uchoose/pages/transactions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/pages/transactions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uchoose/pages/views.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/uchoose/pages/views.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +44,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/uchoose/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/uchoose/pages" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -56,10 +53,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Users\dmitr\Documents\nft-project\uchoose-proj\uchoose\components" />
+      <recent name="D:\Users\dmitr\Documents\nft-project\uchoose-proj\uchoose\pages" />
+      <recent name="D:\Users\dmitr\Documents\nft-project\uchoose-proj\uchoose" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\dmitr\Documents\nft-project\uchoose-proj\uchoose\pages" />
       <recent name="D:\Users\dmitr\Documents\nft-project\uchoose-proj\uchoose\public" />
       <recent name="D:\Users\dmitr\Documents\nft-project\uchoose-proj\uchoose\styles" />
-      <recent name="D:\Users\dmitr\Documents\nft-project\uchoose-proj\uchoose\pages" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -70,7 +72,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1632579933788</updated>
-      <workItem from="1632579935226" duration="7135000" />
+      <workItem from="1632579935226" duration="9348000" />
     </task>
     <servers />
   </component>
@@ -93,9 +95,14 @@
       <screen x="1920" y="0" width="2560" height="1400" />
     </state>
     <state x="2654" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.2560.1400@1920.0.2560.1400" timestamp="1632594602837" />
-    <state x="2907" y="433" width="586" height="534" key="find.popup" timestamp="1632580899478">
-      <screen x="1920" y="0" width="2560" height="1400" />
+    <state x="592" y="255" width="548" height="534" key="find.popup" timestamp="1632597316848">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="592" y="255" width="548" height="534" key="find.popup/0.0.1536.824/1920.0.2560.1400@0.0.1536.824" timestamp="1632597316848" />
     <state x="2907" y="433" width="586" height="534" key="find.popup/0.0.1536.824/1920.0.2560.1400@1920.0.2560.1400" timestamp="1632580899478" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1632598284162">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.2560.1400@0.0.1536.824" timestamp="1632598284162" />
   </component>
 </project>

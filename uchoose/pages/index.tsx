@@ -7,6 +7,8 @@ import topBarStyles from '../styles/top-bar.module.scss';
 import "react-multi-carousel/lib/styles.css";
 import CustomCarouselWithCards from "../components/carousel-component/customCarouselComponent";
 import {Button} from "antd";
+import {NoteSchema, NotesListSchema} from '../components/constants';
+const { createDefinition, publishSchema } = require('@ceramicstudio/idx-tools')
 
 
 const Home: NextPage = () => {
@@ -19,6 +21,7 @@ const Home: NextPage = () => {
         const subscription = ceramic.isAuthenticated$.subscribe(
             (isAuthenticated) => {
                 setAuthenticated(isAuthenticated);
+
             }
         );
 
@@ -31,7 +34,12 @@ const Home: NextPage = () => {
         setProgress(true);
         try {
             const authProvider = await ceramic.connect();
-            await ceramic.authenticate(authProvider);
+            let didToken = await ceramic.authenticate(authProvider);
+            let tokenFromStorage = localStorage.getItem('didToken');
+            if (!tokenFromStorage) {
+                localStorage.setItem('didToken', didToken.id);
+            }
+            console.log(didToken);
         } catch (e) {
             console.error(e);
         } finally {
@@ -59,6 +67,25 @@ const Home: NextPage = () => {
         console.log('123');
     }
 
+    const createTestSchema = async () => {
+        console.log('123');
+        console.log('going to create schema');
+        // Publish the two schemas
+        const [noteSchema, notesListSchema] = await Promise.all([
+            publishSchema(ceramic, { content: NoteSchema }),
+            publishSchema(ceramic, { content: NotesListSchema }),
+        ])
+
+        // Create the definition using the created schema ID
+        const notesDefinition = await createDefinition(ceramic, {
+            name: 'notes', // здесь наше название
+            description: 'Simple text notes', // здесь наше описание
+            schema: notesListSchema.commitId.toUrl(),
+        })
+
+        console.log('Looks like that something happened');
+    }
+
     return (
         <div className={styles.container}>
             <Head>
@@ -79,6 +106,7 @@ const Home: NextPage = () => {
             </div>
             {/*Main body*/}
             <main className={styles.main}>
+                <Button onClick={()=>createTestSchema()}>Auth</Button>
                 <div className={styles.grid} style={{marginTop: '0px'}}>
                     <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Manage collections &rarr;</h2>
