@@ -151,6 +151,8 @@ const Home: NextPage = () => {
      *
      */
     const handleOk = async () => {
+        try{
+
         // add method that gathers data from form and put them into API to create record in ceramic
         // TODO. Create correct stream
         // const authProvider = await ceramic.connect();
@@ -158,7 +160,6 @@ const Home: NextPage = () => {
         let schemaDef = localStorage.getItem(DEFINITION_OF_SCHEMA_1);
         // @ts-ignore
         const idx = new IDX({ceramic: ceramic.client, aliases: schemaDef});
-
 
         // TODO. All data have to be passed from form, populated by creator/user
         let streamSchemaCollection1 = {
@@ -179,6 +180,11 @@ const Home: NextPage = () => {
         }
         let result = await idx.set('Collections', streamSchemaCollections);
         console.log(result);
+        }
+        catch (ex){
+            console.log('%c --- Can\'t create stream ---', 'background-color: red');
+            console.log(ex);
+        }
         // Load the existing notes
         // const notesList = await idx.get<{ notes: Array<NoteItem> }>('notes')
         // const tile = await TileDocument.create(ceramic.client, {
