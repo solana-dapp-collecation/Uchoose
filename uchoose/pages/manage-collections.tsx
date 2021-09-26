@@ -10,7 +10,7 @@ import { Form, Input, Checkbox, Button } from 'antd';
 
 import React from 'react';
 import { Upload } from 'antd';
-import ImgCrop from 'antd-img-crop';
+// import ImgCrop from 'antd-img-crop';
 
 {/* https://ant.design/components/upload/ */}
 {/*const UploadedProperties = () => {

@@ -1,8 +1,7 @@
 .topBarContainer {
-    // background-color: green;
     height: 120px;
     /* text-align: center; */
-    width: 300px;
+    width: 700px;
     position: absolute;
     top: 0;
     right: 0;
@@ -52,3 +51,10 @@
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.mainSearchBar {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 27px;
+    width: 365px;
+    margin-right: 20px;
+}

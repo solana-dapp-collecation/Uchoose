@@ -1,6 +1,4 @@
 import React from "react";
-import Section from "./section";
-import WithScrollbar from "./withScrollbar";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Card, Tag, Divider, Rate, Button, Menu, Dropdown, Radio } from "antd";
@@ -13,11 +11,6 @@ const IconFont = createFromIconfontCN({
     ]
 });
 
-// export function CarouselWithCards(props: React.PropsWithChildren<{}>) {
-//     return (<Section>
-//         <WithScrollbar/>
-//     </Section>)
-// }
 const {Meta} = Card;
 
 function handleMenuClick(e: any) {
@@ -35,6 +28,8 @@ const menu = (
     </Menu>
   );
 
+// TODO. Make this component generic. It have to receive list of images from API and render them.
+// This one is just a stub to show how it will look later
 export default function CustomCarouselWithCards(props: React.PropsWithChildren<{}>) {
     const responsive = {
         desktop: {
