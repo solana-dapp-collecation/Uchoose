@@ -77,6 +77,7 @@ const Home: NextPage = () => {
             publishSchema(ceramic.client, { content: NotesListSchema }),
         ])
         console.log('after publish');
+        console.log(noteSchema);
 
         console.log('before definition');
         // Create the definition using the created schema ID
@@ -86,6 +87,7 @@ const Home: NextPage = () => {
             schema: notesListSchema.commitId.toUrl(),
         })
         console.log('after definition');
+        console.log(notesDefinition)
 
         console.log('Looks like that something happened');
     }
