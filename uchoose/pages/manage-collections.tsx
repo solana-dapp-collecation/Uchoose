@@ -1,18 +1,19 @@
-import { Layout } from "../components/layout";
-import { useCeramic } from "use-ceramic";
-import { CreateStream } from "../components/mint/create-stream";
-import { TileDocument } from "@ceramicnetwork/stream-tile";
-import { MintNft } from "../components/mint/mint-nft";
-import { useState } from "react";
-import { ChangeController } from "../components/mint/change-controller";
+import {Layout} from "../components/layout";
+import {useCeramic} from "use-ceramic";
+import {CreateStream} from "../components/mint/create-stream";
+import {TileDocument} from "@ceramicnetwork/stream-tile";
+import {MintNft} from "../components/mint/mint-nft";
+import {useState} from "react";
+import {ChangeController} from "../components/mint/change-controller";
 
-import { Form, Input, Checkbox, Button } from 'antd';
+import {Form, Input, Checkbox, Button} from 'antd';
 
 import React from 'react';
-import { Upload } from 'antd';
+import {Upload} from 'antd';
 // import ImgCrop from 'antd-img-crop';
 
-{/* https://ant.design/components/upload/ */}
+{/* https://ant.design/components/upload/ */
+}
 {/*const UploadedProperties = () => {
   const [fileList, setFileList] = useState([
     {
@@ -55,94 +56,93 @@ import { Upload } from 'antd';
       </Upload>
     </ImgCrop>
   );
-};*/}
+};*/
+}
 
 export default function ManageCollectionPage() {
-  const [tile, setTile] = useState<TileDocument | undefined>(undefined);
-  const [token, setToken] = useState<
-    { contract: string; tokenId: string } | undefined
-  >(undefined);
+    const [tile, setTile] = useState<TileDocument | undefined>(undefined);
+    const [token, setToken] = useState<{ contract: string; tokenId: string } | undefined>(undefined);
 
-  const handleMint = (contract: string, tokenId: string) => {
-    setToken({
-      contract,
-      tokenId,
-    });
-  };
+    const handleMint = (contract: string, tokenId: string) => {
+        setToken({
+            contract,
+            tokenId,
+        });
+    };
 
-  const handleCreateStream = (tile: TileDocument) => {
-    setTile(tile);
-  };
+    const handleCreateStream = (tile: TileDocument) => {
+        setTile(tile);
+    };
 
-  const renderMint = () => {
-    if (tile) {
-      return <MintNft tile={tile} onDone={handleMint} />;
-    } else {
-      return <></>;
-    }
-  };
+    const renderMint = () => {
+        if (tile) {
+            return <MintNft tile={tile} onDone={handleMint}/>;
+        } else {
+            return <></>;
+        }
+    };
 
-  const renderChangeController = () => {
-    if (token && tile) {
-      return <ChangeController tile={tile} token={token} />;
-    } else {
-      return <></>;
-    }
-  };
+    const renderChangeController = () => {
+        if (token && tile) {
+            return <ChangeController tile={tile} token={token}/>;
+        } else {
+            return <></>;
+        }
+    };
 
-  return (
+    return (
 
-    <Layout>
-      {/*<div>
+        <Layout>
+            {/*<div>
         <img src="/manage_page.png"/>
       </div>*/}
 
-      {/*   <CreateStream onCreate={handleCreateStream} />
+            {/*   <CreateStream onCreate={handleCreateStream} />
        {renderMint()}
        {renderChangeController()} */}
 
-<Form
-      name="basic"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
-      initialValues={{ remember: true }}
-      //onFinish={onFinish}
-      //onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
-        <Form.Item
-        label="Collection Name"
-        name="collectionName"
-        rules={[{ required: true, message: 'Please input Collection Name!' }]}
-        >
-          <Input  style={{width: "450px"}} />
-        </Form.Item>
+            <Form
+                name="basic"
+                labelCol={{span: 8}}
+                wrapperCol={{span: 16}}
+                initialValues={{remember: true}}
+                //onFinish={onFinish}
+                //onFinishFailed={onFinishFailed}
+                autoComplete="off"
+            >
+                <Form.Item
+                    label="Collection Name"
+                    name="collectionName"
+                    rules={[{required: true, message: 'Please input Collection Name!'}]}
+                >
+                    <Input style={{width: "450px"}}/>
+                </Form.Item>
 
-        <Form.Item
-          label="Quantity of Nft"
-          name="quantityOfNft"
-          rules={[{ required: true, message: 'Please input Quantity of Nft!' }]}
-        >
-          <Input type="number" style={{width: "450px"}} />
-        </Form.Item>
+                <Form.Item
+                    label="Quantity of Nft"
+                    name="quantityOfNft"
+                    rules={[{required: true, message: 'Please input Quantity of Nft!'}]}
+                >
+                    <Input type="number" style={{width: "450px"}}/>
+                </Form.Item>
 
-        {/* TODO - добавить больше элементов*/}
+                {/* TODO - добавить больше элементов*/}
 
-        <Form.Item
-        label="Parameters"
-        name="parameters"
-        rules={[{ required: true, message: 'Please input Parameters!' }]}
-        >
-          {/* TODO - разобраться, как подключить и добавить*/}
-          {/*<UploadedProperties/>*/}
-        </Form.Item>
+                <Form.Item
+                    label="Parameters"
+                    name="parameters"
+                    rules={[{required: true, message: 'Please input Parameters!'}]}
+                >
+                    {/* TODO - разобраться, как подключить и добавить*/}
+                    {/*<UploadedProperties/>*/}
+                </Form.Item>
 
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
-            Create
-          </Button>
-        </Form.Item>
-      </Form>
-     </Layout>
-  );
+                <Form.Item wrapperCol={{offset: 8, span: 16}}>
+                    <Button type="primary" htmlType="submit">
+                        Create
+                    </Button>
+                </Form.Item>
+            </Form>
+        </Layout>
+    );
 }

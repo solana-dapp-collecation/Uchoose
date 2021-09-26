@@ -1,3 +1,3 @@
 export default function Logs(){
-  return (<h1>Logs</h1>)
+  return (<h1>TODO. Logs</h1>)
 }

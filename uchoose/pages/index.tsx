@@ -6,7 +6,7 @@ import React, {useEffect, useState} from "react";
 import topBarStyles from '../styles/top-bar.module.scss';
 import "react-multi-carousel/lib/styles.css";
 import CustomCarouselWithCards from "../components/carousel-component/customCarouselComponent";
-import {Button} from "antd";
+import {Button, Form, Modal} from "antd";
 import {CollectionStreamSchema, CollectionsStreamSchema} from '../components/schemas';
 import {DID_TOKEN_KEY} from '../components/constants';
 import {createDefinition, publishSchema} from '@ceramicstudio/idx-tools';
@@ -17,11 +17,61 @@ import {Steps} from 'antd';
 const {Step} = Steps;
 const {Search} = Input;
 
+import { Upload, message } from 'antd';
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+
+function getBase64(img: any, callback: any) {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => callback(reader.result));
+    reader.readAsDataURL(img);
+}
+
+function beforeUpload(file: any) {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJpgOrPng) {
+        message.error('You can only upload JPG/PNG file!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+        message.error('Image must smaller than 2MB!');
+    }
+    return isJpgOrPng && isLt2M;
+}
+
 const Home: NextPage = () => {
 
     const ceramic = useCeramic();
     const [isAuthenticated, setAuthenticated] = useState(ceramic.isAuthenticated);
     const [isInProgress, setProgress] = useState(false);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    // const { loading, imageUrl } = this.state;
+    // const uploadButton = (
+    //     <div>
+    //         {loading ? <LoadingOutlined /> : <PlusOutlined />}
+    //         <div style={{ marginTop: 8 }}>Upload</div>
+    //     </div>
+    // );
+
+    // state = {
+    //     loading: false,
+    // };
+    //
+    // handleChange = info => {
+    //     if (info.file.status === 'uploading') {
+    //         this.setState({ loading: true });
+    //         return;
+    //     }
+    //     if (info.file.status === 'done') {
+    //         // Get this url from response in real world.
+    //         getBase64(info.file.originFileObj, imageUrl =>
+    //             this.setState({
+    //                 imageUrl,
+    //                 loading: false,
+    //             }),
+    //         );
+    //     }
+    // };
 
     useEffect(() => {
         const subscription = ceramic.isAuthenticated$.subscribe(
@@ -91,6 +141,19 @@ const Home: NextPage = () => {
     const redirectToLink = () => {
         console.log('redirect to link');
     }
+
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleOk = () => {
+        // add method that gathers data from form and put them into API to create record in ceramic
+        setIsModalVisible(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
 
     const createTestSchema = async () => {
         try {
@@ -208,6 +271,79 @@ const Home: NextPage = () => {
 
                 <Divider orientation="left"><b>For testing (dev) - delete later</b></Divider>
                 <Button onClick={() => createTestSchema()}>Test Saving Schemas</Button>
+
+                <Divider orientation="left"><b>Create collection</b></Divider>
+                <Button type="primary" onClick={showModal}>
+                    Create Collection
+                </Button>
+                <Modal title="Creating collection" visible={isModalVisible} okText={'Create'} onOk={handleOk} onCancel={handleCancel}>
+                    <Form
+                        name="basic"
+                        labelCol={{span: 8}}
+                        wrapperCol={{span: 16}}
+                        initialValues={{remember: true}}
+                        //onFinish={onFinish}
+                        //onFinishFailed={onFinishFailed}
+                        autoComplete="off"
+                    >
+                        <Form.Item
+                            label="Collection Name"
+                            name="collectionName"
+                            rules={[{required: true, message: 'Please input Collection Name!'}]}
+                        >
+                            <Input/>
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Quantity of Nft"
+                            name="quantityOfNft"
+                            rules={[{required: true, message: 'Please input Quantity of Nft!'}]}
+                        >
+                            <Input type="number"/>
+                        </Form.Item>
+
+                        <Form.Item
+                            label="NFT width px"
+                            name="nftWidth"
+                            rules={[{required: true, message: 'Please fill in NFT width'}]}
+                        >
+                            <Input type="number" min={64} defaultValue={64}/>
+                        </Form.Item>
+                        <Form.Item
+                            label="NFT height px"
+                            name="nftHeight"
+                            rules={[{required: true, message: 'Please fill in NFT height'}]}
+                        >
+                            <Input type="number" min={64} defaultValue={64}/>
+                        </Form.Item>
+
+                        {/* TODO - добавить больше элементов*/}
+
+                        <Form.Item
+                            label="Layers/Images"
+                            name="layers_images"
+                            rules={[{required: true, message: 'Please upload layers/images!'}]}
+                        >
+                            <Upload
+                                name="avatar"
+                                listType="picture-card"
+                                className="avatar-uploader"
+                                showUploadList={false}
+                                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                beforeUpload={beforeUpload}
+                                // onChange={this.handleChange}
+                            >
+                                {/*{imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}*/}
+                            </Upload>
+                        </Form.Item>
+
+                        {/*<Form.Item wrapperCol={{offset: 8, span: 16}}>*/}
+                        {/*    <Button type="primary" htmlType="submit">*/}
+                        {/*        Create*/}
+                        {/*    </Button>*/}
+                        {/*</Form.Item>*/}
+                    </Form>
+                </Modal>
             </main>
 
             <footer>
