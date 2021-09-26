@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Card, Tag, Divider, Rate, Button, Menu, Dropdown, Radio } from "antd";
 import { createFromIconfontCN, CheckCircleOutlined, ShareAltOutlined, MoneyCollectOutlined } from '@ant-design/icons';
+import {Form, Modal, Input} from "antd";
 
 const IconFont = createFromIconfontCN({
   scriptUrl: [
@@ -19,7 +20,23 @@ function handleMenuClick(e: any) {
 
 function handleCoCreate(e: any) {
     console.log('TOTO - add form wih choosing parts for new NFT', e);
+    showCoCreateModal();
 }
+
+const showCoCreateModal = () => {
+    setIsCoCreateModalVisible(true);
+};
+
+const handleCoCreateOk = () => {
+    // add method that gathers data from form and put them into API to create record in ceramic
+    setIsCoCreateModalVisible(false);
+};
+
+const handleCancelCoCreate = () => {
+    setIsCoCreateModalVisible(false);
+};
+
+const [isCoCreateModalVisible, setIsCoCreateModalVisible] = useState(false);
 
 const menu = (
     <Menu onClick={handleMenuClick}>
@@ -50,6 +67,27 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
     };
     return (
         <div style={{width: '1000px'}}>
+            <Modal title="Co-create" visible={isCoCreateModalVisible} okText={'Buy'} onOk={handleCoCreateOk} onCancel={handleCancelCoCreate}>
+                <Form
+                    name="cocreate"
+                    labelCol={{span: 8}}
+                    wrapperCol={{span: 16}}
+                    initialValues={{remember: true}}
+                    //onFinish={onFinish}
+                    //onFinishFailed={onFinishFailed}
+                    autoComplete="off"
+                >
+                    <Form.Item
+                        label="Collection Name"
+                        name="collectionName"
+                        rules={[{required: true, message: 'Please input Collection Name!'}]}
+                    >
+                        <Input/>
+                    </Form.Item>
+
+                </Form>
+            </Modal>
+
             {/* https://www.npmjs.com/package/react-multi-carousel */}
             <Divider orientation="left"><MoneyCollectOutlined /> <a href="https://opensea.io/collection/pixeldoges"><b>PixelDoges</b></a></Divider>
             
