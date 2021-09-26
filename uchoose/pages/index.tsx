@@ -179,7 +179,7 @@ const Home: NextPage = () => {
                 </div>
                 
                 <Divider orientation="left"><b>For testing (dev) - delete later</b></Divider>
-                <Button onClick={()=>createTestSchema()}>Auth</Button>
+                <Button onClick={()=>createTestSchema()}>Test Saving Schemas</Button>
             </main>
 
             <footer>
