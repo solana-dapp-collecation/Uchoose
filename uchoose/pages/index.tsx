@@ -7,9 +7,13 @@ import topBarStyles from '../styles/top-bar.module.scss';
 import "react-multi-carousel/lib/styles.css";
 import CustomCarouselWithCards from "../components/carousel-component/customCarouselComponent";
 import {Button} from "antd";
-import {NoteSchema, NotesListSchema} from '../components/constants';
+import {CollectionStreamSchema, CollectionsStreamSchema} from '../components/constants';
 import { createDefinition, publishSchema } from '@ceramicstudio/idx-tools';
 
+import { Divider } from 'antd';
+import { Steps } from 'antd';
+
+const { Step } = Steps;
 
 const Home: NextPage = () => {
 
@@ -48,6 +52,9 @@ const Home: NextPage = () => {
     };
 
     const renderButton = () => {
+        // TODO - передавать не bool, а enum - Unauthorized, InProgress, Authorized
+        // Если авторизовался, то в кнопку записывать "0x1f...32e" - адрес подключенного кошелька (или лучше did)
+        // чтобы видеть, что авторизовались
         if (isInProgress) {
             return (
                 <>
@@ -68,28 +75,51 @@ const Home: NextPage = () => {
     }
 
     const createTestSchema = async () => {
-        console.log('123');
-        console.log('going to create schema');
-        // Publish the two schemas
-        console.log('before publish');
-        const [noteSchema, notesListSchema] = await Promise.all([
-            publishSchema(ceramic.client, { content: NoteSchema }),
-            publishSchema(ceramic.client, { content: NotesListSchema }),
-        ])
-        console.log('after publish');
-        console.log(noteSchema);
+        try {
+            console.log('123');
+            console.log('going to create schema');
+            // Publish the two schemas
+            console.log('before publish');
 
-        console.log('before definition');
-        // Create the definition using the created schema ID
-        const notesDefinition = await createDefinition(ceramic.client, {
-            name: 'notes', // здесь наше название
-            description: 'Simple text notes', // здесь наше описание
-            schema: notesListSchema.commitId.toUrl(),
-        })
-        console.log('after definition');
-        console.log(notesDefinition)
+            // TODO - единожды при первом запуске сохранять, так как схемы надо создавать только один раз
+            const [collectionStreamSchema, collectionsStreamSchema] = await Promise.all([
+                publishSchema(ceramic.client, { content: CollectionsStreamSchema, name: 'CollectionsStreamSchema' }),
+                publishSchema(ceramic.client, { content: CollectionStreamSchema, name: 'CollectionStreamSchema' }),
+            ])
+            console.log('after publish');
 
-        console.log('Looks like that something happened');
+            console.log('before definition');
+
+            // Create the definition using the created schema ID
+            const collectionsStreamDefinition = await createDefinition(ceramic.client, {
+                name: 'CollectionsStream',
+                description: 'Stream with all collections StreamID',
+                schema: collectionsStreamSchema.commitId.toUrl(),
+            })
+            console.log('after definition');
+
+            console.log('Looks like that something happened');
+
+            // Write config to JSON file
+            const config = {
+                definitions: {
+                    collections: collectionsStreamDefinition.id.toString(),
+                },
+                schemas: {
+                    collection: collectionStreamSchema.commitId.toUrl(),
+                    collections: collectionsStreamSchema.commitId.toUrl(),
+                },
+            }
+
+            console.log(JSON.stringify(config));
+
+            // TODO - разобраться с сохранением этих данных, чтобы были доступны всем глобально
+            // запись в файл не работает
+            // await writeFile('./configs/config.json', JSON.stringify(config))
+            // console.log('Looks like all saved!');
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     return (
@@ -113,6 +143,12 @@ const Home: NextPage = () => {
             {/*Main body*/}
             <main className={styles.main}>
 
+                <div>
+                    <CustomCarouselWithCards/>
+                </div>
+
+                <Divider orientation="left"></Divider>
+
                 <div className={styles.grid} style={{marginTop: '0px'}}>
                     <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Manage collections &rarr;</h2>
@@ -135,14 +171,24 @@ const Home: NextPage = () => {
                         <Button disabled={!isAuthenticated} type="primary">Logs</Button>
                     </div>
                 </div>
-                <div style={{marginTop: '1vh'}}>
-                    <CustomCarouselWithCards/>
+
+                <Divider orientation="left"><b>Roadmap</b></Divider>
+                <div>
+                    <Steps direction="vertical" current={1}>
+                        <Step title="Finished" description="Create MVP on the Hackathon." />
+                        <Step title="In Progress" description="Add NFT Card view." />
+                        <Step title="Waiting" description="Add ability to create dynamic NFT collections." />
+                    </Steps>
                 </div>
 
-                <Button onClick={()=>createTestSchema()}>Auth</Button>
+                <Divider orientation="left"><b>For testing (dev) - delete later</b></Divider>
+                <Button onClick={()=>createTestSchema()}>Test Saving Schemas</Button>
+
+                <Divider orientation="left"><b>For testing2 (dev) - delete later</b></Divider>
+
             </main>
 
-            <footer className={styles.footer}>
+            <footer>
                 <a
                     href="#"
                     target="_blank"
