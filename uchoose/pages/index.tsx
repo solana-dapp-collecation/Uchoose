@@ -18,7 +18,7 @@ const {Step} = Steps;
 const {Search} = Input;
 
 import { Upload, message } from 'antd';
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import {LoadingOutlined, PlusOutlined, UploadOutlined} from '@ant-design/icons';
 
 function getBase64(img: any, callback: any) {
     const reader = new FileReader();
@@ -45,33 +45,23 @@ const Home: NextPage = () => {
     const [isInProgress, setProgress] = useState(false);
     const [isModalVisible, setIsModalVisible] = useState(false);
 
-    // const { loading, imageUrl } = this.state;
-    // const uploadButton = (
-    //     <div>
-    //         {loading ? <LoadingOutlined /> : <PlusOutlined />}
-    //         <div style={{ marginTop: 8 }}>Upload</div>
-    //     </div>
-    // );
-
-    // state = {
-    //     loading: false,
-    // };
-    //
-    // handleChange = info => {
-    //     if (info.file.status === 'uploading') {
-    //         this.setState({ loading: true });
-    //         return;
-    //     }
-    //     if (info.file.status === 'done') {
-    //         // Get this url from response in real world.
-    //         getBase64(info.file.originFileObj, imageUrl =>
-    //             this.setState({
-    //                 imageUrl,
-    //                 loading: false,
-    //             }),
-    //         );
-    //     }
-    // };
+    const props = {
+        name: 'file',
+        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+        headers: {
+            authorization: 'authorization-text',
+        },
+        onChange(info:any) {
+            if (info.file.status !== 'uploading') {
+                console.log(info.file, info.fileList);
+            }
+            if (info.file.status === 'done') {
+                message.success(`${info.file.name} file uploaded successfully`);
+            } else if (info.file.status === 'error') {
+                message.error(`${info.file.name} file upload failed.`);
+            }
+        },
+    };
 
     useEffect(() => {
         const subscription = ceramic.isAuthenticated$.subscribe(
@@ -324,17 +314,9 @@ const Home: NextPage = () => {
                             name="layers_images"
                             rules={[{required: true, message: 'Please upload layers/images!'}]}
                         >
-                            <Upload
-                                name="avatar"
-                                listType="picture-card"
-                                className="avatar-uploader"
-                                showUploadList={false}
-                                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                                beforeUpload={beforeUpload}
-                                // onChange={this.handleChange}
-                            >
-                                {/*{imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}*/}
-                            </Upload>
+                            <Upload {...props}>
+                                <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                            </Upload>,
                         </Form.Item>
 
                         {/*<Form.Item wrapperCol={{offset: 8, span: 16}}>*/}
