@@ -8,7 +8,56 @@ import { ChangeController } from "../components/mint/change-controller";
 
 import { Form, Input, Checkbox, Button } from 'antd';
 
-export default function MintPage() {
+import React from 'react';
+import { Upload } from 'antd';
+import ImgCrop from 'antd-img-crop';
+
+{/* https://ant.design/components/upload/ */}
+{/*const UploadedProperties = () => {
+  const [fileList, setFileList] = useState([
+    {
+      uid: '-1',
+      name: 'tongue.png',
+      status: 'done',
+      url: './public/layers/tongue.png',
+    },
+  ]);
+
+  const onChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
+  };
+
+  const onPreview = async file => {
+    let src = file.url;
+    if (!src) {
+      src = await new Promise(resolve => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file.originFileObj);
+        reader.onload = () => resolve(reader.result);
+      });
+    }
+    const image = new Image();
+    image.src = src;
+    const imgWindow = window.open(src);
+    imgWindow.document.write(image.outerHTML);
+  };
+
+  return (
+    <ImgCrop rotate>
+      <Upload
+        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        listType="picture-card"
+        fileList={fileList}
+        onChange={onChange}
+        onPreview={onPreview}
+      >
+        {fileList.length < 5 && '+ Upload'}
+      </Upload>
+    </ImgCrop>
+  );
+};*/}
+
+export default function ManageCollectionPage() {
   const [tile, setTile] = useState<TileDocument | undefined>(undefined);
   const [token, setToken] = useState<
     { contract: string; tokenId: string } | undefined
@@ -61,12 +110,12 @@ export default function MintPage() {
       //onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
-      <Form.Item
+        <Form.Item
         label="Collection Name"
         name="collectionName"
         rules={[{ required: true, message: 'Please input Collection Name!' }]}
         >
-          <Input  style={{width: "250px"}} />
+          <Input  style={{width: "450px"}} />
         </Form.Item>
 
         <Form.Item
@@ -74,13 +123,18 @@ export default function MintPage() {
           name="quantityOfNft"
           rules={[{ required: true, message: 'Please input Quantity of Nft!' }]}
         >
-          <Input type="number" style={{width: "250px"}} />
+          <Input type="number" style={{width: "450px"}} />
         </Form.Item>
 
         {/* TODO - добавить больше элементов*/}
 
-        <Form.Item name="mintFirstNft" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-          <Checkbox>Mint the first NFT</Checkbox>
+        <Form.Item
+        label="Parameters"
+        name="parameters"
+        rules={[{ required: true, message: 'Please input Parameters!' }]}
+        >
+          {/* TODO - разобраться, как подключить и добавить*/}
+          {/*<UploadedProperties/>*/}
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
