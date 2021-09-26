@@ -15,6 +15,9 @@ import { Steps } from 'antd';
 
 const { Step } = Steps;
 
+// import fs from 'fs'
+// const writeFile = fs.writeFile
+
 const Home: NextPage = () => {
 
     const ceramic = useCeramic();
@@ -52,6 +55,9 @@ const Home: NextPage = () => {
     };
 
     const renderButton = () => {
+        // TODO - передавать не bool, а enum - Unauthorized, InProgress, Authorized
+        // Если авторизовался, то в кнопку записывать "0x1f...32e" - адрес подключенного кошелька (или лучше did)
+        // чтобы видеть, что авторизовались
         if (isInProgress) {
             return (
                 <>
@@ -72,27 +78,48 @@ const Home: NextPage = () => {
     }
 
     const createTestSchema = async () => {
-        console.log('123');
-        console.log('going to create schema');
-        // Publish the two schemas
-        console.log('before publish');
-        const [collectionStreamSchema, collectionsStreamSchema] = await Promise.all([
-            publishSchema(ceramic.client, { content: CollectionsStreamSchema }),
-            publishSchema(ceramic.client, { content: CollectionStreamSchema }),
-        ])
-        console.log('after publish');
+        try {
+            console.log('123');
+            console.log('going to create schema');
+            // Publish the two schemas
+            console.log('before publish');
 
-        console.log('before definition');
+            // TODO - единожды при первом запуске сохранять, так как схемы надо создавать только один раз
+            const [collectionStreamSchema, collectionsStreamSchema] = await Promise.all([
+                publishSchema(ceramic.client, { content: CollectionsStreamSchema, name: 'CollectionsStreamSchema' }),
+                publishSchema(ceramic.client, { content: CollectionStreamSchema, name: 'CollectionStreamSchema' }),
+            ])
+            console.log('after publish');
 
-        // Create the definition using the created schema ID
-        const collectionsStreamDefinition = await createDefinition(ceramic.client, {
-            name: 'CollectionsStream',
-            description: 'Stream with all collections StreamID',
-            schema: collectionsStreamSchema.commitId.toUrl(),
-        })
-        console.log('after definition');
+            console.log('before definition');
 
-        console.log('Looks like that something happened');
+            // Create the definition using the created schema ID
+            const collectionsStreamDefinition = await createDefinition(ceramic.client, {
+                name: 'CollectionsStream',
+                description: 'Stream with all collections StreamID',
+                schema: collectionsStreamSchema.commitId.toUrl(),
+            })
+            console.log('after definition');
+
+            console.log('Looks like that something happened');
+
+            // Write config to JSON file
+            const config = {
+                definitions: {
+                    notes: collectionsStreamDefinition.id.toString(),
+                },
+                schemas: {
+                    Note: collectionStreamSchema.commitId.toUrl(),
+                    NotesList: collectionsStreamSchema.commitId.toUrl(),
+                },
+            }
+
+            // TODO - разобраться с сохранением
+            // await writeFile('./configs/config.json', JSON.stringify(config))
+            // console.log('Looks like all saved!');
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     return (
