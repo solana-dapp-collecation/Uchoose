@@ -15,9 +15,6 @@ import { Steps } from 'antd';
 
 const { Step } = Steps;
 
-// import fs from 'fs'
-// const writeFile = fs.writeFile
-
 const Home: NextPage = () => {
 
     const ceramic = useCeramic();
@@ -106,15 +103,18 @@ const Home: NextPage = () => {
             // Write config to JSON file
             const config = {
                 definitions: {
-                    notes: collectionsStreamDefinition.id.toString(),
+                    collections: collectionsStreamDefinition.id.toString(),
                 },
                 schemas: {
-                    Note: collectionStreamSchema.commitId.toUrl(),
-                    NotesList: collectionsStreamSchema.commitId.toUrl(),
+                    collection: collectionStreamSchema.commitId.toUrl(),
+                    collections: collectionsStreamSchema.commitId.toUrl(),
                 },
             }
 
-            // TODO - разобраться с сохранением
+            console.log(JSON.stringify(config));
+
+            // TODO - разобраться с сохранением этих данных, чтобы были доступны всем глобально
+            // запись в файл не работает
             // await writeFile('./configs/config.json', JSON.stringify(config))
             // console.log('Looks like all saved!');
         } catch (e) {
@@ -143,6 +143,12 @@ const Home: NextPage = () => {
             {/*Main body*/}
             <main className={styles.main}>
 
+                <div>
+                    <CustomCarouselWithCards/>
+                </div>
+
+                <Divider orientation="left"></Divider>
+
                 <div className={styles.grid} style={{marginTop: '0px'}}>
                     <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Manage collections &rarr;</h2>
@@ -165,9 +171,6 @@ const Home: NextPage = () => {
                         <Button disabled={!isAuthenticated} type="primary">Logs</Button>
                     </div>
                 </div>
-                <div style={{marginTop: '1vh'}}>
-                    <CustomCarouselWithCards/>
-                </div>
 
                 <Divider orientation="left"><b>Roadmap</b></Divider>
                 <div>
@@ -180,6 +183,9 @@ const Home: NextPage = () => {
                 
                 <Divider orientation="left"><b>For testing (dev) - delete later</b></Divider>
                 <Button onClick={()=>createTestSchema()}>Test Saving Schemas</Button>
+
+                <Divider orientation="left"><b>For testing2 (dev) - delete later</b></Divider>
+
             </main>
 
             <footer>

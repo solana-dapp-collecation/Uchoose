@@ -9,7 +9,11 @@ export function Layout(props: React.PropsWithChildren<{}>) {
 
   return (
     <div className={styles.layoutContainer}>
-      <nav className={styles.topMenuLine}>
+        <br/>
+        {props.children}
+
+      {/*<nav className={styles.topMenuLine}>
+        <br/>
         <Link href={"/"} passHref={true}>
           <a className={"text-4xl"}>🔸🌱</a>
         </Link>
@@ -26,7 +30,7 @@ export function Layout(props: React.PropsWithChildren<{}>) {
           </li>
         </ul>
       </nav>
-      {props.children}
+      {props.children}*/}
     </div>
   );
 }
