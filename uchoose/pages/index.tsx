@@ -10,10 +10,11 @@ import {Button} from "antd";
 import {CollectionStreamSchema, CollectionsStreamSchema} from '../components/constants';
 import { createDefinition, publishSchema } from '@ceramicstudio/idx-tools';
 
-import { Divider } from 'antd';
+import { Divider, Input } from 'antd';
 import { Steps } from 'antd';
 
 const { Step } = Steps;
+const { Search } = Input;
 
 const Home: NextPage = () => {
 
@@ -64,7 +65,7 @@ const Home: NextPage = () => {
         } else {
             return (
                 <>
-                    <button onClick={handleLogin}>Connect Wallet</button>
+                    <button onClick={handleLogin}><b>Connect Wallet</b></button>
                 </>
             );
         }
@@ -132,6 +133,10 @@ const Home: NextPage = () => {
 
             {/*Top bar*/}
             <div className={topBarStyles.topBarContainer}>
+                <div>
+                    {/* TODO - разместить рядом с лого на всю ширину до лого */}
+                    <Search placeholder="input search text" enterButton />
+                </div>
                 <div className={styles.logo}
                      style={{display: 'inline-block', verticalAlign: 'middle', marginRight: '10px'}}>
                     <img src="/main-logo-2.png" alt="Uch∞se" style={{width: '100px'}}/>
@@ -152,24 +157,26 @@ const Home: NextPage = () => {
                 <div className={styles.grid} style={{marginTop: '0px'}}>
                     <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Manage collections &rarr;</h2>
-                        <p>Use to create your collection. Place orders</p>
+                        <p>Use to create your dynamic collection with setting its properties.</p>
+                        <br/>
                         <Button disabled={!isAuthenticated} href="/manage-collections" type="primary">Manage</Button>
                     </div>
-                    <div className={styles.card}>
+                    {/*<div className={styles.card}>
                         <h2>View &rarr;</h2>
                         <p>View existing collections</p>
                         <Button href="/views" type="primary">View</Button>
-                    </div>
+                    </div>*/}
                     <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Transactions &rarr;</h2>
-                        <p>See transactions history</p>
+                        <p>See transactions history for all each collection.</p>
+                        <br/>
                         <Button disabled={!isAuthenticated} type="primary">Transactions</Button>
                     </div>
-                    <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
+                    {/*<div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Logs/Statistics &rarr;</h2>
                         <p>See logs and statistics</p>
                         <Button disabled={!isAuthenticated} type="primary">Logs</Button>
-                    </div>
+                    </div>*/}
                 </div>
 
                 <Divider orientation="left"><b>Roadmap</b></Divider>
@@ -183,9 +190,6 @@ const Home: NextPage = () => {
                 
                 <Divider orientation="left"><b>For testing (dev) - delete later</b></Divider>
                 <Button onClick={()=>createTestSchema()}>Test Saving Schemas</Button>
-
-                <Divider orientation="left"><b>For testing2 (dev) - delete later</b></Divider>
-
             </main>
 
             <footer>
