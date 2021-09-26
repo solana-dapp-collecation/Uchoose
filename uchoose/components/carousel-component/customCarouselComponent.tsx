@@ -104,11 +104,11 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Divider>Price</Divider>
                             <b>Price</b>: 1<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={2.5} /> 2.5
+                            <Rate allowHalf defaultValue={4.8} /> 4.8
                             <Divider/>
                             <>
                                 <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Co-create</Button>
+                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
                                 <br/><br/>
                                 <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
                             </>
@@ -145,7 +145,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <br/>
                             <b>Co-creator</b>: <a href="https://opensea.io/BoundTwo">BoundTwo</a>
                             <br/>
-                            <b>Owner</b>: -
+                            <b>Owner</b>: <a href="https://opensea.io/Milko">Milko</a>
                             <Divider>Properties</Divider>
                             <Tag color="purple">sweater</Tag>
                             <Tag color="green">cap</Tag>
@@ -153,11 +153,11 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Divider>Price</Divider>
                             <b>Price</b>: 2<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={3.5} /> 3.5
+                            <Rate allowHalf defaultValue={4.7} /> 4.7
                             <Divider/>
                             <>
                                 <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Co-create</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
                                 <br/><br/>
                                 <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
                             </>
@@ -183,7 +183,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <br/>
                             <b>Co-creator</b>: <a href="https://opensea.io/Milko">Milko</a>
                             <br/>
-                            <b>Owner</b>: -
+                            <b>Owner</b>: <a href="https://opensea.io/BoundTwo">BoundTwo</a>
                             <Divider>Properties</Divider>
                             <Tag color="red">scarf</Tag>
                             <Tag color="black">iroquois</Tag>
@@ -195,7 +195,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Divider/>
                             <>
                                 <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Co-create</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
                                 <br/><br/>
                                 <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
                             </>
@@ -229,11 +229,11 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Divider>Price</Divider>
                             <b>Price</b>: 2<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={3.5} /> 3.5
+                            <Rate allowHalf defaultValue={4.4} /> 4.4
                             <Divider/>
                             <>
                                 <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Co-create</Button>
+                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
                                 <br/><br/>
                                 <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
                             </>
@@ -267,11 +267,11 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Divider>Price</Divider>
                             <b>Price</b>: 2<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={3} /> 3.0
+                            <Rate allowHalf defaultValue={5} /> 5.0
                             <Divider/>
                             <>
                                 <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Co-create</Button>
+                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
                                 <br/><br/>
                                 <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
                             </>
@@ -305,11 +305,11 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Divider>Price</Divider>
                             <b>Price</b>: 2<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={2.5} /> 2.5
+                            <Rate allowHalf defaultValue={4.5} /> 4.5
                             <Divider/>
                             <>
                                 <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Co-create</Button>
+                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
                                 <br/><br/>
                                 <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
                             </>
@@ -343,11 +343,11 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Divider>Price</Divider>
                             <b>Price</b>: 2<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={3.2} /> 3.2
+                            <Rate allowHalf defaultValue={4.2} /> 4.2
                             <Divider/>
                             <>
                                 <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Co-create</Button>
+                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
                                 <br/><br/>
                                 <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
                             </>
@@ -385,7 +385,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Divider/>
                             <>
                                 <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Co-create</Button>
+                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
                                 <br/><br/>
                                 <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
                             </>
