@@ -14,40 +14,10 @@ const IconFont = createFromIconfontCN({
 
 const {Meta} = Card;
 
-function handleMenuClick(e: any) {
-    console.log('click menu item', e);
-}
-
-function handleCoCreate(e: any) {
-    console.log('TOTO - add form wih choosing parts for new NFT', e);
-    showCoCreateModal();
-}
-
-const showCoCreateModal = () => {
-    setIsCoCreateModalVisible(true);
-};
-
-const handleCoCreateOk = () => {
-    // add method that gathers data from form and put them into API to create record in ceramic
-    setIsCoCreateModalVisible(false);
-};
-
-const handleCancelCoCreate = () => {
-    setIsCoCreateModalVisible(false);
-};
-
-const [isCoCreateModalVisible, setIsCoCreateModalVisible] = useState(false);
-
-const menu = (
-    <Menu onClick={handleMenuClick}>
-      <Menu.Item key="facebook"><IconFont type="icon-facebook" /> Facebook</Menu.Item>
-      <Menu.Item key="twitter"><IconFont type="icon-twitter" /> Twitter</Menu.Item>
-    </Menu>
-  );
-
 // TODO. Make this component generic. It have to receive list of images from API and render them.
 // This one is just a stub to show how it will look later
 export default function CustomCarouselWithCards(props: React.PropsWithChildren<{}>) {
+    const [isCoCreateModalVisible, setIsCoCreateModalVisible] = useState(false);
     const responsive = {
         desktop: {
             breakpoint: {max: 3000, min: 1024},
@@ -65,6 +35,35 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
             slidesToSlide: 1 // optional, default to 1.
         }
     };
+    const menu = (
+        <Menu onClick={handleMenuClick}>
+            <Menu.Item key="facebook"><IconFont type="icon-facebook" /> Facebook</Menu.Item>
+            <Menu.Item key="twitter"><IconFont type="icon-twitter" /> Twitter</Menu.Item>
+        </Menu>
+    );
+
+    function handleMenuClick(e: any) {
+        console.log('click menu item', e);
+    }
+
+    function handleCoCreate(e: any) {
+        console.log('TOTO - add form wih choosing parts for new NFT', e);
+        showCoCreateModal();
+    }
+
+    const showCoCreateModal = () => {
+        setIsCoCreateModalVisible(true);
+    };
+
+    const handleCoCreateOk = () => {
+        // add method that gathers data from form and put them into API to create record in ceramic
+        setIsCoCreateModalVisible(false);
+    };
+
+    const handleCancelCoCreate = () => {
+        setIsCoCreateModalVisible(false);
+    };
+
     return (
         <div style={{width: '1000px'}}>
             <Modal title="Co-create" visible={isCoCreateModalVisible} okText={'Buy'} onOk={handleCoCreateOk} onCancel={handleCancelCoCreate}>
