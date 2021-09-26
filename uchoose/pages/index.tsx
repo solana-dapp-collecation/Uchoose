@@ -153,9 +153,6 @@ const Home: NextPage = () => {
 
             {/*Top bar*/}
             <div className={topBarStyles.topBarContainer}>
-                <div className={topBarStyles.mainSearchBar}>
-                    <Search placeholder="Search items, collections and accounts" enterButton/>
-                </div>
                 <div className={styles.logo}
                      style={{display: 'inline-block', verticalAlign: 'middle', marginRight: '10px'}}>
                     <img src="/main-logo-2.png" alt="Uch∞se" style={{width: '100px'}}/>
@@ -166,7 +163,9 @@ const Home: NextPage = () => {
             </div>
             {/*Main body*/}
             <main className={styles.main}>
-
+                <div className={topBarStyles.mainSearchBar}>
+                    <Search placeholder="Search items, collections and accounts" enterButton/>
+                </div>
                 <div>
                     <CustomCarouselWithCards/>
                 </div>

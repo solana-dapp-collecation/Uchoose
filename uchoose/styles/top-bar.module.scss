@@ -1,7 +1,7 @@
 .topBarContainer {
     height: 120px;
-    /* text-align: center; */
-    width: 700px;
+    text-align: center;
+    width: 350px;
     position: absolute;
     top: 0;
     right: 0;
@@ -53,8 +53,7 @@
 
 .mainSearchBar {
     display: inline-block;
-    vertical-align: middle;
     margin-top: 27px;
-    width: 365px;
+    width: 100vh;
     margin-right: 20px;
 }
