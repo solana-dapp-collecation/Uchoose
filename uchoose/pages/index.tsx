@@ -22,6 +22,8 @@ import {Upload, message} from 'antd';
 import {LoadingOutlined, PlusOutlined, UploadOutlined} from '@ant-design/icons';
 import {TileDocument} from "@ceramicnetwork/stream-tile";
 import client from "@hapi/wreck";
+import TagCloud from "react-tag-cloud";
+import randomColor from 'randomcolor';
 
 function getBase64(img: any, callback: any) {
     const reader = new FileReader();
@@ -262,7 +264,7 @@ const Home: NextPage = () => {
         // editing.hours = e.target.value;
         // setEditing(editing);
         setCollectionName(e.target.value);
-        console.log(e.target.value);
+        // console.log(e.target.value);
     }
 
     return (
@@ -378,6 +380,22 @@ const Home: NextPage = () => {
                         </Form.Item>
 
                         {/* TODO - добавить больше элементов*/}
+
+                        <TagCloud
+                            style={{
+                                fontFamily: 'sans-serif',
+                                fontSize: 30,
+                                fontWeight: 'bold',
+                                fontStyle: 'italic',
+                                color: () => randomColor(),
+                                padding: 5,
+                                width: '100%',
+                                height: '100%'
+                            }}>
+                            <div style={{fontSize: 50}}>react</div>
+                            <div style={{color: 'green'}}>tag</div>
+                            <div rotate={90}>cloud</div>
+                        </TagCloud>
 
                         <Form.Item
                             label="Layers/Images"
