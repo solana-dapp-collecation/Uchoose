@@ -87,9 +87,9 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             marginRight: '10px',
                             marginBottom: '30px'
                         }}
-                        cover={<img alt="example" src="/Pixel-Doge-3916.png"/>}
+                        cover={<img alt="example" src="/Pixel-Doge-5916.png"/>}
                     >
-                        <Meta title="Pixel Doge #3916" description="Generated Dodge 3916" />
+                        <Meta title="Pixel Doge #5916" description="Generated Dodge 5916" />
                         <br/>
                         <div>
                             <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
@@ -221,7 +221,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <br/>
                             <b>Co-creator</b>: <a href="https://opensea.io/BigOunce">BigOunce</a>
                             <br/>
-                            <b>Owner</b>: -
+                            <b>Owner</b>: <a href="https://opensea.io/Milko">Milko</a>
                             <Divider>Properties</Divider>
                             <Tag color="blue">undershirt</Tag>
                             <Tag color="purple">cap</Tag>
@@ -233,7 +233,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Divider/>
                             <>
                                 <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
                                 <br/><br/>
                                 <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
                             </>
@@ -259,7 +259,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <br/>
                             <b>Co-creator</b>: <a href="https://opensea.io/ThanosWon">ThanosWon</a>
                             <br/>
-                            <b>Owner</b>: -
+                            <b>Owner</b>: <a href="https://opensea.io/BigOunce">BigOunce</a>
                             <Divider>Properties</Divider>
                             <Tag color="green">undershirt</Tag>
                             <Tag color="red">horns</Tag>
@@ -271,7 +271,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Divider/>
                             <>
                                 <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
                                 <br/><br/>
                                 <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
                             </>
@@ -297,7 +297,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <br/>
                             <b>Co-creator</b>: <a href="https://opensea.io/Elchigro">Elchigro</a>
                             <br/>
-                            <b>Owner</b>: -
+                            <b>Owner</b>: <a href="https://opensea.io/ThanosWon">ThanosWon</a>
                             <Divider>Properties</Divider>
                             <Tag color="purple">cravat</Tag>
                             <Tag color="brown">arrow</Tag>
@@ -309,7 +309,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Divider/>
                             <>
                                 <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
                                 <br/><br/>
                                 <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
                             </>
@@ -335,7 +335,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <br/>
                             <b>Co-creator</b>: <a href="https://opensea.io/digitalartdealer">digitalartdealer</a>
                             <br/>
-                            <b>Owner</b>: -
+                            <b>Owner</b>: <a href="https://opensea.io/Elchigro">Elchigro</a>
                             <Divider>Properties</Divider>
                             <Tag color="blue">sweater</Tag>
                             <Tag color="black">iroquois</Tag>
@@ -347,7 +347,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Divider/>
                             <>
                                 <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
                                 <br/><br/>
                                 <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
                             </>
@@ -373,7 +373,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <br/>
                             <b>Co-creator</b>: <a href="https://opensea.io/Milko">Milko</a>
                             <br/>
-                            <b>Owner</b>: -
+                            <b>Owner</b>: <a href="https://opensea.io/digitalartdealer">digitalartdealer</a>
                             <Divider>Properties</Divider>
                             <Tag color="red">undershirt</Tag>
                             <Tag color="yellow">cap</Tag>
@@ -385,7 +385,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Divider/>
                             <>
                                 <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
                                 <br/><br/>
                                 <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
                             </>
