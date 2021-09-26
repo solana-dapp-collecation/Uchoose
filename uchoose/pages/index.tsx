@@ -8,8 +8,9 @@ import "react-multi-carousel/lib/styles.css";
 import CustomCarouselWithCards from "../components/carousel-component/customCarouselComponent";
 import {Button, Form, Modal} from "antd";
 import {CollectionStreamSchema, CollectionsStreamSchema} from '../components/schemas';
-import {DID_TOKEN_KEY} from '../components/constants';
+import {DEFINITION_OF_SCHEMA_1, DID_TOKEN_KEY} from '../components/constants';
 import {createDefinition, publishSchema} from '@ceramicstudio/idx-tools';
+import {IDX} from '@ceramicstudio/idx';
 
 import {Divider, Input} from 'antd';
 import {Steps} from 'antd';
@@ -17,8 +18,10 @@ import {Steps} from 'antd';
 const {Step} = Steps;
 const {Search} = Input;
 
-import { Upload, message } from 'antd';
+import {Upload, message} from 'antd';
 import {LoadingOutlined, PlusOutlined, UploadOutlined} from '@ant-design/icons';
+import {TileDocument} from "@ceramicnetwork/stream-tile";
+import client from "@hapi/wreck";
 
 function getBase64(img: any, callback: any) {
     const reader = new FileReader();
@@ -44,14 +47,21 @@ const Home: NextPage = () => {
     const [isAuthenticated, setAuthenticated] = useState(ceramic.isAuthenticated);
     const [isInProgress, setProgress] = useState(false);
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [collectionName, setCollectionName] = useState('');
+    const [qtyOfNFTs, setQtyOfNFTs] = useState('');
+    const [imgSizeWidth, setImgWidth] = useState('');
+    const [imgSizeHeight, setImgHeight] = useState('');
+
+    // TODO. Handle this one properly. Prepare for collections of images
+    const [imageData, setImageData] = useState('');
 
     const props = {
         name: 'file',
-        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+        action: '...',
         headers: {
             authorization: 'authorization-text',
         },
-        onChange(info:any) {
+        onChange(info: any) {
             if (info.file.status !== 'uploading') {
                 console.log(info.file, info.fileList);
             }
@@ -136,8 +146,47 @@ const Home: NextPage = () => {
         setIsModalVisible(true);
     };
 
-    const handleOk = () => {
+    /**
+     * Here we creating streams for specific collection and collections (it's StreamIDs) via IDX
+     *
+     */
+    const handleOk = async () => {
         // add method that gathers data from form and put them into API to create record in ceramic
+        // TODO. Create correct stream
+        // const authProvider = await ceramic.connect();
+        // let didToken = await ceramic.authenticate(authProvider);
+        let schemaDef = localStorage.getItem(DEFINITION_OF_SCHEMA_1);
+        // @ts-ignore
+        const idx = new IDX({ceramic: ceramic.client, aliases: schemaDef});
+
+
+        // TODO. All data have to be passed from form, populated by creator/user
+        let streamSchemaCollection1 = {
+            "collectionName": "Collection1",
+                "quantityOfNft": 10,
+                "nftPartIds": [ "1", "2" ],
+                "nftPictureWidth": 256,
+                "nftPictureHeight": 256,
+                "nftPicture": "0x99..asdasd",
+                "newCollectionProperties": null,
+                "coCreator": null
+        }
+        // Here we are passing stream id of stream collection
+        let resultCollection1 = await idx.set('Collection1', streamSchemaCollection1);
+        console.log(resultCollection1);
+        let streamSchemaCollections = {
+            collectionsStreamIDs: [resultCollection1.cid]
+        }
+        let result = await idx.set('Collections', streamSchemaCollections);
+        console.log(result);
+        // Load the existing notes
+        // const notesList = await idx.get<{ notes: Array<NoteItem> }>('notes')
+        // const tile = await TileDocument.create(ceramic.client, {
+        //     name: name,
+        //     description: description,
+        //     image: cid,
+        // });
+        // setStreamId(tile.id.toString());
         setIsModalVisible(false);
     };
 
@@ -162,11 +211,16 @@ const Home: NextPage = () => {
             console.log('before definition');
 
             // Create the definition using the created schema ID
+            const collectionStreamDefinition = await createDefinition(ceramic.client, {
+                name: 'CollectionStream',
+                description: 'Stream with all NFT of concrete collection',
+                schema: collectionStreamSchema.commitId.toUrl(),
+            });
             const collectionsStreamDefinition = await createDefinition(ceramic.client, {
                 name: 'CollectionsStream',
                 description: 'Stream with all collections StreamID',
                 schema: collectionsStreamSchema.commitId.toUrl(),
-            })
+            });
             console.log('%c --- after definition ---', 'background-color: red');
             console.log(collectionsStreamDefinition);
             console.log('%c ---', 'background-color: red');
@@ -177,6 +231,7 @@ const Home: NextPage = () => {
             // Write config to JSON file
             const config = {
                 definitions: {
+                    collection: collectionStreamDefinition.id.toString(),
                     collections: collectionsStreamDefinition.id.toString(),
                 },
                 schemas: {
@@ -186,6 +241,7 @@ const Home: NextPage = () => {
             }
 
             console.log(JSON.stringify(config));
+            localStorage.setItem(DEFINITION_OF_SCHEMA_1, JSON.stringify(config));
 
             // TODO - разобраться с сохранением этих данных, чтобы были доступны всем глобально
             // запись в файл не работает
@@ -194,6 +250,13 @@ const Home: NextPage = () => {
         } catch (e) {
             console.error(e);
         }
+    }
+
+    function handleCollectionNameInput(e: any) {
+        // editing.hours = e.target.value;
+        // setEditing(editing);
+        setCollectionName(e.target.value);
+        console.log(e.target.value);
     }
 
     return (
@@ -266,7 +329,8 @@ const Home: NextPage = () => {
                 <Button type="primary" onClick={showModal}>
                     Create Collection
                 </Button>
-                <Modal title="Creating collection" visible={isModalVisible} okText={'Create'} onOk={handleOk} onCancel={handleCancel}>
+                <Modal title="Creating collection" visible={isModalVisible} okText={'Create'} onOk={handleOk}
+                       onCancel={handleCancel}>
                     <Form
                         name="basic"
                         labelCol={{span: 8}}
@@ -281,7 +345,7 @@ const Home: NextPage = () => {
                             name="collectionName"
                             rules={[{required: true, message: 'Please input Collection Name!'}]}
                         >
-                            <Input/>
+                            <Input onChange={handleCollectionNameInput}/>
                         </Form.Item>
 
                         <Form.Item
@@ -297,14 +361,14 @@ const Home: NextPage = () => {
                             name="nftWidth"
                             rules={[{required: true, message: 'Please fill in NFT width'}]}
                         >
-                            <Input type="number" min={64} defaultValue={64}/>
+                            <Input type="number" min={64}/>
                         </Form.Item>
                         <Form.Item
                             label="NFT height px"
                             name="nftHeight"
                             rules={[{required: true, message: 'Please fill in NFT height'}]}
                         >
-                            <Input type="number" min={64} defaultValue={64}/>
+                            <Input type="number" min={64}/>
                         </Form.Item>
 
                         {/* TODO - добавить больше элементов*/}
@@ -315,8 +379,8 @@ const Home: NextPage = () => {
                             rules={[{required: true, message: 'Please upload layers/images!'}]}
                         >
                             <Upload {...props}>
-                                <Button icon={<UploadOutlined />}>Click to Upload</Button>
-                            </Upload>,
+                                <Button icon={<UploadOutlined/>}>Click to Upload</Button>
+                            </Upload>
                         </Form.Item>
 
                         {/*<Form.Item wrapperCol={{offset: 8, span: 16}}>*/}
