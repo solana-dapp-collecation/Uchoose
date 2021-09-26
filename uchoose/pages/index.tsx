@@ -25,22 +25,32 @@ import client from "@hapi/wreck";
 import TagCloud from "react-tag-cloud";
 import randomColor from 'randomcolor';
 
-function getBase64(img: any, callback: any) {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(img);
-}
+// function getBase64Antd(img: any, callback: any) {
+//     const reader = new FileReader();
+//     reader.addEventListener('load', () => callback(reader.result));
+//     reader.readAsDataURL(img);
+// }
+//
+// function beforeUpload(file: any) {
+//     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+//     if (!isJpgOrPng) {
+//         message.error('You can only upload JPG/PNG file!');
+//     }
+//     const isLt2M = file.size / 1024 / 1024 < 2;
+//     if (!isLt2M) {
+//         message.error('Image must smaller than 2MB!');
+//     }
+//     return isJpgOrPng && isLt2M;
+// }
 
-function beforeUpload(file: any) {
-    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-    if (!isJpgOrPng) {
-        message.error('You can only upload JPG/PNG file!');
-    }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-        message.error('Image must smaller than 2MB!');
-    }
-    return isJpgOrPng && isLt2M;
+const getBase64 = (file:any) => {
+    console.log('get base 64');
+    return new Promise((resolve,reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+    });
 }
 
 const Home: NextPage = () => {
@@ -148,53 +158,68 @@ const Home: NextPage = () => {
         setIsModalVisible(true);
     };
 
+    const imageUpload = (e: any) => {
+        const file = e.target.files[0];
+        console.log(file);
+        getBase64(file).then(base64 => {
+            localStorage["fileBase64"] = base64;
+            console.log("file stored", base64);
+        });
+    };
+
     /**
      * Here we creating streams for specific collection and collections (it's StreamIDs) via IDX
      *
      */
-    const handleOk = async () => {
-        try{
+    const handleCreateNewNFTCollection = async () => {
+        try {
 
-        // add method that gathers data from form and put them into API to create record in ceramic
-        // TODO. Create correct stream
-        // const authProvider = await ceramic.connect();
-        // let didToken = await ceramic.authenticate(authProvider);
-        let schemaDef = localStorage.getItem(DEFINITION_OF_SCHEMA_1);
-        // @ts-ignore
-        const idx = new IDX({ceramic: ceramic.client, aliases: schemaDef});
+            // add method that gathers data from form and put them into API to create record in ceramic
+            // TODO. Create correct stream
+            // const authProvider = await ceramic.connect();
+            // let didToken = await ceramic.authenticate(authProvider);
+            let schemaDef = localStorage.getItem(DEFINITION_OF_SCHEMA_1);
+            // @ts-ignore
+            const idx = new IDX({ceramic: ceramic.client, aliases: schemaDef});
 
-        // TODO. All data have to be passed from form, populated by creator/user
-        let streamSchemaCollection1 = {
-            "collectionName": "Collection1",
-                "quantityOfNft": 10,
-                "nftPartIds": [ "1", "2" ],
-                "nftPictureWidth": 256,
-                "nftPictureHeight": 256,
+            // TODO. All data have to be passed from form, populated by creator/user
+            // let streamSchemaCollection1 = {
+            //     "collectionName": "Collection1",
+            //         "quantityOfNft": 10,
+            //         "nftPartIds": [ "1", "2" ],
+            //         "nftPictureWidth": 256,
+            //         "nftPictureHeight": 256,
+            //         "nftPicture": "0x99..asdasd",
+            //         "newCollectionProperties": null,
+            //         "coCreator": null
+            // }
+            console.log(collectionName);
+            console.log(qtyOfNFTs);
+            console.log(imgSizeWidth);
+            console.log(imgSizeHeight);
+            let streamSchemaCollection1 = {
+                "collectionName": collectionName,
+                "quantityOfNft": 1,
+                "nftPartIds": ["1", "2"],
+                "nftPictureWidth": imgSizeWidth,
+                "nftPictureHeight": imgSizeHeight,
+                // Place file here
                 "nftPicture": "0x99..asdasd",
                 "newCollectionProperties": null,
                 "coCreator": null
-        }
-        // Here we are passing stream id of stream collection
-        let resultCollection1 = await idx.set('Collection1', streamSchemaCollection1);
-        console.log(resultCollection1);
-        let streamSchemaCollections = {
-            collectionsStreamIDs: [resultCollection1.cid]
-        }
-        let result = await idx.set('Collections', streamSchemaCollections);
-        console.log(result);
-        }
-        catch (ex){
+            }
+            // Here we are passing stream id of stream collection
+            let resultCollection1 = await idx.set(collectionName, streamSchemaCollection1);
+            console.log(resultCollection1);
+            let streamSchemaCollections = {
+                collectionsStreamIDs: [resultCollection1.cid]
+            }
+            let result = await idx.set('Collections', streamSchemaCollections);
+            console.log(result);
+        } catch (ex) {
             console.log('%c --- Can\'t create stream ---', 'background-color: red');
             console.log(ex);
         }
-        // Load the existing notes
-        // const notesList = await idx.get<{ notes: Array<NoteItem> }>('notes')
-        // const tile = await TileDocument.create(ceramic.client, {
-        //     name: name,
-        //     description: description,
-        //     image: cid,
-        // });
-        // setStreamId(tile.id.toString());
         setIsModalVisible(false);
     };
 
@@ -261,10 +286,19 @@ const Home: NextPage = () => {
     }
 
     function handleCollectionNameInput(e: any) {
-        // editing.hours = e.target.value;
-        // setEditing(editing);
         setCollectionName(e.target.value);
-        // console.log(e.target.value);
+    }
+
+    function handleQuantityOfNFTsInput(e: any) {
+        setQtyOfNFTs(e.target.value);
+    }
+
+    function handleImgWidthInput(e: any) {
+        setImgWidth(e.target.value);
+    }
+
+    function handleImgHeightInput(e: any) {
+        setImgHeight(e.target.value);
     }
 
     return (
@@ -337,7 +371,8 @@ const Home: NextPage = () => {
                 <Button type="primary" onClick={showModal}>
                     Create Collection
                 </Button>
-                <Modal title="Creating collection" visible={isModalVisible} okText={'Create'} onOk={handleOk}
+                <Modal title="Creating collection" visible={isModalVisible} okText={'Create'}
+                       onOk={handleCreateNewNFTCollection}
                        onCancel={handleCancel}>
                     <Form
                         name="basic"
@@ -361,7 +396,7 @@ const Home: NextPage = () => {
                             name="quantityOfNft"
                             rules={[{required: true, message: 'Please input Quantity of Nft!'}]}
                         >
-                            <Input type="number"/>
+                            <Input type="number" onChange={handleQuantityOfNFTsInput}/>
                         </Form.Item>
 
                         <Form.Item
@@ -369,17 +404,23 @@ const Home: NextPage = () => {
                             name="nftWidth"
                             rules={[{required: true, message: 'Please fill in NFT width'}]}
                         >
-                            <Input type="number" min={64}/>
+                            <Input type="number" min={64} onChange={handleImgWidthInput}/>
                         </Form.Item>
                         <Form.Item
                             label="NFT height px"
                             name="nftHeight"
                             rules={[{required: true, message: 'Please fill in NFT height'}]}
                         >
-                            <Input type="number" min={64}/>
+                            <Input type="number" min={64} onChange={handleImgHeightInput}/>
                         </Form.Item>
 
                         {/* TODO - добавить больше элементов*/}
+
+                        <input
+                            type="file"
+                            id="imageFile"
+                            name='imageFile'
+                            onChange={imageUpload} />
 
                         <TagCloud
                             style={{
@@ -397,20 +438,14 @@ const Home: NextPage = () => {
                             <div rotate={90}>cloud</div>
                         </TagCloud>
 
-                        <Form.Item
-                            label="Layers/Images"
-                            name="layers_images"
-                            rules={[{required: true, message: 'Please upload layers/images!'}]}
-                        >
-                            <Upload {...props}>
-                                <Button icon={<UploadOutlined/>}>Click to Upload</Button>
-                            </Upload>
-                        </Form.Item>
-
-                        {/*<Form.Item wrapperCol={{offset: 8, span: 16}}>*/}
-                        {/*    <Button type="primary" htmlType="submit">*/}
-                        {/*        Create*/}
-                        {/*    </Button>*/}
+                        {/*<Form.Item*/}
+                        {/*    label="Layers/Images"*/}
+                        {/*    name="layers_images"*/}
+                        {/*    rules={[{required: true, message: 'Please upload layers/images!'}]}*/}
+                        {/*>*/}
+                        {/*    <Upload {...props}>*/}
+                        {/*        <Button icon={<UploadOutlined/>}>Click to Upload</Button>*/}
+                        {/*    </Upload>*/}
                         {/*</Form.Item>*/}
                     </Form>
                 </Modal>
