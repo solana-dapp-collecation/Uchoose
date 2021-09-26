@@ -17,9 +17,9 @@ import ImgCrop from 'antd-img-crop';
   const [fileList, setFileList] = useState([
     {
       uid: '-1',
-      name: 'tongue.png',
+      name: 'face-with-tongue.png',
       status: 'done',
-      url: './public/layers/tongue.png',
+      url: './public/layers/face-with-tongue.png',
     },
   ]);
 
