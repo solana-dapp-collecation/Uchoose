@@ -23,7 +23,10 @@ import {LoadingOutlined, PlusOutlined, UploadOutlined} from '@ant-design/icons';
 import {TileDocument} from "@ceramicnetwork/stream-tile";
 import client from "@hapi/wreck";
 import TagCloud from "react-tag-cloud";
+// @ts-ignore
 import randomColor from 'randomcolor';
+// @ts-ignore
+import clientPromise from '../lib/mongodb';
 
 // function getBase64Antd(img: any, callback: any) {
 //     const reader = new FileReader();
@@ -384,7 +387,7 @@ const Home: NextPage = () => {
                 <Divider orientation="left"><b>Roadmap</b></Divider>
                 <div>
                     <Steps direction="vertical" current={1}>
-                        <Step title="Finished" description="Create MVP on the Hackathon."/>
+                        <Step title="Finished" description="MVP."/>
                         <Step title="In Progress" description="Add NFT Card view."/>
                         <Step title="Waiting" description="Add ability to create dynamic NFT collections."/>
                     </Steps>
@@ -447,7 +450,6 @@ const Home: NextPage = () => {
                             id="imageFile"
                             name='imageFile'
                             onChange={imageUpload} />
-
                         <TagCloud
                             style={{
                                 fontFamily: 'sans-serif',
@@ -494,3 +496,21 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+
+export async function getServerSideProps(context: any) {
+    // @ts-ignore
+    const client = await clientPromise
+
+    // client.db() will be the default database passed in the MONGODB_URI
+    // You can change the database by calling the client.db() function and specifying a database like:
+    // const db = client.db("myDatabase");
+    // Then you can execute queries against your database like so:
+    // db.find({}) or any of the MongoDB Node Driver commands
+
+    const isConnected = await client.isConnected()
+
+    return {
+        props: { isConnected },
+    }
+}
