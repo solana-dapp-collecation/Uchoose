@@ -7,8 +7,8 @@ import topBarStyles from '../styles/top-bar.module.scss';
 import "react-multi-carousel/lib/styles.css";
 import CustomCarouselWithCards from "../components/carousel-component/customCarouselComponent";
 import {Button, Form, Modal} from "antd";
-import {CollectionStreamSchema, CollectionsStreamSchema} from '../components/schemas';
-import {DEFINITION_OF_SCHEMA_1, DID_TOKEN_KEY} from '../components/constants';
+import {CollectionStreamSchema, CollectionsStreamSchema} from '../schemas/schemas';
+import {DEFINITION_OF_SCHEMA_1, DID_TOKEN_KEY} from '../constants/constants';
 import {createDefinition, publishSchema} from '@ceramicstudio/idx-tools';
 import {IDX} from '@ceramicstudio/idx';
 
@@ -27,34 +27,28 @@ import TagCloud from "react-tag-cloud";
 import randomColor from 'randomcolor';
 // @ts-ignore
 import clientPromise from '../lib/mongodb';
+import {getPartOfIdToShow, getBase64} from "../utils/utils";
+// import {initDB, useIndexedDB} from 'react-indexed-db';
 
-// function getBase64Antd(img: any, callback: any) {
-//     const reader = new FileReader();
-//     reader.addEventListener('load', () => callback(reader.result));
-//     reader.readAsDataURL(img);
-// }
-//
-// function beforeUpload(file: any) {
-//     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-//     if (!isJpgOrPng) {
-//         message.error('You can only upload JPG/PNG file!');
-//     }
-//     const isLt2M = file.size / 1024 / 1024 < 2;
-//     if (!isLt2M) {
-//         message.error('Image must smaller than 2MB!');
-//     }
-//     return isJpgOrPng && isLt2M;
-// }
 
-const getBase64 = (file:any) => {
-    console.log('get base 64');
-    return new Promise((resolve,reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-        reader.readAsDataURL(file);
-    });
-}
+const DB_STORAGE_NAME: string = 'main_db';
+
+export const DBConfig = {
+    name: DB_STORAGE_NAME,
+    version: 1,
+    objectStoresMeta: [
+        {
+            store: 'people',
+            storeConfig: { keyPath: 'id', autoIncrement: true },
+            storeSchema: [
+                { name: 'name', keypath: 'name', options: { unique: false } },
+                { name: 'email', keypath: 'email', options: { unique: false } }
+            ]
+        }
+    ]
+};
+
+// initDB(DBConfig);
 
 const Home: NextPage = () => {
 
@@ -103,7 +97,6 @@ const Home: NextPage = () => {
         setProgress(true);
         try {
             const authProvider = await ceramic.connect();
-            console.log(authProvider);
             let didToken = await ceramic.authenticate(authProvider);
             let tokenFromStorage = localStorage.getItem(DID_TOKEN_KEY);
             if (!tokenFromStorage) {
@@ -117,19 +110,6 @@ const Home: NextPage = () => {
         }
     };
 
-    const getPartOfIdToShow = (): string => {
-        let didToken = localStorage.getItem(DID_TOKEN_KEY);
-        if (!didToken) {
-            didToken = 'Authenticated';
-        } else {
-            try {
-                didToken = didToken.slice(0, 15);
-                didToken += '...';
-            } catch {
-            }
-        }
-        return didToken;
-    }
 
     const renderButton = () => {
         if (isInProgress) {
@@ -153,10 +133,6 @@ const Home: NextPage = () => {
         }
     };
 
-    const redirectToLink = () => {
-        console.log('redirect to link');
-    }
-
     const showModal = () => {
         setIsModalVisible(true);
     };
@@ -176,15 +152,9 @@ const Home: NextPage = () => {
      */
     const handleCreateNewNFTCollection = async () => {
         try {
-
-            // add method that gathers data from form and put them into API to create record in ceramic
-            // TODO. Create correct stream
-            // const authProvider = await ceramic.connect();
-            // let didToken = await ceramic.authenticate(authProvider);
             let schemaDef = localStorage.getItem(DEFINITION_OF_SCHEMA_1);
             // @ts-ignore
             const idx = new IDX({ceramic: ceramic.client, aliases: schemaDef});
-
             let aliases = JSON.parse(schemaDef as string);
 
             // TODO. All data have to be passed from form, populated by creator/user
@@ -198,10 +168,6 @@ const Home: NextPage = () => {
             //         "newCollectionProperties": null,
             //         "coCreator": null
             // }
-            console.log(collectionName);
-            console.log(qtyOfNFTs);
-            console.log(imgSizeWidth);
-            console.log(imgSizeHeight);
 
             // TODO - до этого 
             let streamSchemaCollection1 = {
@@ -213,12 +179,12 @@ const Home: NextPage = () => {
                 nftPictureHeight: parseInt(imgSizeHeight),
                 // Place file here
                 nftPicture: '', //"0x99..asdasd", // - изначально до создания первой NFT тут пусто
-                newCollectionProperties: new Object(),
+                newCollectionProperties: {},
                 coCreator: ''
             }
-            
+
             // здесь создаём стрим для коллекции
-            let resultCollection1 = await TileDocument.create(ceramic.client, streamSchemaCollection1, 
+            let resultCollection1 = await TileDocument.create(ceramic.client, streamSchemaCollection1,
                 {
                     controllers: [ceramic.did.id],
                     schema: aliases.schemas.collection
@@ -226,26 +192,26 @@ const Home: NextPage = () => {
 
             console.log(resultCollection1);
             console.log('Создан стрим для первой коллекции: ' + resultCollection1.id.toString());
-            alert('Создан стрим для первой коллекции: ' + resultCollection1.id.toString());
+            message.success('Создан стрим для первой коллекции: ' + resultCollection1.id.toString(), 3);
 
             // здесь помещаем StreamID созданного стрима для первой коллекции в стрим для всех коллекций
             let streamSchemaCollections = {
                 collectionsStreamIDs: [resultCollection1.id.toString()]
             }
 
-            let resultCollections = await TileDocument.create(ceramic.client, streamSchemaCollections, 
+            let resultCollections = await TileDocument.create(ceramic.client, streamSchemaCollections,
                 {
                     controllers: [ceramic.did.id],
                     schema: aliases.schemas.collections
                 });
-            
+
             console.log(resultCollections);
             console.log('Создан стрим со всеми коллекциями: ' + resultCollections.id.toString());
-            alert('Создан стрим со всеми коллекциями: ' + resultCollections.id.toString());
+            message.success('Создан стрим со всеми коллекциями: ' + resultCollections.id.toString(), 3);
         } catch (ex) {
+            message.error('Can\'t create stream. See logs');
             console.log('%c --- Can\'t create stream ---', 'background-color: red');
             console.log(ex);
-            alert(ex);
         }
         setIsModalVisible(false);
     };
@@ -253,6 +219,22 @@ const Home: NextPage = () => {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
+
+    const saveIntoDb = () => {
+        const openRequest = indexedDB.open(DB_STORAGE_NAME, 1);
+
+        openRequest.onsuccess = function() {
+            let db = openRequest.result;
+
+            db.onversionchange = function() {
+                db.close();
+                alert("База данных устарела, пожалуста, перезагрузите страницу.")
+            };
+
+            // ...база данных доступна как объект db...
+        };
+        console.log(JSON.stringify(openRequest));
+    }
 
     const createTestSchema = async () => {
         try {
@@ -366,22 +348,12 @@ const Home: NextPage = () => {
                         <br/>
                         <Button disabled={!isAuthenticated} href="/manage-collections" type="primary">Manage</Button>
                     </div>
-                    {/*<div className={styles.card}>
-                        <h2>View &rarr;</h2>
-                        <p>View existing collections</p>
-                        <Button href="/views" type="primary">View</Button>
-                    </div>*/}
                     <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
                         <h2>Transactions &rarr;</h2>
                         <p>See transactions history for all each collection.</p>
                         <br/>
                         <Button disabled={!isAuthenticated} type="primary">Transactions</Button>
                     </div>
-                    {/*<div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
-                        <h2>Logs/Statistics &rarr;</h2>
-                        <p>See logs and statistics</p>
-                        <Button disabled={!isAuthenticated} type="primary">Logs</Button>
-                    </div>*/}
                 </div>
 
                 <Divider orientation="left"><b>Roadmap</b></Divider>
@@ -395,6 +367,7 @@ const Home: NextPage = () => {
 
                 <Divider orientation="left"><b>For testing (dev) - delete later</b></Divider>
                 <Button onClick={() => createTestSchema()}>Test Saving Schemas</Button>
+                <Button onClick={() => saveIntoDb()}>Store to db</Button>
 
                 <Divider orientation="left"><b>Create collection</b></Divider>
                 <Button type="primary" onClick={showModal}>
@@ -449,7 +422,7 @@ const Home: NextPage = () => {
                             type="file"
                             id="imageFile"
                             name='imageFile'
-                            onChange={imageUpload} />
+                            onChange={imageUpload}/>
                         <TagCloud
                             style={{
                                 fontFamily: 'sans-serif',
@@ -458,23 +431,13 @@ const Home: NextPage = () => {
                                 fontStyle: 'italic',
                                 color: () => randomColor(),
                                 padding: 5,
-                                width: '100%',
-                                height: '100%'
+                                // width: '100%',
+                                // height: '100%'
                             }}>
                             <div style={{fontSize: 50}}>react</div>
                             <div style={{color: 'green'}}>tag</div>
-                            <div rotate={90}>cloud</div>
+                            {/*<div rotate={90}>cloud</div>*/}
                         </TagCloud>
-
-                        {/*<Form.Item*/}
-                        {/*    label="Layers/Images"*/}
-                        {/*    name="layers_images"*/}
-                        {/*    rules={[{required: true, message: 'Please upload layers/images!'}]}*/}
-                        {/*>*/}
-                        {/*    <Upload {...props}>*/}
-                        {/*        <Button icon={<UploadOutlined/>}>Click to Upload</Button>*/}
-                        {/*    </Upload>*/}
-                        {/*</Form.Item>*/}
                     </Form>
                 </Modal>
             </main>
@@ -498,6 +461,10 @@ const Home: NextPage = () => {
 export default Home
 
 
+/**
+ * For work with mongo. Just for test
+ * @param context
+ */
 export async function getServerSideProps(context: any) {
     // @ts-ignore
     const client = await clientPromise
@@ -511,6 +478,7 @@ export async function getServerSideProps(context: any) {
     const isConnected = await client.isConnected()
 
     return {
-        props: { isConnected },
+        props: {isConnected},
     }
 }
+
