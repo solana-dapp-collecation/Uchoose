@@ -182,6 +182,8 @@ const Home: NextPage = () => {
             // @ts-ignore
             const idx = new IDX({ceramic: ceramic.client, aliases: schemaDef});
 
+            let aliases = JSON.parse(schemaDef as string);
+
             // TODO. All data have to be passed from form, populated by creator/user
             // let streamSchemaCollection1 = {
             //     "collectionName": "Collection1",
@@ -197,25 +199,46 @@ const Home: NextPage = () => {
             console.log(qtyOfNFTs);
             console.log(imgSizeWidth);
             console.log(imgSizeHeight);
+
+            // TODO - до этого 
             let streamSchemaCollection1 = {
                 collectionName: collectionName,
-                quantityOfNft: 1,
+                quantityOfNft: parseInt(qtyOfNFTs),
+                // TODO - тут будут идентификаторы частей, из которых состоит NFT
                 nftPartIds: ["1", "2"],
-                nftPictureWidth: imgSizeWidth,
-                nftPictureHeight: imgSizeHeight,
+                nftPictureWidth: parseInt(imgSizeWidth),
+                nftPictureHeight: parseInt(imgSizeHeight),
                 // Place file here
-                nftPicture: "0x99..asdasd",
-                newCollectionProperties: null,
-                coCreator: null
+                nftPicture: '', //"0x99..asdasd", // - изначально до создания первой NFT тут пусто
+                newCollectionProperties: new Object(),
+                coCreator: ''
             }
-            // Here we are passing stream id of stream collection
-            let resultCollection1 = await idx.set(collectionName, streamSchemaCollection1);
+            
+            // здесь создаём стрим для коллекции
+            let resultCollection1 = await TileDocument.create(ceramic.client, streamSchemaCollection1, 
+                {
+                    controllers: [ceramic.did.id],
+                    schema: aliases.schemas.collection
+                });
+
             console.log(resultCollection1);
+            console.log('Создан стрим для первой коллекции: ' + resultCollection1.id.toString());
+            alert('Создан стрим для первой коллекции: ' + resultCollection1.id.toString());
+
+            // здесь помещаем StreamID созданного стрима для первой коллекции в стрим для всех коллекций
             let streamSchemaCollections = {
-                collectionsStreamIDs: [resultCollection1.cid]
+                collectionsStreamIDs: [resultCollection1.id.toString()]
             }
-            let result = await idx.set('Collections', streamSchemaCollections);
-            console.log(result);
+
+            let resultCollections = await TileDocument.create(ceramic.client, streamSchemaCollections, 
+                {
+                    controllers: [ceramic.did.id],
+                    schema: aliases.schemas.collections
+                });
+            
+            console.log(resultCollections);
+            console.log('Создан стрим со всеми коллекциями: ' + resultCollections.id.toString());
+            alert('Создан стрим со всеми коллекциями: ' + resultCollections.id.toString());
         } catch (ex) {
             console.log('%c --- Can\'t create stream ---', 'background-color: red');
             console.log(ex);
@@ -235,12 +258,13 @@ const Home: NextPage = () => {
             console.log('before publish');
 
             // TODO - единожды при первом запуске сохранять, так как схемы надо создавать только один раз
-            const [collectionStreamSchema, collectionsStreamSchema] = await Promise.all([
+            const [collectionsStreamSchema, collectionStreamSchema] = await Promise.all([
                 publishSchema(ceramic.client, {content: CollectionsStreamSchema, name: 'CollectionsStreamSchema'}),
                 publishSchema(ceramic.client, {content: CollectionStreamSchema, name: 'CollectionStreamSchema'}),
             ])
             console.log('%c --- after schema publish ---', 'background-color: red');
             console.log(collectionsStreamSchema);
+            console.log(collectionStreamSchema);
             console.log('%c ---', 'background-color: red');
             console.log('before definition');
 
@@ -257,6 +281,7 @@ const Home: NextPage = () => {
             });
             console.log('%c --- after definition ---', 'background-color: red');
             console.log(collectionsStreamDefinition);
+            console.log(collectionStreamDefinition);
             console.log('%c ---', 'background-color: red');
             console.log('after definition');
 
