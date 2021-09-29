@@ -198,15 +198,15 @@ const Home: NextPage = () => {
             console.log(imgSizeWidth);
             console.log(imgSizeHeight);
             let streamSchemaCollection1 = {
-                "collectionName": collectionName,
-                "quantityOfNft": 1,
-                "nftPartIds": ["1", "2"],
-                "nftPictureWidth": imgSizeWidth,
-                "nftPictureHeight": imgSizeHeight,
+                collectionName: collectionName,
+                quantityOfNft: 1,
+                nftPartIds: ["1", "2"],
+                nftPictureWidth: imgSizeWidth,
+                nftPictureHeight: imgSizeHeight,
                 // Place file here
-                "nftPicture": "0x99..asdasd",
-                "newCollectionProperties": null,
-                "coCreator": null
+                nftPicture: "0x99..asdasd",
+                newCollectionProperties: null,
+                coCreator: null
             }
             // Here we are passing stream id of stream collection
             let resultCollection1 = await idx.set(collectionName, streamSchemaCollection1);
@@ -219,6 +219,7 @@ const Home: NextPage = () => {
         } catch (ex) {
             console.log('%c --- Can\'t create stream ---', 'background-color: red');
             console.log(ex);
+            alert(ex);
         }
         setIsModalVisible(false);
     };
