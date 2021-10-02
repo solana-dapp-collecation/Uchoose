@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Uchoose.Utils\Uchoose.Utils.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Abstractions\" />
+  </ItemGroup>
+
 </Project>
