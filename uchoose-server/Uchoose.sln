@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{FE44F635-D0E5-4EBC-99CD-73073DA1D33E}"
+	ProjectSection(SolutionItems) = preProject
+		..\assets\docs\Commits.md = ..\assets\docs\Commits.md
+		..\assets\docs\Glossary.md = ..\assets\docs\Glossary.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{FA85E61F-FDC5-4624-9804-271373ABE060}"
 EndProject
