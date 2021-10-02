@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>Uchoose.Domain.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Nikolay Chebotov (unchase)</Authors>
+    <Company>Life Loop</Company>
+    <PackageTags>Domain</PackageTags>
+    <NeutralLanguage>ru-RU</NeutralLanguage>
+    <PackageIconUrl />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Abstractions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Uchoose.Utils\Uchoose.Utils.csproj" />
+  </ItemGroup>
+
+</Project>
