@@ -7,7 +7,9 @@
 // ------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Uchoose.Utils.Extensions
 {
@@ -35,5 +37,48 @@ namespace Uchoose.Utils.Extensions
         }
 
         #endregion GetGenericTypeName
+
+        #region GetAllPublicConstantValues
+
+        /// <summary>
+        /// Получить список значений публичных констант типа.
+        /// </summary>
+        /// <typeparam name="T">Тип значений констант.</typeparam>
+        /// <param name="type">Тип.</param>
+        /// <returns>Возвращает список значений публичных констант типа.</returns>
+        public static List<T> GetAllPublicConstantValues<T>(this Type type)
+        {
+            return type
+                .GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
+                .Where(fi => fi.IsLiteral && !fi.IsInitOnly && fi.FieldType == typeof(T))
+                .Select(x => (T)x.GetRawConstantValue())
+                .ToList();
+        }
+
+        #endregion GetAllPublicConstantValues
+
+        #region GetNestedClassesStaticStringValues
+
+        /// <summary>
+        /// Получить список строковых значений публичных статических членов во вложенных классах типа.
+        /// </summary>
+        /// <param name="type">Тип.</param>
+        /// <returns>Возвращает список строковых значений публичных статических членов во вложенных классах типа.</returns>
+        public static List<string> GetNestedClassesStaticStringValues(this Type type)
+        {
+            var values = new List<string>();
+            foreach (var prop in type.GetNestedTypes().SelectMany(c => c.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)))
+            {
+                object propertyValue = prop.GetValue(null);
+                if (propertyValue is not null)
+                {
+                    values.Add(propertyValue.ToString());
+                }
+            }
+
+            return values;
+        }
+
+        #endregion GetNestedClassesStaticStringValues
     }
 }

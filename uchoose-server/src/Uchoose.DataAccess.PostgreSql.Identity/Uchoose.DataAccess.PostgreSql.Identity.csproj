@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>Uchoose.DataAccess.MsSql.Identity.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Uchoose.DataAccess.Identity.Interfaces\Uchoose.DataAccess.Identity.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.DataAccess.PostgreSql\Uchoose.DataAccess.PostgreSql.csproj" />
+  </ItemGroup>
+
+</Project>

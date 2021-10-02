@@ -1,0 +1,18 @@
+[
+  {
+    "Role": "SuperAdmin",
+    "Users": [
+      {
+        "FirstName": "Админ",
+        "LastName": "Админ",
+        "MiddleName": "Админович",
+        "Email": "superadmin@uchoose.com",
+        "UserName": "superadmin",
+        "PhoneNumber": "+71111111111",
+        "EmailConfirmed": true,
+        "PhoneNumberConfirmed": true,
+        "IsActive": true
+      }
+    ]
+  }
+]
