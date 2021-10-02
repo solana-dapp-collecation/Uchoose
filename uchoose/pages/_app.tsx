@@ -1,12 +1,3 @@
-// import '../styles/globals.css'
-// import type { AppProps } from 'next/app'
-//
-// function MyApp({ Component, pageProps }: AppProps) {
-//   return <Component {...pageProps} />
-// }
-// export default MyApp
-
-
 import "../styles/globals.css";
 import type {AppProps} from "next/app";
 import React from "react";
@@ -15,6 +6,9 @@ import {Web3Provider, Web3Service} from "../components/use-web3";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import {EthereumAuthProvider} from "@ceramicnetwork/blockchain-utils-linking";
 import "antd/dist/antd.css";
+// @ts-ignore
+import Layout from '../components/Layout';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const web3Service = new Web3Service({
     network: "rinkeby",
@@ -51,7 +45,9 @@ function MyApp({Component, pageProps}: AppProps) {
     return (
         <Web3Provider service={web3Service}>
             <CeramicProvider service={ceramicService}>
-                <Component {...pageProps} />
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
             </CeramicProvider>
         </Web3Provider>
     );
