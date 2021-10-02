@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.FileStorageService.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.ExcelService.Interfaces", "src\Uchoose.ExcelService.Interfaces\Uchoose.ExcelService.Interfaces.csproj", "{D3250C44-1C49-4202-9DCE-E58241654962}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.SerializationService.Interfaces", "src\Uchoose.SerializationService.Interfaces\Uchoose.SerializationService.Interfaces.csproj", "{E941664A-3CD1-4E26-B795-CA773E8A6708}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{D3250C44-1C49-4202-9DCE-E58241654962}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3250C44-1C49-4202-9DCE-E58241654962}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3250C44-1C49-4202-9DCE-E58241654962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E941664A-3CD1-4E26-B795-CA773E8A6708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E941664A-3CD1-4E26-B795-CA773E8A6708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E941664A-3CD1-4E26-B795-CA773E8A6708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E941664A-3CD1-4E26-B795-CA773E8A6708}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -144,6 +150,7 @@ Global
 		{8553A5BF-A0B0-4BFC-BB73-CC5B59DB9E57} = {5EFBCC31-EF74-41FA-AC0C-72F5B6169FF4}
 		{E3DF17DB-FE25-4CAD-B4FA-553B8ADAA326} = {5EFBCC31-EF74-41FA-AC0C-72F5B6169FF4}
 		{D3250C44-1C49-4202-9DCE-E58241654962} = {5EFBCC31-EF74-41FA-AC0C-72F5B6169FF4}
+		{E941664A-3CD1-4E26-B795-CA773E8A6708} = {5EFBCC31-EF74-41FA-AC0C-72F5B6169FF4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}
