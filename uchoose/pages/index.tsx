@@ -13,25 +13,25 @@ import {createDefinition, publishSchema} from '@ceramicstudio/idx-tools';
 import {IDX} from '@ceramicstudio/idx';
 
 import {Divider, Input} from 'antd';
-import {Steps} from 'antd';
 
-const {Step} = Steps;
 const {Search} = Input;
 
 import {Upload, message} from 'antd';
 import {LoadingOutlined, PlusOutlined, UploadOutlined} from '@ant-design/icons';
 import {TileDocument} from "@ceramicnetwork/stream-tile";
 import client from "@hapi/wreck";
-import TagCloud from "react-tag-cloud";
-// @ts-ignore
-import randomColor from 'randomcolor';
-// @ts-ignore
-// import clientPromise from '../lib/mongodb';
 import {getPartOfIdToShow, getBase64} from "../utils/utils";
-// import {initDB, useIndexedDB} from 'react-indexed-db';
+import TagsCloudComponent from "../components/tags-cloud-component/TagsCloudComponent";
+import Roadmap from "../components/roadmap-component/Roadmap";
 
 
 const DB_STORAGE_NAME: string = 'main_db';
+const FOOTER_LOGO = '/main-logo.png';
+const HEADER_LOGO = '/main-logo-2.png';
+
+
+// Load image
+// https://stackoverflow.com/questions/13938686/can-i-load-a-local-file-into-an-html-canvas-element
 
 export const DBConfig = {
     name: DB_STORAGE_NAME,
@@ -39,10 +39,10 @@ export const DBConfig = {
     objectStoresMeta: [
         {
             store: 'people',
-            storeConfig: { keyPath: 'id', autoIncrement: true },
+            storeConfig: {keyPath: 'id', autoIncrement: true},
             storeSchema: [
-                { name: 'name', keypath: 'name', options: { unique: false } },
-                { name: 'email', keypath: 'email', options: { unique: false } }
+                {name: 'name', keypath: 'name', options: {unique: false}},
+                {name: 'email', keypath: 'email', options: {unique: false}}
             ]
         }
     ]
@@ -61,27 +61,6 @@ const Home: NextPage = () => {
     const [imgSizeWidth, setImgWidth] = useState('');
     const [imgSizeHeight, setImgHeight] = useState('');
 
-    // TODO. Handle this one properly. Prepare for collections of images
-    const [imageData, setImageData] = useState('');
-
-    const props = {
-        name: 'file',
-        action: '...',
-        headers: {
-            authorization: 'authorization-text',
-        },
-        onChange(info: any) {
-            if (info.file.status !== 'uploading') {
-                console.log(info.file, info.fileList);
-            }
-            if (info.file.status === 'done') {
-                message.success(`${info.file.name} file uploaded successfully`);
-            } else if (info.file.status === 'error') {
-                message.error(`${info.file.name} file upload failed.`);
-            }
-        },
-    };
-
     useEffect(() => {
         const subscription = ceramic.isAuthenticated$.subscribe(
             (isAuthenticated) => {
@@ -93,6 +72,7 @@ const Home: NextPage = () => {
         };
     });
 
+    // TODO. Create custom auth form. For now auth form is controlled by ceramic library
     const handleLogin = async () => {
         setProgress(true);
         try {
@@ -102,6 +82,8 @@ const Home: NextPage = () => {
             if (!tokenFromStorage) {
                 localStorage.setItem(DID_TOKEN_KEY, didToken.id);
             }
+            message.success(`We got did token. ${JSON.stringify(didToken)}`, 5);
+            await createTestSchema();
             console.log(didToken);
         } catch (e) {
             console.error(e);
@@ -109,7 +91,6 @@ const Home: NextPage = () => {
             setProgress(false);
         }
     };
-
 
     const renderButton = () => {
         if (isInProgress) {
@@ -222,15 +203,12 @@ const Home: NextPage = () => {
 
     const saveIntoDb = () => {
         const openRequest = indexedDB.open(DB_STORAGE_NAME, 1);
-
-        openRequest.onsuccess = function() {
+        openRequest.onsuccess = function () {
             let db = openRequest.result;
-
-            db.onversionchange = function() {
+            db.onversionchange = function () {
                 db.close();
                 alert("База данных устарела, пожалуста, перезагрузите страницу.")
             };
-
             // ...база данных доступна как объект db...
         };
         console.log(JSON.stringify(openRequest));
@@ -288,9 +266,9 @@ const Home: NextPage = () => {
             localStorage.setItem(DEFINITION_OF_SCHEMA_1, JSON.stringify(config));
 
             // TODO - разобраться с сохранением этих данных, чтобы были доступны всем глобально
-            // запись в файл не работает
-            // await writeFile('./configs/config.json', JSON.stringify(config))
-            // console.log('Looks like all saved!');
+            message.info('Schemas were created. Temporary solution. Should be initiate only once for specific network', 5);
+            message.info(JSON.stringify(config), 5);
+            message.info('Now frontend will send request to backend to retrieve some data', 5);
         } catch (e) {
             console.error(e);
         }
@@ -317,14 +295,14 @@ const Home: NextPage = () => {
             <Head>
                 <title>Uch∞se</title>
                 <meta name="description" content="Generated by create next app"/>
-                <link rel="icon" href="/main-logo-2.png"/>
+                <link rel="icon" href={HEADER_LOGO}/>
             </Head>
 
             {/*Top bar*/}
             <div className={topBarStyles.topBarContainer}>
                 <div className={styles.logo}
                      style={{display: 'inline-block', verticalAlign: 'middle', marginRight: '10px'}}>
-                    <img src="/main-logo-2.png" alt="Uch∞se" style={{width: '100px'}}/>
+                    <img src={HEADER_LOGO} alt="Uch∞se" style={{width: '100px'}}/>
                 </div>
                 <div style={{display: 'inline-block', verticalAlign: 'middle', marginTop: '30px'}}>
                     {renderButton()}
@@ -356,18 +334,12 @@ const Home: NextPage = () => {
                     </div>
                 </div>
 
-                <Divider orientation="left"><b>Roadmap</b></Divider>
-                <div>
-                    <Steps direction="vertical" current={1}>
-                        <Step title="Finished" description="MVP."/>
-                        <Step title="In Progress" description="Add NFT Card view."/>
-                        <Step title="Waiting" description="Add ability to create dynamic NFT collections."/>
-                    </Steps>
-                </div>
+                <Roadmap/>
 
                 <Divider orientation="left"><b>For testing (dev) - delete later</b></Divider>
-                <Button onClick={() => createTestSchema()}>Test Saving Schemas</Button>
-                <Button onClick={() => saveIntoDb()}>Store to db</Button>
+                <Button onClick={() => createTestSchema()}>Test Saving Schemas. No sense to press. It's already created
+                    during auth</Button>
+                <Button onClick={() => saveIntoDb()}>Store to db. To be deleted. Just a stub</Button>
 
                 <Divider orientation="left"><b>Create collection</b></Divider>
                 <Button type="primary" onClick={showModal}>
@@ -375,14 +347,14 @@ const Home: NextPage = () => {
                 </Button>
                 <Modal title="Creating collection" visible={isModalVisible} okText={'Create'}
                        onOk={handleCreateNewNFTCollection}
-                       onCancel={handleCancel}>
+                       onCancel={handleCancel}
+                       width={800}
+                >
                     <Form
                         name="basic"
                         labelCol={{span: 8}}
                         wrapperCol={{span: 16}}
                         initialValues={{remember: true}}
-                        //onFinish={onFinish}
-                        //onFinishFailed={onFinishFailed}
                         autoComplete="off"
                     >
                         <Form.Item
@@ -392,7 +364,6 @@ const Home: NextPage = () => {
                         >
                             <Input onChange={handleCollectionNameInput}/>
                         </Form.Item>
-
                         <Form.Item
                             label="Quantity of Nft"
                             name="quantityOfNft"
@@ -400,7 +371,6 @@ const Home: NextPage = () => {
                         >
                             <Input type="number" onChange={handleQuantityOfNFTsInput}/>
                         </Form.Item>
-
                         <Form.Item
                             label="NFT width px"
                             name="nftWidth"
@@ -415,31 +385,15 @@ const Home: NextPage = () => {
                         >
                             <Input type="number" min={64} onChange={handleImgHeightInput}/>
                         </Form.Item>
-
-                        {/* TODO - добавить больше элементов*/}
-
                         <input
                             type="file"
                             id="imageFile"
                             name='imageFile'
                             onChange={imageUpload}/>
-                        <TagCloud
-                            style={{
-                                fontFamily: 'sans-serif',
-                                fontSize: 30,
-                                fontWeight: 'bold',
-                                fontStyle: 'italic',
-                                color: () => randomColor(),
-                                padding: 5,
-                                // width: '100%',
-                                // height: '100%'
-                            }}>
-                            <div style={{fontSize: 50}}>react</div>
-                            <div style={{color: 'green'}}>tag</div>
-                            {/*<div rotate={90}>cloud</div>*/}
-                        </TagCloud>
                     </Form>
+                    <TagsCloudComponent width={600} height={500}/>
                 </Modal>
+                <TagsCloudComponent width={1000} height={800}/>
             </main>
 
             <footer>
@@ -450,7 +404,7 @@ const Home: NextPage = () => {
                 >
                     Made by{' '}
                     <span className={styles.logo}>
-                        <img src="/main-logo.png" alt="LifeLoopTeam" style={{width: '120px', marginTop: '-15px'}}/>
+                        <img src={FOOTER_LOGO} alt="LifeLoopTeam" style={{width: '120px', marginTop: '-15px'}}/>
                     </span>
                 </a>
             </footer>
