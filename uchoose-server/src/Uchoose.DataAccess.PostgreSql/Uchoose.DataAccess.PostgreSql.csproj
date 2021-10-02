@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>Uchoose.DataAccess.PostgreSql.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire" Version="1.7.25" />
+    <PackageReference Include="Hangfire.PostgreSql" Version="1.8.6" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Uchoose.Application.Constants\Uchoose.Application.Constants.csproj" />
+    <ProjectReference Include="..\Uchoose.CurrentUserService.Interfaces\Uchoose.CurrentUserService.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.DataAccess.Interfaces\Uchoose.DataAccess.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.DateTimeService.Interfaces\Uchoose.DateTimeService.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.SerializationService.Interfaces\Uchoose.SerializationService.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,48 @@
+#!/bin/sh
+#
+# An example hook script to check the commit log message.
+# Called by "git commit" with one argument, the name of the file
+# that has the commit message.  The hook should exit with non-zero
+# status after issuing an appropriate message if it wants to stop the
+# commit.  The hook is allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "commit-msg".
+
+# Uncomment the below to add a Signed-off-by line to the message.
+# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
+# hook is more suited to it.
+#
+# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+
+#!/bin/sh
+
+if ! head -1 "$1" | grep -qE "^(fix|feat|BREAKING CHANGE|build|chore|docs|style|refactor|update|perf|test|improvement|wip)(\(.+?\))?: [A-ZА-ЯЁ]{1,}.{1,}$"; then
+    echo "Commit был прерван. Сообщение commit'а не корректно. Пожалуйста, следуйте соглашению о commit'ах в каталоге ././docs/Commits.md" >&2
+	echo "Сообщения commit'ов, в общем случае, должны иметь следующую структуру:" >&2
+	echo "------------------------------------------------------------" >&2
+	echo "<type>[optional scope]: <description>" >&2
+	echo "" >&2
+	echo "[optional body]" >&2
+	echo "" >&2
+	echo "[optional footer]" >&2
+	echo "------------------------------------------------------------" >&2
+	echo "Пример:" >&2
+	echo "------------------------------------------------------------" >&2
+	echo "fix(common): Исправлена ошибка с поиском задач" >&2
+	echo "" >&2
+	echo "Добавлены следующие возможности, которых не было ранее:" >&2
+	echo "- поиск задачи по тэгу" >&2
+	echo "- поиск задачи по имени" >&2
+	echo "- поиск задачи по связанным задачам (их номерам)" >&2
+	echo "" >&2
+	echo "#TGI-2 fixed" >&2
+	echo "#TGI-2 tag Tasks" >&2
+	echo "Необходимо протестировать добавленную функциональность TGI-3" >&2
+	echo "------------------------------------------------------------" >&2
+    exit 1
+fi
+if ! head -1 "$1" | grep -qE "^.{1,80}$"; then
+    echo "Commit был прерван. Описание <description> в сообщении commit'а не должн превышать 80 символов." >&2
+    exit 1
+fi
