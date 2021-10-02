@@ -97,6 +97,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.SmtpMailService", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.SmsService.Interfaces", "src\Uchoose.SmsService.Interfaces\Uchoose.SmsService.Interfaces.csproj", "{5FE4D7FF-99B8-45CF-B66D-1A92BBD02F3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.TwilioSmsService", "src\Uchoose.TwilioSmsService\Uchoose.TwilioSmsService.csproj", "{21DC25D0-53B5-4F6C-B053-068AECCCA2AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -179,6 +181,10 @@ Global
 		{5FE4D7FF-99B8-45CF-B66D-1A92BBD02F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FE4D7FF-99B8-45CF-B66D-1A92BBD02F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FE4D7FF-99B8-45CF-B66D-1A92BBD02F3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21DC25D0-53B5-4F6C-B053-068AECCCA2AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21DC25D0-53B5-4F6C-B053-068AECCCA2AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21DC25D0-53B5-4F6C-B053-068AECCCA2AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21DC25D0-53B5-4F6C-B053-068AECCCA2AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -223,6 +229,7 @@ Global
 		{136D978F-37E4-4712-BBFB-658B5040833C} = {6F0611A0-1539-4944-9310-847AB7F135A9}
 		{2B9C9FC8-EB67-4CD9-9294-15EC67EDF56E} = {6F0611A0-1539-4944-9310-847AB7F135A9}
 		{5FE4D7FF-99B8-45CF-B66D-1A92BBD02F3E} = {909BBE33-9724-4FEA-8015-AA27A2426A65}
+		{21DC25D0-53B5-4F6C-B053-068AECCCA2AF} = {6F0611A0-1539-4944-9310-847AB7F135A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}
