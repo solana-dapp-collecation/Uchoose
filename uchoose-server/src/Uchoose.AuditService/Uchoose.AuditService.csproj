@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>Uchoose.AuditService.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Uchoose.AuditService.Interfaces\Uchoose.AuditService.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.ExcelService.Interfaces\Uchoose.ExcelService.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
