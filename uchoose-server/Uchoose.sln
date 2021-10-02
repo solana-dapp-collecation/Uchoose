@@ -93,6 +93,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.DataAccess.PostgreS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.CurrentUserService", "src\Uchoose.CurrentUserService\Uchoose.CurrentUserService.csproj", "{136D978F-37E4-4712-BBFB-658B5040833C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.SmtpMailService", "src\Uchoose.SmtpMailService\Uchoose.SmtpMailService.csproj", "{2B9C9FC8-EB67-4CD9-9294-15EC67EDF56E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -167,6 +169,10 @@ Global
 		{136D978F-37E4-4712-BBFB-658B5040833C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{136D978F-37E4-4712-BBFB-658B5040833C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{136D978F-37E4-4712-BBFB-658B5040833C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B9C9FC8-EB67-4CD9-9294-15EC67EDF56E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B9C9FC8-EB67-4CD9-9294-15EC67EDF56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B9C9FC8-EB67-4CD9-9294-15EC67EDF56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B9C9FC8-EB67-4CD9-9294-15EC67EDF56E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -209,6 +215,7 @@ Global
 		{F59F8224-D68F-4639-9436-942673852FA9} = {1218FC97-4D34-44CE-A3BB-F71A0D1AE58B}
 		{185843B7-D32C-4B6E-8125-A08FB465360E} = {1218FC97-4D34-44CE-A3BB-F71A0D1AE58B}
 		{136D978F-37E4-4712-BBFB-658B5040833C} = {6F0611A0-1539-4944-9310-847AB7F135A9}
+		{2B9C9FC8-EB67-4CD9-9294-15EC67EDF56E} = {6F0611A0-1539-4944-9310-847AB7F135A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}
