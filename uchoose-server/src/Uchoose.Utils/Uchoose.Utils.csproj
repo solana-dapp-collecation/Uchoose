@@ -18,7 +18,6 @@
   <ItemGroup>
     <Folder Include="Constants\" />
     <Folder Include="Contracts\Caching\" />
-    <Folder Include="Contracts\Deleting\" />
     <Folder Include="Contracts\Exporting\" />
     <Folder Include="Contracts\Importing\" />
     <Folder Include="Contracts\Logging\" />
