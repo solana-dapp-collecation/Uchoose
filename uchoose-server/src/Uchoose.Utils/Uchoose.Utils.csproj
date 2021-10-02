@@ -21,7 +21,6 @@
     <Folder Include="Contracts\Importing\" />
     <Folder Include="Contracts\Versioning\" />
     <Folder Include="Contracts\Validators\" />
-    <Folder Include="Contracts\Uploading\" />
     <Folder Include="Contracts\Performance\" />
     <Folder Include="Performance\" />
   </ItemGroup>
