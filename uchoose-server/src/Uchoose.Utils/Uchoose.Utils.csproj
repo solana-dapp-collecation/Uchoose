@@ -26,14 +26,14 @@
     <Folder Include="Contracts\Uploading\" />
     <Folder Include="Contracts\Performance\" />
     <Folder Include="Contracts\Ordering\" />
-    <Folder Include="Filters\" />
-    <Folder Include="Mappings\" />
     <Folder Include="Wrapper\" />
     <Folder Include="Specifications\" />
     <Folder Include="Performance\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.3" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="5.0.10" />
   </ItemGroup>
