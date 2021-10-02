@@ -95,6 +95,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.CurrentUserService"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.SmtpMailService", "src\Uchoose.SmtpMailService\Uchoose.SmtpMailService.csproj", "{2B9C9FC8-EB67-4CD9-9294-15EC67EDF56E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.SmsService.Interfaces", "src\Uchoose.SmsService.Interfaces\Uchoose.SmsService.Interfaces.csproj", "{5FE4D7FF-99B8-45CF-B66D-1A92BBD02F3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -173,6 +175,10 @@ Global
 		{2B9C9FC8-EB67-4CD9-9294-15EC67EDF56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B9C9FC8-EB67-4CD9-9294-15EC67EDF56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B9C9FC8-EB67-4CD9-9294-15EC67EDF56E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FE4D7FF-99B8-45CF-B66D-1A92BBD02F3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FE4D7FF-99B8-45CF-B66D-1A92BBD02F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FE4D7FF-99B8-45CF-B66D-1A92BBD02F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FE4D7FF-99B8-45CF-B66D-1A92BBD02F3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -216,6 +222,7 @@ Global
 		{185843B7-D32C-4B6E-8125-A08FB465360E} = {1218FC97-4D34-44CE-A3BB-F71A0D1AE58B}
 		{136D978F-37E4-4712-BBFB-658B5040833C} = {6F0611A0-1539-4944-9310-847AB7F135A9}
 		{2B9C9FC8-EB67-4CD9-9294-15EC67EDF56E} = {6F0611A0-1539-4944-9310-847AB7F135A9}
+		{5FE4D7FF-99B8-45CF-B66D-1A92BBD02F3E} = {909BBE33-9724-4FEA-8015-AA27A2426A65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}
