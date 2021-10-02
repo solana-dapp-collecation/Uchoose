@@ -11,6 +11,7 @@ using System;
 
 using Uchoose.Domain.Enums;
 using Uchoose.Utils.Contracts.Common;
+using Uchoose.Utils.Contracts.Properties;
 
 namespace Uchoose.Domain.Contracts
 {
@@ -19,7 +20,8 @@ namespace Uchoose.Domain.Contracts
     /// </summary>
     /// <typeparam name="TEntityId">Тип идентификатора сущности, которой принадлежит расширенный атрибут.</typeparam>
     public interface IExtendedAttribute<out TEntityId> :
-        IEntity<Guid>
+        IEntity<Guid>,
+        IHasIsActive
     {
         /// <summary>
         /// Идентификатор сущности, которой принадлежит расширенный атрибут.
