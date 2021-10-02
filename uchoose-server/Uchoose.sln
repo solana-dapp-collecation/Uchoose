@@ -55,6 +55,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{6F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.AuditService.Interfaces", "src\Uchoose.AuditService.Interfaces\Uchoose.AuditService.Interfaces.csproj", "{C0E6B7A1-3626-47E9-9EEB-16DBB1BC4636}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.DateTimeService.Interfaces", "src\Uchoose.DateTimeService.Interfaces\Uchoose.DateTimeService.Interfaces.csproj", "{28E3CCF1-7A0E-4AAA-A44D-963B8AC5BEAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{C0E6B7A1-3626-47E9-9EEB-16DBB1BC4636}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0E6B7A1-3626-47E9-9EEB-16DBB1BC4636}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0E6B7A1-3626-47E9-9EEB-16DBB1BC4636}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28E3CCF1-7A0E-4AAA-A44D-963B8AC5BEAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28E3CCF1-7A0E-4AAA-A44D-963B8AC5BEAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28E3CCF1-7A0E-4AAA-A44D-963B8AC5BEAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28E3CCF1-7A0E-4AAA-A44D-963B8AC5BEAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,6 +122,7 @@ Global
 		{5EFBCC31-EF74-41FA-AC0C-72F5B6169FF4} = {A799D383-F428-4C41-B1FC-8F3434F9468D}
 		{6FA59E39-B812-411A-B2F4-9C7BBF5B57D8} = {A799D383-F428-4C41-B1FC-8F3434F9468D}
 		{C0E6B7A1-3626-47E9-9EEB-16DBB1BC4636} = {5EFBCC31-EF74-41FA-AC0C-72F5B6169FF4}
+		{28E3CCF1-7A0E-4AAA-A44D-963B8AC5BEAF} = {5EFBCC31-EF74-41FA-AC0C-72F5B6169FF4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}
