@@ -18,14 +18,12 @@
   <ItemGroup>
     <Folder Include="Constants\" />
     <Folder Include="Contracts\Caching\" />
-    <Folder Include="Contracts\Exporting\" />
     <Folder Include="Contracts\Importing\" />
     <Folder Include="Contracts\Logging\" />
     <Folder Include="Contracts\Mappings\" />
     <Folder Include="Contracts\Versioning\" />
     <Folder Include="Contracts\Validators\" />
     <Folder Include="Contracts\Uploading\" />
-    <Folder Include="Contracts\Searching\" />
     <Folder Include="Contracts\Performance\" />
     <Folder Include="Contracts\Ordering\" />
     <Folder Include="Filters\" />
@@ -37,6 +35,7 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="5.0.10" />
   </ItemGroup>
 
   <Target Name="CopyFiles" BeforeTargets="Build">
