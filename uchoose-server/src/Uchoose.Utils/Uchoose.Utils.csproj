@@ -20,7 +20,6 @@
     <Folder Include="Contracts\Caching\" />
     <Folder Include="Contracts\Importing\" />
     <Folder Include="Contracts\Logging\" />
-    <Folder Include="Contracts\Mappings\" />
     <Folder Include="Contracts\Versioning\" />
     <Folder Include="Contracts\Validators\" />
     <Folder Include="Contracts\Uploading\" />
