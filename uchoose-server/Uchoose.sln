@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.DataAccess.Identity
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.CurrentUserService.Interfaces", "src\Uchoose.CurrentUserService.Interfaces\Uchoose.CurrentUserService.Interfaces.csproj", "{C41D2C87-0C68-4C44-93D5-E10037353863}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.MailService.Interfaces", "src\Uchoose.MailService.Interfaces\Uchoose.MailService.Interfaces.csproj", "{83D809BF-31E4-4A8F-9600-AD09DBFD3716}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{C41D2C87-0C68-4C44-93D5-E10037353863}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C41D2C87-0C68-4C44-93D5-E10037353863}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C41D2C87-0C68-4C44-93D5-E10037353863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83D809BF-31E4-4A8F-9600-AD09DBFD3716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83D809BF-31E4-4A8F-9600-AD09DBFD3716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83D809BF-31E4-4A8F-9600-AD09DBFD3716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83D809BF-31E4-4A8F-9600-AD09DBFD3716}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,6 +99,7 @@ Global
 		{3F34A106-39EF-4017-A23A-2E454ECBA231} = {5B9C4B1D-D8BF-49D5-95CB-1E89E412E91A}
 		{C3D1CA7D-120D-4CA2-972A-9CBCA8D7B33D} = {5B9C4B1D-D8BF-49D5-95CB-1E89E412E91A}
 		{C41D2C87-0C68-4C44-93D5-E10037353863} = {909BBE33-9724-4FEA-8015-AA27A2426A65}
+		{83D809BF-31E4-4A8F-9600-AD09DBFD3716} = {909BBE33-9724-4FEA-8015-AA27A2426A65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}
