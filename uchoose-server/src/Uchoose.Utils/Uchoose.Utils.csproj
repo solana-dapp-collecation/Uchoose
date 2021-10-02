@@ -19,14 +19,10 @@
     <Folder Include="Constants\" />
     <Folder Include="Contracts\Caching\" />
     <Folder Include="Contracts\Importing\" />
-    <Folder Include="Contracts\Logging\" />
     <Folder Include="Contracts\Versioning\" />
     <Folder Include="Contracts\Validators\" />
     <Folder Include="Contracts\Uploading\" />
     <Folder Include="Contracts\Performance\" />
-    <Folder Include="Contracts\Ordering\" />
-    <Folder Include="Wrapper\" />
-    <Folder Include="Specifications\" />
     <Folder Include="Performance\" />
   </ItemGroup>
 
