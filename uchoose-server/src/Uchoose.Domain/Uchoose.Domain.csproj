@@ -16,10 +16,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstractions\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Uchoose.Utils\Uchoose.Utils.csproj" />
   </ItemGroup>
 

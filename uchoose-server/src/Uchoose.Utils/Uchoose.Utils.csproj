@@ -16,7 +16,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Attributes\" />
     <Folder Include="Constants\" />
     <Folder Include="Contracts\Caching\" />
     <Folder Include="Contracts\Deleting\" />
