@@ -47,7 +47,6 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence
 
         private readonly Guid _systemUserId;
 
-#pragma warning disable SA1625 // Element documentation should not be copied and pasted
         /// <summary>
         /// Инициализирует экземпляр <see cref="IdentityDbSeeder"/>.
         /// </summary>
@@ -59,7 +58,6 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence
         /// <param name="jsonSerializer"><see cref="IJsonSerializer"/>.</param>
         /// <param name="localizer"><see cref="IStringLocalizer{T}"/>.</param>
         public IdentityDbSeeder(
-#pragma warning restore SA1625 // Element documentation should not be copied and pasted
             ILogger<IdentityDbSeeder> logger,
             IIdentityDbContext context,
             RoleManager<UchooseRole> roleManager,

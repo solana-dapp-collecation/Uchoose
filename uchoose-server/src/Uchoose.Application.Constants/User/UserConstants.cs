@@ -26,6 +26,6 @@ namespace Uchoose.Application.Constants.User
         /// <remarks>
         /// Используется, например, при создании новых пользователей.
         /// </remarks>
-        public const string SystemUserId = "BBAC09CF-9553-447E-A576-DFC302B0300E";
+        public const string SystemUserId = "A73714E3-63E8-497C-9D60-310BC1EE8120";
     }
 }
