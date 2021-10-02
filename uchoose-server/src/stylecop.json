@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "orderingRules": {
+      "systemUsingDirectivesFirst": true,
+      "usingDirectivesPlacement": "outsideNamespace",
+      "blankLinesBetweenUsingGroups": "require"
+    },
+    "documentationRules": {
+      "companyName": "Life Loop",
+      "copyrightText": "Copyright (c) {companyName}. All rights reserved.\nThe core team: {unchase}, {gunfighter}, {alexcator}.\nLicensed under the {licenseName} license. See {licenseFile} file in the project root for full license information.",
+      "headerDecoration": "--------------------------------------------------------------------------------------------------",
+      "variables": {
+        "licenseName": "MIT", // TODO - поменять
+        "licenseFile": "LICENSE",
+        "unchase": "Nikolay Chebotov (unchase)",
+        "gunfighter": "Leonov Dmitry (gunfighter)",
+        "alexcator": "Alexander Ermolich (alexcator)"
+      },
+      "documentationCulture": "ru-RU"
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": "omit",
+      "allowConsecutiveUsings": true
+    }
+  }
+}

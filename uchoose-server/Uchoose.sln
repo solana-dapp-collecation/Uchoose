@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.Utils", "src\Uchoose.Utils\Uchoose.Utils.csproj", "{A9D83C4B-EDC3-440A-A497-D3C1F7C0B579}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5E15DF4B-E2DF-4603-AFAB-8B3A6F6F50D8}"
+	ProjectSection(SolutionItems) = preProject
+		src\.editorconfig = src\.editorconfig
+		src\Directory.Build.props = src\Directory.Build.props
+		src\stylecop.json = src\stylecop.json
+		src\uchoose.ruleset = src\uchoose.ruleset
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{FE44F635-D0E5-4EBC-99CD-73073DA1D33E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{FA85E61F-FDC5-4624-9804-271373ABE060}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7A36D11F-DC63-4FD6-A2CB-E82B5443EC38}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 Utils", "0 Utils", "{21C16733-42B5-43E4-8BAC-9D8272DA95CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9D83C4B-EDC3-440A-A497-D3C1F7C0B579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9D83C4B-EDC3-440A-A497-D3C1F7C0B579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9D83C4B-EDC3-440A-A497-D3C1F7C0B579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9D83C4B-EDC3-440A-A497-D3C1F7C0B579}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A9D83C4B-EDC3-440A-A497-D3C1F7C0B579} = {21C16733-42B5-43E4-8BAC-9D8272DA95CF}
+		{FE44F635-D0E5-4EBC-99CD-73073DA1D33E} = {5E15DF4B-E2DF-4603-AFAB-8B3A6F6F50D8}
+		{21C16733-42B5-43E4-8BAC-9D8272DA95CF} = {FA85E61F-FDC5-4624-9804-271373ABE060}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}
+	EndGlobalSection
+EndGlobal
