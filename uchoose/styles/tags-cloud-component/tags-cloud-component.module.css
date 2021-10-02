@@ -1,0 +1,62 @@
+.appOuter {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 0;
+    padding: 20px 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.appInner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.tagCloud {
+    flex: 1;
+}
+
+.tagCloud > div {
+    transition: 1.4s;
+}
+
+.tagItemWrapper {
+    cursor: pointer;
+}
+
+.tagItemWrapper:hover {
+    z-index: 100;
+}
+
+.tagItemWrapper:hover .tagItemTooltip {
+    display: block;
+}
+
+.tagItemTooltip {
+    background: #c01916;
+    color: white;
+    margin-top: 5px;
+    z-index: 100;
+    display: none;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1;
+    position: absolute;
+    min-width: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.tagsCloud{
+    width: 500px;
+    height: 500px;
+    /*background-color: red;*/
+}
