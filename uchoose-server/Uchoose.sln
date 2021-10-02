@@ -41,6 +41,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure Services", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.DataAccess.Interfaces", "src\Uchoose.DataAccess.Interfaces\Uchoose.DataAccess.Interfaces.csproj", "{3F34A106-39EF-4017-A23A-2E454ECBA231}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.DataAccess.Identity.Interfaces", "src\Uchoose.DataAccess.Identity.Interfaces\Uchoose.DataAccess.Identity.Interfaces.csproj", "{C3D1CA7D-120D-4CA2-972A-9CBCA8D7B33D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{3F34A106-39EF-4017-A23A-2E454ECBA231}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F34A106-39EF-4017-A23A-2E454ECBA231}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F34A106-39EF-4017-A23A-2E454ECBA231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3D1CA7D-120D-4CA2-972A-9CBCA8D7B33D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3D1CA7D-120D-4CA2-972A-9CBCA8D7B33D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3D1CA7D-120D-4CA2-972A-9CBCA8D7B33D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3D1CA7D-120D-4CA2-972A-9CBCA8D7B33D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{5B9C4B1D-D8BF-49D5-95CB-1E89E412E91A} = {BAFC9098-4901-4DE5-897B-86270D62BEF7}
 		{909BBE33-9724-4FEA-8015-AA27A2426A65} = {BAFC9098-4901-4DE5-897B-86270D62BEF7}
 		{3F34A106-39EF-4017-A23A-2E454ECBA231} = {5B9C4B1D-D8BF-49D5-95CB-1E89E412E91A}
+		{C3D1CA7D-120D-4CA2-972A-9CBCA8D7B33D} = {5B9C4B1D-D8BF-49D5-95CB-1E89E412E91A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}
