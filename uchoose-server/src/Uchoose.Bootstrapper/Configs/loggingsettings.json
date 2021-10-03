@@ -8,9 +8,28 @@
       "Microsoft.AspNetCore.DataProtection": "Warning"
     }
   },
+  "Columns": {
+    "message": "RenderedMessageColumnWriter",
+    "message_template": "MessageTemplateColumnWriter",
+    "level": {
+      "Name": "LevelColumnWriter",
+      "Args": {
+        "renderAsText": true,
+        "dbType": "Varchar"
+      }
+    },
+    "raise_date": "TimestampColumnWriter",
+    "exception": "ExceptionColumnWriter",
+    "properties": "LogEventSerializedColumnWriter",
+    "props_test": {
+      "Name": "PropertiesColumnWriter",
+      "Args": { "dbType": "Json" }
+    }
+  },
   "Serilog": {
     "Using": [
-      "Serilog.Expressions"
+      "Serilog.Expressions",
+      "Serilog.Sinks.PostgreSQL.Configuration"
     ],
     "MinimumLevel": {
       "Default": "Information",
@@ -27,6 +46,147 @@
         "Name": "Console",
         "Args": {
           "outputTemplate": "{Timestamp:HH:mm:ss} [{Level}] {Message}{NewLine:1}{Exception}"
+        }
+      },
+      {
+        "Name": "Async",
+        "Args": {
+          "configure": [
+            {
+              "Name": "Logger",
+              "Args": {
+                "configureLogger": {
+                  "Filter": [
+                    {
+                      "Name": "ByIncludingOnly",
+                      "Args": {
+                        "expression": "@l = 'Information'"
+                      }
+                    },
+                    {
+                      "Name": "ByExcluding",
+                      "Args": {
+                        "expression": "StartsWith(SourceContext, 'Microsoft.') or StartsWith(SourceContext, 'System.') or StartsWith(SourceContext, 'HealthChecks.')" // исключаем стандартные сообщения
+                      }
+                    }
+                  ],
+                  "WriteTo": [
+                    {
+                      "Name": "File",
+                      "Args": {
+                        "path": "Logs\\informationLog.txt",
+                        "rollingInterval": "Day"
+                      }
+                    },
+                    {
+                      "Name": "PostgreSQL",
+                      "Args": {
+                        "connectionString": "UchooseDb",
+                        "tableName": "InformationLogs",
+                        "needAutoCreateTable": true
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "Name": "Logger",
+              "Args": {
+                "configureLogger": {
+                  "Filter": [
+                    {
+                      "Name": "ByIncludingOnly",
+                      "Args": {
+                        "expression": "@l = 'Warning'"
+                      }
+                    }
+                  ],
+                  "WriteTo": [
+                    {
+                      "Name": "File",
+                      "Args": {
+                        "path": "Logs\\warningLog.txt",
+                        "rollingInterval": "Day"
+                      }
+                    },
+                    {
+                      "Name": "PostgreSQL",
+                      "Args": {
+                        "connectionString": "UchooseDb",
+                        "tableName": "WarningLogs",
+                        "needAutoCreateTable": true
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "Name": "Logger",
+              "Args": {
+                "configureLogger": {
+                  "Filter": [
+                    {
+                      "Name": "ByIncludingOnly",
+                      "Args": {
+                        "expression": "@l = 'Error'"
+                      }
+                    }
+                  ],
+                  "WriteTo": [
+                    {
+                      "Name": "File",
+                      "Args": {
+                        "path": "Logs\\errorLog.txt",
+                        "rollingInterval": "Day"
+                      }
+                    },
+                    {
+                      "Name": "PostgreSQL",
+                      "Args": {
+                        "connectionString": "UchooseDb",
+                        "tableName": "ErrorLogs",
+                        "needAutoCreateTable": true
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "Name": "Logger",
+              "Args": {
+                "configureLogger": {
+                  "Filter": [
+                    {
+                      "Name": "ByIncludingOnly",
+                      "Args": {
+                        "expression": "@l = 'Fatal'"
+                      }
+                    }
+                  ],
+                  "WriteTo": [
+                    {
+                      "Name": "File",
+                      "Args": {
+                        "path": "Logs\\fatalLog.txt",
+                        "rollingInterval": "Day"
+                      }
+                    },
+                    {
+                      "Name": "PostgreSQL",
+                      "Args": {
+                        "connectionString": "UchooseDb",
+                        "tableName": "FatalLogs",
+                        "needAutoCreateTable": true
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
         }
       }
     ],
