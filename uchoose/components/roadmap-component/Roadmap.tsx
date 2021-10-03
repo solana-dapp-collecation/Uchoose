@@ -3,10 +3,10 @@ import {Divider, Steps} from "antd";
 
 const {Step} = Steps;
 
-const Roadmap = (props: any) => (
+const Roadmap = () => (
     <>
-        <Divider orientation="left"><b>Roadmap. Move roadmap to separate component</b></Divider>
-        <div>
+        <Divider orientation="center"><b>Roadmap. Move roadmap to separate component</b></Divider>
+        <div style={{width: '400px', margin: '0 auto'}}>
             <Steps direction="vertical" current={1}>
                 <Step title="Finished" description="MVP."/>
                 <Step title="In Progress" description="Add NFT Card view."/>
