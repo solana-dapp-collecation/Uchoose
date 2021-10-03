@@ -1,0 +1,15 @@
+{
+  "LocalizationSettings": {
+    "ResourcesPath": "Resources",
+    "SupportedLanguages": [
+      {
+        "Code": "ru-RU",
+        "DisplayName": "Russian"
+      },
+      {
+        "Code": "en-US",
+        "DisplayName": "English"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "BasicAuthSettings": {
+    "IsEnabled": false,
+    "UseBasicAuthAttribute": false,
+    "SecuredPaths": [
+      {
+        "Name": "Swagger UI Docs",
+        "IsEnabled": false,
+        "PathPrefix": "/swagger",
+        "RequiredClaims": [ "Permissions.BasicAuth.SwaggerUI" ]
+      },
+      {
+        "Name": "ReDoc Docs",
+        "IsEnabled": false,
+        "PathPrefix": "/api-docs",
+        "RequiredClaims": [ "Permissions.BasicAuth.ReDoc" ]
+      },
+      {
+        "Name": "Jobs",
+        "IsEnabled": false,
+        "PathPrefix": "/jobs",
+        "RequiredClaims": [ "Permissions.BasicAuth.Hangfire" ]
+      }
+    ]
+  }
+}

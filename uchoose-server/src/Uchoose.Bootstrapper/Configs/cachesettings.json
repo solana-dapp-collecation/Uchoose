@@ -1,0 +1,6 @@
+{
+  "CacheSettings": {
+    "AbsoluteExpirationInHours": 2,
+    "SlidingExpirationInMinutes": 120
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Warning",
+      "Hangfire": "Warning",
+      "Microsoft.AspNetCore.DataProtection": "Warning"
+    }
+  },
+  "Serilog": {
+    "Using": [
+      "Serilog.Expressions"
+    ],
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "System": "Information",
+        "Microsoft": "Error",
+        "Microsoft.Hosting.Lifetime": "Information",
+        "Hangfire": "Warning",
+        "Microsoft.AspNetCore.DataProtection": "Information"
+      }
+    },
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": {
+          "outputTemplate": "{Timestamp:HH:mm:ss} [{Level}] {Message}{NewLine:1}{Exception}"
+        }
+      }
+    ],
+    "Enrich": [
+      "FromLogContext",
+      "WithMachineName",
+      "WithProcessId",
+      "WithThreadId",
+      "WithEnvironmentUserName"
+    ],
+    "Properties": {
+      "Application": "Uchoose.Bootstrapper"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "JwtSettings": {
+    "RequireHttpsMetadata": false,
+    "Key": "S0M3RAN0MS3CR3T!1!MAG1C!1!",
+    "Issuer": "Uchoose Server",
+    "ValidateIssuer": false,
+    "Audience": "Uchoose Client",
+    "ValidateAudience": true,
+    "TokenExpirationInMinutes": 60,
+    "RefreshTokenExpirationInDays": 7
+  }
+}

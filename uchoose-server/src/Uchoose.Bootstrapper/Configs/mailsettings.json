@@ -1,0 +1,11 @@
+{
+  "MailSettings": {
+    "From": "application@uchoose.com",
+    "Host": "localhost",
+    "Port": 25,
+    "UserName": "",
+    "Password": "",
+    "EnableAuthentication": false,
+    "EnableVerification": false
+  }
+}

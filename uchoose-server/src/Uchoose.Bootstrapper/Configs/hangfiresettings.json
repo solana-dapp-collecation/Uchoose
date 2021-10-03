@@ -1,0 +1,8 @@
+{
+  "HangfireSettings": {
+    "PathMatch": "/jobs",
+    "DashboardTitle": "Задачи Uchoose",
+    "AppPath": "/swagger",
+    "ServerName": "Uchoose"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "KestrelSettings": {
+    "HttpPort": 5000,
+    "HttpsPort": 5001,
+    "CertificateSubjectName": "*.uchoose.com"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "ForwardingSettings": {
+    "UseForwardingProxy": false,
+    "ProxyIps": [ "" ],
+    "ApplicationUrl": ""
+  }
+}

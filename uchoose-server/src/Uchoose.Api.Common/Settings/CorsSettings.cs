@@ -17,8 +17,8 @@ namespace Uchoose.Api.Common.Settings
         ISettings
     {
         /// <summary>
-        /// Допустимый Url Origin для blazor приложения.
+        /// Допустимый Url Origin для client приложения.
         /// </summary>
-        public string Blazor { get; set; }
+        public string Client { get; set; }
     }
 }

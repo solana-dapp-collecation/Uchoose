@@ -1,0 +1,8 @@
+{
+  "BehaviorSettings": {
+    "UseRequestValidationBehavior": true,
+    "UseLoggingBehavior": true,
+    "UseResponseCachingBehavior": true,
+    "UsePerformanceBehavior": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "ProtectionSettings": {
+    "ProtectPersonalData": false,
+    "ProtectKeysWithCertificate": false,
+    "CertificateSubjectName": "*.uchoose.com",
+    "ApplicationDiscriminator": "Uchoose.Bootstrapper",
+    "DefaultKeyLifetimeInDays": 365,
+    "ExcludedEntityProperties": {
+      "UchooseUser": [
+        "Email",
+        "PhoneNumber",
+        "UserName"
+      ]
+    }
+  }
+}

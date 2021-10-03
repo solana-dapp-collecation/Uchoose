@@ -1,0 +1,33 @@
+﻿{
+  "SwaggerSettings": {
+    "IncludeXmlCommentsWithRemarks": true,
+    "IncludeXmlCommentsFromInheritDocs": true,
+    "AddEnumsWithValuesFixFilters": true,
+    "UseCaching": true,
+    "UseDarkTheme": false,
+    "UseSwaggerUI": true,
+    "SwaggerUiRoutePrefix": "swagger",
+    "SwaggerUiDocumentTitle": "API Uchoose",
+    "UseReDoc": true,
+    "ReDocRoutePrefix": "api-docs",
+    "ReDocDocumentTitle": "API Uchoose",
+    "SwaggerDocs": [
+      {
+        "Enabled": true,
+        "Url": "/swagger/v1/swagger.json",
+        "Name": "Uchoose API v1",
+        "Version": "v1",
+        "Title": "Uchoose API v1",
+        "Description": "API Uchoose v1"
+      },
+      {
+        "Enabled": false,
+        "Url": "/swagger/v2/swagger.json",
+        "Name": "Uchoose API v2",
+        "Version": "v2",
+        "Title": "Uchoose API v2",
+        "Description": "API Uchoose v2"
+      }
+    ]
+  }
+}

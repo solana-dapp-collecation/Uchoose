@@ -1,0 +1,30 @@
+{
+  "IdentitySettings": {
+    "Options": {
+      "Password": {
+        "RequiredLength": 8,
+        "RequireDigit": true,
+        "RequireLowercase": true,
+        "RequireNonAlphanumeric": true,
+        "RequireUppercase": true,
+        "RequiredUniqueChars": 1
+      },
+      "User": {
+        "RequireUniqueEmail": true
+      },
+      "SignIn": {
+        "RequireConfirmedEmail": true,
+        "RequireConfirmedPhoneNumber": true,
+        "RequireConfirmedAccount": false
+      },
+      "Lockout": {
+        "AllowedForNewUsers": true,
+        "MaxFailedAccessAttempts": 5
+      },
+      "Stores": {
+        "MaxLengthForKeys": 0,
+        "ProtectPersonalData": true
+      }
+    }
+  }
+}

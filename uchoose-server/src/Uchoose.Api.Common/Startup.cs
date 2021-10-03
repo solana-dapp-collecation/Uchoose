@@ -552,7 +552,7 @@ namespace Uchoose.Api.Common
             {
                 opt.AddPolicy("CorsPolicy", policy =>
                 {
-                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(corsSettings.Blazor);
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(corsSettings.Client);
                 });
             });
         }

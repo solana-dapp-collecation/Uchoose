@@ -1,0 +1,8 @@
+{
+  "SmsSettings": {
+    "SmsAccountIdentification": "$ecRet!AccountSID",
+    "SmsAccountPassword": "Pa$$word!OrAuthToken",
+    "SmsAccountFrom": "+11111111111",
+    "EnableVerification": false
+  }
+}
