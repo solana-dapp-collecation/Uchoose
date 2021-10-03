@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>Uchoose.EventLogService.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Uchoose.DataAccess.Interfaces\Uchoose.DataAccess.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.EventLogService.Interfaces\Uchoose.EventLogService.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.ExcelService.Interfaces\Uchoose.ExcelService.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.SerializationService.Interfaces\Uchoose.SerializationService.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
