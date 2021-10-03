@@ -123,6 +123,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.RoleClaimService.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.IdentityService.Interfaces", "src\Uchoose.IdentityService.Interfaces\Uchoose.IdentityService.Interfaces.csproj", "{1F6E840B-7FC9-4027-83CD-B7B2ED188F3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.TokenService", "src\Uchoose.TokenService\Uchoose.TokenService.csproj", "{21351C6F-1525-4437-B771-6E548B041C6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -257,6 +259,10 @@ Global
 		{1F6E840B-7FC9-4027-83CD-B7B2ED188F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F6E840B-7FC9-4027-83CD-B7B2ED188F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F6E840B-7FC9-4027-83CD-B7B2ED188F3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21351C6F-1525-4437-B771-6E548B041C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21351C6F-1525-4437-B771-6E548B041C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21351C6F-1525-4437-B771-6E548B041C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21351C6F-1525-4437-B771-6E548B041C6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -314,6 +320,7 @@ Global
 		{52E4C319-E587-4711-9BFA-CD1BBF793D5D} = {6FA59E39-B812-411A-B2F4-9C7BBF5B57D8}
 		{2BF2082C-6B13-4611-A1F5-4EEBB2A9749D} = {6FA59E39-B812-411A-B2F4-9C7BBF5B57D8}
 		{1F6E840B-7FC9-4027-83CD-B7B2ED188F3C} = {6FA59E39-B812-411A-B2F4-9C7BBF5B57D8}
+		{21351C6F-1525-4437-B771-6E548B041C6F} = {0AD87770-EB28-4184-B7DD-56D5A17BD8C1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}
