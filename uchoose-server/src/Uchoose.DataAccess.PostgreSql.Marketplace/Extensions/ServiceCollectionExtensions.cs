@@ -27,7 +27,7 @@ namespace Uchoose.DataAccess.PostgreSql.Marketplace.Extensions
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// Добавить хранилище данных, связанных с аккредитациями.
+        /// Добавить хранилище данных, связанных с маркетплейсом NFT.
         /// </summary>
         /// <param name="services"><see cref="IServiceCollection"/>.</param>
         /// <param name="configuration"><see cref="IConfiguration"/>.</param>

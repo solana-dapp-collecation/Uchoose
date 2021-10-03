@@ -19,7 +19,7 @@ using Uchoose.Utils.Wrapper;
 namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayerType.Commands
 {
     /// <summary>
-    /// Команда для добавления зоны доступа по аккредитации.
+    /// Команда для добавления типа слоя изображения NFT.
     /// </summary>
     [UseReverseMap(typeof(Domain.Marketplace.Entities.NftImageLayerType))]
     public class AddNftImageLayerTypeCommand :

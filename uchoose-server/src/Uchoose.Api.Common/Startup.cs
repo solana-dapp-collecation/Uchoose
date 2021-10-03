@@ -48,6 +48,7 @@ using Uchoose.CurrentUserService.Extensions;
 using Uchoose.DataAccess.Interfaces;
 using Uchoose.DataAccess.PostgreSql.Extensions;
 using Uchoose.DataAccess.PostgreSql.Identity.Extensions;
+using Uchoose.DataAccess.PostgreSql.Marketplace.Extensions;
 using Uchoose.DateTimeService.Extensions;
 using Uchoose.Domain.Identity.Exceptions;
 using Uchoose.Domain.Settings;
@@ -285,8 +286,7 @@ namespace Uchoose.Api.Common
         private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddIdentityPersistence(configuration);
-
-            // services.AddNFTPersistence(configuration);
+            services.AddMarketplacePersistence(configuration);
 
             // TODO: добавить больше persistence
             return services;

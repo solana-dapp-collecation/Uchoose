@@ -30,7 +30,7 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayerType.Queries
         ILoggable
     {
         /// <summary>
-        /// Идентификатор зоны доступа по аккредитации.
+        /// Идентификатор типа слоя изображения NFT.
         /// </summary>
         public Guid Id { get; protected set; }
 

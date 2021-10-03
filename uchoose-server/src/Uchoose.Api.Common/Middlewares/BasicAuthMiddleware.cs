@@ -30,7 +30,8 @@ namespace Uchoose.Api.Common.Middlewares
     /// <summary>
     /// Обработчик Basic авторизации для доступа к различным ресурсам сервера.
     /// </summary>
-    public class BasicAuthMiddleware : IMiddleware
+    public class BasicAuthMiddleware :
+        IMiddleware
     {
         private readonly ITokenService _tokenService;
         private readonly ICurrentUserService _currentUserService;

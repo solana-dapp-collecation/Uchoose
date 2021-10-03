@@ -14,7 +14,7 @@ using Uchoose.Domain.Exceptions;
 namespace Uchoose.Domain.Marketplace.Exceptions
 {
     /// <summary>
-    /// Исключение, связанное с аккредитациями.
+    /// Исключение, связанное с маркетплейсом NFT.
     /// </summary>
     public class MarketplaceException :
         DomainException

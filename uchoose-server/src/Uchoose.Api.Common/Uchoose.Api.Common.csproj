@@ -32,6 +32,7 @@
     <ProjectReference Include="..\Uchoose.AuditService\Uchoose.AuditService.csproj" />
     <ProjectReference Include="..\Uchoose.CurrentUserService\Uchoose.CurrentUserService.csproj" />
     <ProjectReference Include="..\Uchoose.DataAccess.PostgreSql.Identity\Uchoose.DataAccess.PostgreSql.Identity.csproj" />
+    <ProjectReference Include="..\Uchoose.DataAccess.PostgreSql.Marketplace\Uchoose.DataAccess.PostgreSql.Marketplace.csproj" />
     <ProjectReference Include="..\Uchoose.DateTimeService\Uchoose.DateTimeService.csproj" />
     <ProjectReference Include="..\Uchoose.EventLogService\Uchoose.EventLogService.csproj" />
     <ProjectReference Include="..\Uchoose.ExcelService\Uchoose.ExcelService.csproj" />
@@ -46,6 +47,11 @@
     <ProjectReference Include="..\Uchoose.UseCases.Common\Uchoose.UseCases.Common.csproj" />
     <ProjectReference Include="..\Uchoose.UserClaimService\Uchoose.UserClaimService.csproj" />
     <ProjectReference Include="..\Uchoose.UserService\Uchoose.UserService.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\Marketplace\ExtendedAttributes\" />
+    <Folder Include="Swagger\Examples\Marketplace\NftImageLayers\" />
   </ItemGroup>
 
 </Project>

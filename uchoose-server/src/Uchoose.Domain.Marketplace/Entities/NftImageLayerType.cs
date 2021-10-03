@@ -14,6 +14,7 @@ using System.Data;
 using Microsoft.Extensions.Localization;
 using Uchoose.Domain.Abstractions;
 using Uchoose.Domain.Contracts;
+using Uchoose.Domain.Marketplace.Events.NftImageLayerType;
 using Uchoose.Utils.Contracts.Exporting;
 using Uchoose.Utils.Contracts.Importing;
 using Uchoose.Utils.Contracts.Properties;
@@ -30,6 +31,9 @@ namespace Uchoose.Domain.Marketplace.Entities
         IImportable<Guid, NftImageLayerType>,
         IExportable<Guid, NftImageLayerType>,
         ISearchable<Guid, NftImageLayerType>,
+        IVersionableByEvent<Guid, NftImageLayerType, NftImageLayerTypeAddedEvent>,
+        IVersionableByEvent<Guid, NftImageLayerType, NftImageLayerTypeUpdatedEvent>,
+        IVersionableByEvent<Guid, NftImageLayerType, NftImageLayerTypeRemovedEvent>,
         IHasName,
         IHasDescription<string?>,
         IHasIsActive,
@@ -82,6 +86,36 @@ namespace Uchoose.Domain.Marketplace.Entities
         }
 
         #endregion IExportable
+
+        #region IVersionableByEvent
+
+        /// <inheritdoc/>
+        public void When(NftImageLayerTypeAddedEvent @event)
+        {
+            Name = @event.Name;
+            Description = @event.Description;
+            IsReadOnly = @event.IsReadOnly;
+            IsActive = @event.IsActive;
+            IncrementVersion();
+        }
+
+        /// <inheritdoc/>
+        public void When(NftImageLayerTypeUpdatedEvent @event)
+        {
+            Name = @event.Name;
+            Description = @event.Description;
+            IsReadOnly = @event.IsReadOnly;
+            IsActive = @event.IsActive;
+            IncrementVersion();
+        }
+
+        /// <inheritdoc/>
+        public void When(NftImageLayerTypeRemovedEvent @event)
+        {
+            IncrementVersion();
+        }
+
+        #endregion IVersionableByEvent
 
         /// <inheritdoc/>
         protected override void Apply(IDomainEvent @event)

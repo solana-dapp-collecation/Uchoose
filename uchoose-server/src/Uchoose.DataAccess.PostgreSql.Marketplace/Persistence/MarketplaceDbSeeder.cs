@@ -82,7 +82,7 @@ namespace Uchoose.DataAccess.PostgreSql.Marketplace.Persistence
             {
                 if (!_context.NftImageLayerTypes.Any())
                 {
-                    string nftImageLayerTypeData = await File.ReadAllTextAsync(Path.Combine(SeedDataPath, "nftImageLayerTypes.json"), Encoding.GetEncoding(1251));
+                    string nftImageLayerTypeData = await File.ReadAllTextAsync(Path.Combine(SeedDataPath, "nftImageLayerTypes.json"), Encoding.UTF8);
                     var nftImageLayerTypes = _jsonSerializer.Deserialize<List<NftImageLayerType>>(nftImageLayerTypeData);
 
                     if (nftImageLayerTypes != null)
