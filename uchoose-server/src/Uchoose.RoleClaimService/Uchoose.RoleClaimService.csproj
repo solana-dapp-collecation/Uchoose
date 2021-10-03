@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>Uchoose.RoleClaimService.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Uchoose.Application.Constants\Uchoose.Application.Constants.csproj" />
+    <ProjectReference Include="..\Uchoose.CurrentUserService.Interfaces\Uchoose.CurrentUserService.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.DataAccess.Identity.Interfaces\Uchoose.DataAccess.Identity.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.RoleClaimService.Interfaces\Uchoose.RoleClaimService.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
