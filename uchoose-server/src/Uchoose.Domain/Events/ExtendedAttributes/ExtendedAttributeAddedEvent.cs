@@ -42,7 +42,8 @@ namespace Uchoose.Domain.Events.ExtendedAttributes
                 extendedAttribute.Id,
                 eventDescription,
                 null,
-                typeof(TEntity))
+                typeof(TEntity),
+                extendedAttribute.GetType())
         {
             Id = extendedAttribute.Id;
             EntityId = extendedAttribute.EntityId;

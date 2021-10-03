@@ -8,6 +8,7 @@
 
 #nullable enable
 using System;
+using System.Linq;
 using System.Text.Json.Serialization;
 
 using Uchoose.Domain.Abstractions;
@@ -26,15 +27,17 @@ namespace Uchoose.Domain.Events.ExtendedAttributes
         /// <param name="id">Идентификатор сущности.</param>
         /// <param name="eventDescription">Описание события.</param>
         /// <param name="messageType">Тип сообщения.</param>
+        /// <param name="relatedEntities">Связанные с событием сущности.</param>
         public ExtendedAttributeRemovedEvent(
             Guid id,
             string eventDescription,
-            string? messageType = null)
+            string? messageType = null,
+            params Type[] relatedEntities)
             : base(
                 id,
                 eventDescription,
                 null,
-                typeof(TEntity))
+                relatedEntities.Union(new[] { typeof(TEntity) }).ToArray())
         {
             Id = id;
 
