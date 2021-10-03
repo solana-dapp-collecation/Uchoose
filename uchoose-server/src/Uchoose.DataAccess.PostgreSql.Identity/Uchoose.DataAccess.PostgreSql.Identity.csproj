@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <DocumentationFile>Uchoose.DataAccess.MsSql.Identity.xml</DocumentationFile>
+    <DocumentationFile>Uchoose.DataAccess.PostgreSql.Identity.xml</DocumentationFile>
     <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 

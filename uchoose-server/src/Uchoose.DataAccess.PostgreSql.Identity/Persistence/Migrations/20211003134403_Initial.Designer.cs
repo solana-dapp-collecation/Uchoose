@@ -10,7 +10,7 @@ using Uchoose.DataAccess.PostgreSql.Identity.Persistence;
 namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
 {
     [DbContext(typeof(IdentityDbContext))]
-    [Migration("20211003125322_Initial")]
+    [Migration("20211003134403_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,7 +40,7 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserLogins");
+                    b.ToTable("UserLogins");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
@@ -55,7 +55,7 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles");
+                    b.ToTable("UserRoles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
@@ -74,7 +74,7 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AspNetUserTokens");
+                    b.ToTable("UserTokens");
                 });
 
             modelBuilder.Entity("Uchoose.Domain.Entities.Audit", b =>
@@ -90,7 +90,8 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("EntityName")
-                        .HasColumnType("text");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("NewValues")
                         .HasColumnType("text");
@@ -102,7 +103,8 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Type")
-                        .HasColumnType("text");
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -140,16 +142,19 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<Guid>("EntityId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("ExternalId")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("Group")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<int?>("Integer")
                         .HasColumnType("integer");
@@ -162,7 +167,8 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
 
                     b.Property<string>("Key")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uuid");
@@ -180,7 +186,7 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
 
                     b.HasIndex("EntityId");
 
-                    b.ToTable("UchooseRoleExtendedAttribute");
+                    b.ToTable("RoleExtendedAttributes");
                 });
 
             modelBuilder.Entity("Uchoose.Domain.Identity.Entities.ExtendedAttributes.UchooseUserExtendedAttribute", b =>
@@ -211,16 +217,19 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<Guid>("EntityId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("ExternalId")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("Group")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<int?>("Integer")
                         .HasColumnType("integer");
@@ -233,7 +242,8 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
 
                     b.Property<string>("Key")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uuid");
@@ -251,13 +261,14 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
 
                     b.HasIndex("EntityId");
 
-                    b.ToTable("UchooseUserExtendedAttribute");
+                    b.ToTable("UserExtendedAttributes");
                 });
 
             modelBuilder.Entity("Uchoose.Domain.Identity.Entities.UchooseRole", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
                         .HasColumnType("uuid");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -277,7 +288,8 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uuid");
@@ -299,7 +311,7 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("RoleNameIndex");
 
-                    b.ToTable("AspNetRoles");
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("Uchoose.Domain.Identity.Entities.UchooseRoleClaim", b =>
@@ -322,10 +334,12 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("Group")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uuid");
@@ -336,22 +350,18 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                     b.Property<Guid>("RoleId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("RoleId1")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");
 
-                    b.HasIndex("RoleId1");
-
-                    b.ToTable("AspNetRoleClaims");
+                    b.ToTable("RoleClaims");
                 });
 
             modelBuilder.Entity("Uchoose.Domain.Identity.Entities.UchooseUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
                         .HasColumnType("uuid");
 
                     b.Property<int>("AccessFailedCount")
@@ -374,17 +384,19 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
                     b.Property<string>("ExternalId")
-                        .HasColumnType("text");
+                        .HasMaxLength(36)
+                        .HasColumnType("character varying(36)");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("text");
@@ -399,7 +411,8 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
@@ -408,21 +421,23 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("MiddleName")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean");
@@ -440,19 +455,28 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ExternalId")
+                        .IsUnique()
+                        .HasDatabaseName("ExternalIdIndex");
+
                     b.HasIndex("NormalizedEmail")
+                        .IsUnique()
                         .HasDatabaseName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
-                    b.ToTable("AspNetUsers");
+                    b.HasIndex("PhoneNumber")
+                        .IsUnique()
+                        .HasDatabaseName("PhoneIndex");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Uchoose.Domain.Identity.Entities.UchooseUserClaim", b =>
@@ -475,10 +499,12 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("Group")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uuid");
@@ -489,16 +515,11 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("UserId1")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex("UserId1");
-
-                    b.ToTable("AspNetUserClaims");
+                    b.ToTable("UserClaims");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
@@ -558,30 +579,22 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence.Migrations
 
             modelBuilder.Entity("Uchoose.Domain.Identity.Entities.UchooseRoleClaim", b =>
                 {
-                    b.HasOne("Uchoose.Domain.Identity.Entities.UchooseRole", null)
-                        .WithMany()
+                    b.HasOne("Uchoose.Domain.Identity.Entities.UchooseRole", "Role")
+                        .WithMany("RoleClaims")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Uchoose.Domain.Identity.Entities.UchooseRole", "Role")
-                        .WithMany("RoleClaims")
-                        .HasForeignKey("RoleId1");
 
                     b.Navigation("Role");
                 });
 
             modelBuilder.Entity("Uchoose.Domain.Identity.Entities.UchooseUserClaim", b =>
                 {
-                    b.HasOne("Uchoose.Domain.Identity.Entities.UchooseUser", null)
-                        .WithMany()
+                    b.HasOne("Uchoose.Domain.Identity.Entities.UchooseUser", "User")
+                        .WithMany("UserClaims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Uchoose.Domain.Identity.Entities.UchooseUser", "User")
-                        .WithMany("UserClaims")
-                        .HasForeignKey("UserId1");
 
                     b.Navigation("User");
                 });
