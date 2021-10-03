@@ -914,8 +914,8 @@ namespace Uchoose.Api.Common
                     options.DocExpansion(DocExpansion.None);
 
                     options.InjectStylesheet(swaggerSettings.UseDarkTheme
-                        ? "/ui/resources/Uchoose-swagger-ui-dark.css"
-                        : "/ui/resources/Uchoose-swagger-ui.css");
+                        ? "/ui/resources/uchoose-swagger-ui-dark.css"
+                        : "/ui/resources/uchoose-swagger-ui.css");
 
                     options.DocumentTitle = swaggerSettings.SwaggerUiDocumentTitle;
                     options.ConfigObject.DisplayOperationId = true;
@@ -932,9 +932,9 @@ namespace Uchoose.Api.Common
                     options.RoutePrefix = swaggerSettings.ReDocRoutePrefix;
                     options.DocumentTitle = swaggerSettings.ReDocDocumentTitle;
 
-                    // TODO - добавить стили Спартака
+                    // TODO - добавить стили
                     // https://github.com/Redocly/redoc/blob/master/README.md#redoc-options-object
-                    // options.InjectStylesheet("/ui/resources/Uchoose-redoc.css");
+                    // options.InjectStylesheet("/ui/resources/uchoose-redoc.css");
                 });
             }
 
