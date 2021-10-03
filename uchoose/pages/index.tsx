@@ -329,15 +329,20 @@ const Home: NextPage = ({articles}: any) => {
 
                     <Roadmap/>
 
-                    <Divider orientation="left"><b>For testing (dev) - delete later</b></Divider>
-                    <Button onClick={() => createTestSchema()}>Test Saving Schemas. No sense to press. Already created
-                        during auth</Button>
-                    <Button onClick={() => saveIntoDb()}>Store to db. To be deleted. Just a stub</Button>
+                    <Divider orientation="center"><b>For testing (dev) - delete later</b></Divider>
+                    <div style={{textAlign: 'center'}}>
+                        <Button className="me-4" onClick={() => createTestSchema()}>Test Saving Schemas. No sense to press. Already
+                            created
+                            during auth</Button>
+                        <Button onClick={() => saveIntoDb()}>Store to db. To be deleted. Just a stub</Button>
+                    </div>
 
-                    <Divider orientation="left"><b>Create collection</b></Divider>
-                    <Button variant="primary" onClick={showModal}>
-                        Create Collection
-                    </Button>
+                    <Divider orientation="center"><b>Create collection</b></Divider>
+                    <div style={{textAlign: 'center'}}>
+                        <Button variant="primary" onClick={showModal}>
+                            Create Collection
+                        </Button>
+                    </div>
                     <Modal title="Creating collection" visible={isModalVisible} okText={'Create'}
                            onOk={handleCreateNewNFTCollection}
                            onCancel={handleCancel}
