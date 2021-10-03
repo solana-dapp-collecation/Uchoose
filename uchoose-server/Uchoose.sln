@@ -113,6 +113,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.SerializationServic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.TokenService.Interfaces", "src\Uchoose.TokenService.Interfaces\Uchoose.TokenService.Interfaces.csproj", "{1C5EFA33-C8CF-4852-8DC3-FB37C801B6A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.UserService.Interfaces", "src\Uchoose.UserService.Interfaces\Uchoose.UserService.Interfaces.csproj", "{83011D8D-2A73-4F48-8B84-403CD4F396D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -227,6 +229,10 @@ Global
 		{1C5EFA33-C8CF-4852-8DC3-FB37C801B6A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C5EFA33-C8CF-4852-8DC3-FB37C801B6A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C5EFA33-C8CF-4852-8DC3-FB37C801B6A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83011D8D-2A73-4F48-8B84-403CD4F396D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83011D8D-2A73-4F48-8B84-403CD4F396D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83011D8D-2A73-4F48-8B84-403CD4F396D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83011D8D-2A73-4F48-8B84-403CD4F396D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -279,6 +285,7 @@ Global
 		{2719D9A5-3BF1-4BB8-B4E1-42873ED537E7} = {73B7F080-739C-4AEC-AAA6-23F6091CE05F}
 		{0CFFBB4B-3FA2-4DB1-BF0B-99530E3C232B} = {73B7F080-739C-4AEC-AAA6-23F6091CE05F}
 		{1C5EFA33-C8CF-4852-8DC3-FB37C801B6A5} = {6FA59E39-B812-411A-B2F4-9C7BBF5B57D8}
+		{83011D8D-2A73-4F48-8B84-403CD4F396D9} = {6FA59E39-B812-411A-B2F4-9C7BBF5B57D8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}
