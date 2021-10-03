@@ -144,6 +144,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.Api.Common", "src\U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.Bootstrapper", "src\Uchoose.Bootstrapper\Uchoose.Bootstrapper.csproj", "{2054FB80-75D2-4510-8799-7DCE2033FCB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.Domain.Marketplace", "src\Uchoose.Domain.Marketplace\Uchoose.Domain.Marketplace.csproj", "{B749BD8D-D09C-4322-ADB4-8A4D45C5E328}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -314,6 +316,10 @@ Global
 		{2054FB80-75D2-4510-8799-7DCE2033FCB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2054FB80-75D2-4510-8799-7DCE2033FCB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2054FB80-75D2-4510-8799-7DCE2033FCB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B749BD8D-D09C-4322-ADB4-8A4D45C5E328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B749BD8D-D09C-4322-ADB4-8A4D45C5E328}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B749BD8D-D09C-4322-ADB4-8A4D45C5E328}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B749BD8D-D09C-4322-ADB4-8A4D45C5E328}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -381,6 +387,7 @@ Global
 		{63FB3A12-5C32-4D59-A71A-CA7F1B8842C7} = {4D43F43A-D520-4110-841F-CC887B9BC60D}
 		{0733A16E-C5A5-4B69-974B-4F7682863DEA} = {63FB3A12-5C32-4D59-A71A-CA7F1B8842C7}
 		{2054FB80-75D2-4510-8799-7DCE2033FCB3} = {240E01A6-33B6-46A1-904D-564B78CC3764}
+		{B749BD8D-D09C-4322-ADB4-8A4D45C5E328} = {0E049FA4-C290-4A6D-AE23-EDE6A3E37E0D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}
