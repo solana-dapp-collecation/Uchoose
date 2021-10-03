@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup>
-    <DocumentationFile>Uchoose.Application.Constants.xml</DocumentationFile>
+    <DocumentationFile>Uchoose.TokenService.Interfaces.xml</DocumentationFile>
     <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
