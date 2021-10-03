@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>Uchoose.UseCases.Common.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.3" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Uchoose.Application.Constants\Uchoose.Application.Constants.csproj" />
+    <ProjectReference Include="..\Uchoose.CurrentUserService.Interfaces\Uchoose.CurrentUserService.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.DataAccess.Identity.Interfaces\Uchoose.DataAccess.Identity.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.ExcelService.Interfaces\Uchoose.ExcelService.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.SerializationService.Interfaces\Uchoose.SerializationService.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

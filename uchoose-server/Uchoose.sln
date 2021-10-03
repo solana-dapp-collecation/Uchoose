@@ -135,6 +135,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.RoleClaimService", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.IdentityService", "src\Uchoose.IdentityService\Uchoose.IdentityService.csproj", "{99440801-83A0-4968-AD7A-1CC862F5AB6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.UseCases.Common", "src\Uchoose.UseCases.Common\Uchoose.UseCases.Common.csproj", "{ABB773F4-CADF-4CD6-991D-4A937396F090}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -293,6 +295,10 @@ Global
 		{99440801-83A0-4968-AD7A-1CC862F5AB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99440801-83A0-4968-AD7A-1CC862F5AB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99440801-83A0-4968-AD7A-1CC862F5AB6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABB773F4-CADF-4CD6-991D-4A937396F090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABB773F4-CADF-4CD6-991D-4A937396F090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABB773F4-CADF-4CD6-991D-4A937396F090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABB773F4-CADF-4CD6-991D-4A937396F090}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -356,6 +362,7 @@ Global
 		{DD771BBC-230D-44A9-AFB0-EF634039FDD1} = {0AD87770-EB28-4184-B7DD-56D5A17BD8C1}
 		{D3A42D26-5E87-48EF-A52C-6A0ADAF298D1} = {0AD87770-EB28-4184-B7DD-56D5A17BD8C1}
 		{99440801-83A0-4968-AD7A-1CC862F5AB6F} = {0AD87770-EB28-4184-B7DD-56D5A17BD8C1}
+		{ABB773F4-CADF-4CD6-991D-4A937396F090} = {E36E2364-61BF-45F6-8B70-31EE6AF9A650}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}

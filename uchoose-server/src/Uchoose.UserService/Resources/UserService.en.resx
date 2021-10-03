@@ -123,11 +123,11 @@
   <data name="Administrators Profile's Status cannot be toggled" xml:space="preserve">
     <value>Administrators Profile's Status cannot be toggled</value>
   </data>
-  <data name="An Error has occured!" xml:space="preserve">
-    <value>An Error has occured!</value>
+  <data name="An Error has occurred!" xml:space="preserve">
+    <value>An Error has occurred!</value>
   </data>
-  <data name="An error occured while confirming" xml:space="preserve">
-    <value>An error occured while confirming</value>
+  <data name="An error occurred while confirming" xml:space="preserve">
+    <value>An error occurred while confirming</value>
   </data>
   <data name="clicking here" xml:space="preserve">
     <value>clicking here</value>

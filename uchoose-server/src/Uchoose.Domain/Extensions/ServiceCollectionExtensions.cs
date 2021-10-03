@@ -6,8 +6,14 @@
 // </copyright>
 // ------------------------------------------------------------------------------------------------------
 
+using System.Linq;
+using System.Reflection;
+
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Uchoose.Domain.Contracts;
+using Uchoose.Domain.Filters;
+using Uchoose.Domain.Filters.Validators;
 using Uchoose.Utils.Contracts.Services;
 
 namespace Uchoose.Domain.Extensions
@@ -71,5 +77,41 @@ namespace Uchoose.Domain.Extensions
         #endregion AddSingletonDomainService
 
         #endregion Domain services
+
+        #region AddExtendedAttributePaginationFilterValidators
+
+        /// <summary>
+        /// Добавить валидаторы для фильтров расширенных атрибутов сущностей.
+        /// </summary>
+        /// <param name="services"><see cref="IServiceCollection"/>.</param>
+        /// <param name="assemblies">Сборки с расширенными атрибутами, используемыми для добавления валидаторов.</param>
+        /// <returns>Возвращает <see cref="IServiceCollection"/>.</returns>
+        public static IServiceCollection AddExtendedAttributePaginationFilterValidators(this IServiceCollection services, params Assembly[] assemblies)
+        {
+            var validatorTypes = assemblies
+                .SelectMany(assembly => assembly
+                    .GetTypes()
+                    .Where(t => t.IsClass && !t.IsAbstract && t.BaseType?.IsGenericType == true)
+                    .Select(t => new
+                    {
+                        BaseGenericType = t.BaseType,
+                        CurrentType = t
+                    })
+                    .Where(t => t.BaseGenericType?.GetGenericTypeDefinition() == typeof(ExtendedAttributePaginationFilterValidator<,>)))
+                .ToList();
+
+            foreach (var validatorType in validatorTypes)
+            {
+                var validatorTypeGenericArguments = validatorType.BaseGenericType.GetGenericArguments().ToList();
+
+                var filterType = typeof(ExtendedAttributePaginationFilter<,>).MakeGenericType(validatorTypeGenericArguments.ToArray());
+                var validatorServiceType = typeof(IValidator<>).MakeGenericType(filterType);
+                services.AddScoped(validatorServiceType, validatorType.CurrentType);
+            }
+
+            return services;
+        }
+
+        #endregion AddExtendedAttributePaginationFilterValidators
     }
 }
