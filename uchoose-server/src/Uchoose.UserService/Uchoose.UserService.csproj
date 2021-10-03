@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>Uchoose.UserService.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Uchoose.Application.Constants\Uchoose.Application.Constants.csproj" />
+    <ProjectReference Include="..\Uchoose.UserService.Interfaces\Uchoose.UserService.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
