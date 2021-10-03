@@ -6,6 +6,8 @@
 // </copyright>
 // ------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Uchoose.Utils.Extensions
@@ -36,6 +38,48 @@ namespace Uchoose.Utils.Extensions
         public static bool IsPresent(this string value)
         {
             return !string.IsNullOrWhiteSpace(value);
+        }
+
+        /// <summary>
+        /// Получить строку в указанной кодировке из base64 строки.
+        /// </summary>
+        /// <param name="str">Base64 строка.</param>
+        /// <param name="enc"><see cref="Encoding"/>.</param>
+        /// <returns>Возвращает строку в указанной кодировке из base64 строки.</returns>
+        public static string FromBase64ToString(this string str, Encoding enc = null)
+        {
+            return (enc ?? Encoding.Default).GetString(FromBase64(str));
+        }
+
+        /// <summary>
+        /// Получить массив байтов из base64 строки.
+        /// </summary>
+        /// <param name="str">Base64 строка.</param>
+        /// <returns>Возвращает массив байтов из base64 строки.</returns>
+        public static byte[] FromBase64(this string str)
+        {
+            return Convert.FromBase64String(str);
+        }
+
+        /// <summary>
+        /// Получить base64 строку из строки в указанной кодировке.
+        /// </summary>
+        /// <param name="str">Исходная строка.</param>
+        /// <param name="enc"><see cref="Encoding"/>.</param>
+        /// <returns>Возвращает base64 строку из строки в указанной кодировке.</returns>
+        public static string ToBase64(this string str, Encoding enc = null)
+        {
+            return ToBase64((enc ?? Encoding.Default).GetBytes(str));
+        }
+
+        /// <summary>
+        /// Получить base64 строку из массива байтов.
+        /// </summary>
+        /// <param name="data">Массив байтов.</param>
+        /// <returns>Возвращает base64 строку из массива байтов.</returns>
+        public static string ToBase64(this byte[] data)
+        {
+            return Convert.ToBase64String(data);
         }
     }
 }

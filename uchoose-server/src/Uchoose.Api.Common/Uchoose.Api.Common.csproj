@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>Uchoose.Api.Common.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+    <PackageReference Include="Serilog.Expressions" Version="3.2.0" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="4.1.2" />
+    <PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.2.0" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0" />
+    <PackageReference Include="Serilog.Sinks.PostgreSQL" Version="2.3.0" />
+    <PackageReference Include="Serilog.Sinks.PostgreSQL.Configuration" Version="1.0.1" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="5.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="6.2.2" />
+    <PackageReference Include="Unchase.Swashbuckle.AspNetCore.Extensions" Version="2.6.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Uchoose.AuditService\Uchoose.AuditService.csproj" />
+    <ProjectReference Include="..\Uchoose.CurrentUserService\Uchoose.CurrentUserService.csproj" />
+    <ProjectReference Include="..\Uchoose.DataAccess.PostgreSql.Identity\Uchoose.DataAccess.PostgreSql.Identity.csproj" />
+    <ProjectReference Include="..\Uchoose.DateTimeService\Uchoose.DateTimeService.csproj" />
+    <ProjectReference Include="..\Uchoose.EventLogService\Uchoose.EventLogService.csproj" />
+    <ProjectReference Include="..\Uchoose.ExcelService\Uchoose.ExcelService.csproj" />
+    <ProjectReference Include="..\Uchoose.IdentityService\Uchoose.IdentityService.csproj" />
+    <ProjectReference Include="..\Uchoose.LocalFileStorageService\Uchoose.LocalFileStorageService.csproj" />
+    <ProjectReference Include="..\Uchoose.RoleClaimService\Uchoose.RoleClaimService.csproj" />
+    <ProjectReference Include="..\Uchoose.RoleService\Uchoose.RoleService.csproj" />
+    <ProjectReference Include="..\Uchoose.SerializationService\Uchoose.SerializationService.csproj" />
+    <ProjectReference Include="..\Uchoose.SmtpMailService\Uchoose.SmtpMailService.csproj" />
+    <ProjectReference Include="..\Uchoose.TokenService\Uchoose.TokenService.csproj" />
+    <ProjectReference Include="..\Uchoose.TwilioSmsService\Uchoose.TwilioSmsService.csproj" />
+    <ProjectReference Include="..\Uchoose.UseCases.Common\Uchoose.UseCases.Common.csproj" />
+    <ProjectReference Include="..\Uchoose.UserClaimService\Uchoose.UserClaimService.csproj" />
+    <ProjectReference Include="..\Uchoose.UserService\Uchoose.UserService.csproj" />
+  </ItemGroup>
+
+</Project>

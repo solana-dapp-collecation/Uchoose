@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Uchoose.AuditService\Uchoose.AuditService.csproj" />
     <ProjectReference Include="..\Uchoose.DataAccess.Identity.Interfaces\Uchoose.DataAccess.Identity.Interfaces.csproj" />
     <ProjectReference Include="..\Uchoose.DataAccess.PostgreSql\Uchoose.DataAccess.PostgreSql.csproj" />
   </ItemGroup>
