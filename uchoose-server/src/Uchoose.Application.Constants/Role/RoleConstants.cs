@@ -32,5 +32,17 @@ namespace Uchoose.Application.Constants.Role
         /// </summary>
         [Description("Менеджер")]
         public const string Manager = nameof(Manager);
+
+        /// <summary>
+        /// Художник.
+        /// </summary>
+        [Description("Художник")]
+        public const string Artist = nameof(Artist);
+
+        /// <summary>
+        /// Партнёр.
+        /// </summary>
+        [Description("Партнёр")]
+        public const string Partner = nameof(Partner);
     }
 }

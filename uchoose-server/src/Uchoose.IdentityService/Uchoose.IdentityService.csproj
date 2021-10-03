@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>Uchoose.IdentityService.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire.Core" Version="1.7.25" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Uchoose.Application.Constants\Uchoose.Application.Constants.csproj" />
+    <ProjectReference Include="..\Uchoose.DataAccess.Identity.Interfaces\Uchoose.DataAccess.Identity.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.DateTimeService.Interfaces\Uchoose.DateTimeService.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.IdentityService.Interfaces\Uchoose.IdentityService.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.MailService.Interfaces\Uchoose.MailService.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.SmsService.Interfaces\Uchoose.SmsService.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
