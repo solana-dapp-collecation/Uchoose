@@ -105,6 +105,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.DateTimeService", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.EventLogService", "src\Uchoose.EventLogService\Uchoose.EventLogService.csproj", "{91C49AEA-5A91-49D7-A964-33B4E0FEE374}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.ExcelService", "src\Uchoose.ExcelService\Uchoose.ExcelService.csproj", "{B9839308-D3ED-4C46-8677-EDA79B2D7B30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -203,6 +205,10 @@ Global
 		{91C49AEA-5A91-49D7-A964-33B4E0FEE374}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91C49AEA-5A91-49D7-A964-33B4E0FEE374}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91C49AEA-5A91-49D7-A964-33B4E0FEE374}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9839308-D3ED-4C46-8677-EDA79B2D7B30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9839308-D3ED-4C46-8677-EDA79B2D7B30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9839308-D3ED-4C46-8677-EDA79B2D7B30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9839308-D3ED-4C46-8677-EDA79B2D7B30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -251,6 +257,7 @@ Global
 		{CF0279EF-A788-4EC7-8A59-32903DA917F4} = {73B7F080-739C-4AEC-AAA6-23F6091CE05F}
 		{7B627336-5CED-468E-9A93-B1792CAA0ACE} = {73B7F080-739C-4AEC-AAA6-23F6091CE05F}
 		{91C49AEA-5A91-49D7-A964-33B4E0FEE374} = {73B7F080-739C-4AEC-AAA6-23F6091CE05F}
+		{B9839308-D3ED-4C46-8677-EDA79B2D7B30} = {73B7F080-739C-4AEC-AAA6-23F6091CE05F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}
