@@ -128,7 +128,7 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence
         {
             Task.Run(async () =>
             {
-                string identityUsersData = await File.ReadAllTextAsync(Path.Combine(SeedDataPath, "identityUsers.json"), Encoding.GetEncoding(1251));
+                string identityUsersData = await File.ReadAllTextAsync(Path.Combine(SeedDataPath, "identityUsers.json"), Encoding.UTF8);
                 var identityUsersModels = _jsonSerializer.Deserialize<List<IdentityUsersModel>>(identityUsersData);
 
                 if (identityUsersModels?.Any() == true)

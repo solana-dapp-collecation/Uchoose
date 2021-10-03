@@ -15,4 +15,10 @@
     <ProjectReference Include="..\Uchoose.DataAccess.PostgreSql\Uchoose.DataAccess.PostgreSql.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Persistence\SeedData\identityUsers.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

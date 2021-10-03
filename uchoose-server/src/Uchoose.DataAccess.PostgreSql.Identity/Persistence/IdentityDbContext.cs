@@ -36,9 +36,11 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence
     /// <inheritdoc cref="IIdentityDbContext"/>
     internal sealed class IdentityDbContext :
         IdentityDbContext<UchooseUser, UchooseRole, Guid, UchooseUserClaim, IdentityUserRole<Guid>, IdentityUserLogin<Guid>, UchooseRoleClaim, IdentityUserToken<Guid>>,
-        IIdentityDbContext,
-        IExtendedAttributeDbContext<Guid, UchooseUser, UchooseUserExtendedAttribute>,
-        IExtendedAttributeDbContext<Guid, UchooseRole, UchooseRoleExtendedAttribute>
+        IIdentityDbContext
+
+        // ,
+        // IExtendedAttributeDbContext<Guid, UchooseUser, UchooseUserExtendedAttribute>,
+        // IExtendedAttributeDbContext<Guid, UchooseRole, UchooseRoleExtendedAttribute>
     {
         private readonly IEventLogger _eventLogger;
         private readonly ICurrentUserService _currentUserService;
@@ -92,22 +94,26 @@ namespace Uchoose.DataAccess.PostgreSql.Identity.Persistence
         /// <inheritdoc/>
         public DbSet<Audit> AuditTrails { get; set; }
 
+        /*
         /// <inheritdoc/>
         DbSet<UchooseUserExtendedAttribute> IExtendedAttributeDbContext<Guid, UchooseUser, UchooseUserExtendedAttribute>.ExtendedAttributes { get; set; }
 
         /// <inheritdoc/>
         DbSet<UchooseRoleExtendedAttribute> IExtendedAttributeDbContext<Guid, UchooseRole, UchooseRoleExtendedAttribute>.ExtendedAttributes { get; set; }
+        */
 
         /// <summary>
         /// Схема БД, используемая по умолчанию.
         /// </summary>
         internal static string Schema => "Identity";
 
+        /*
         /// <inheritdoc/>
         DbSet<UchooseUser> IExtendedAttributeDbContext<Guid, UchooseUser, UchooseUserExtendedAttribute>.GetEntities() => Users;
 
         /// <inheritdoc/>
         DbSet<UchooseRole> IExtendedAttributeDbContext<Guid, UchooseRole, UchooseRoleExtendedAttribute>.GetEntities() => Roles;
+        */
 
         #region SaveChanges
 

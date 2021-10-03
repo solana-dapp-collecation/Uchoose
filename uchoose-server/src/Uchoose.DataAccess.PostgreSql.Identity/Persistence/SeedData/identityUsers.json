@@ -3,9 +3,9 @@
     "Role": "SuperAdmin",
     "Users": [
       {
-        "FirstName": "Админ",
-        "LastName": "Админ",
-        "MiddleName": "Админович",
+        "FirstName": "Admin",
+        "LastName": "Admin",
+        "MiddleName": "Admin",
         "Email": "superadmin@uchoose.com",
         "UserName": "superadmin",
         "PhoneNumber": "+71111111111",

@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{FE44F635-D
 	ProjectSection(SolutionItems) = preProject
 		..\assets\docs\Commits.md = ..\assets\docs\Commits.md
 		..\assets\docs\Glossary.md = ..\assets\docs\Glossary.md
+		..\assets\docs\How-to-add-new-migration.md = ..\assets\docs\How-to-add-new-migration.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{FA85E61F-FDC5-4624-9804-271373ABE060}"

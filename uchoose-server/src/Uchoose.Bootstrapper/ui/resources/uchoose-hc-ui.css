@@ -1,0 +1,11 @@
+﻿:root {
+    --primaryColor: #e5173f;
+    --secondaryColor: #f4f4f4;
+    --bgMenuActive: #82172c;
+    --bgButton: #e5173f;
+    --bgAside: var(--primaryColor);
+}
+
+.hc-aside.is-open .hc-aside__logo {
+    min-width: 5rem;
+}
