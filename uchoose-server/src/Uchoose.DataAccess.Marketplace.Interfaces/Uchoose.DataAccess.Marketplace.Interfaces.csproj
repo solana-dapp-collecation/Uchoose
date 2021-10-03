@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+<PropertyGroup>
+    <DocumentationFile>Uchoose.DataAccess.Marketplace.Interfaces.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+<ItemGroup>
+  <ProjectReference Include="..\Uchoose.DataAccess.Interfaces\Uchoose.DataAccess.Interfaces.csproj" />
+  <ProjectReference Include="..\Uchoose.Domain.Marketplace\Uchoose.Domain.Marketplace.csproj" />
+</ItemGroup>
+
+</Project>

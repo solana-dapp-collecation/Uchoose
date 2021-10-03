@@ -19,33 +19,33 @@ using Uchoose.Utils.Contracts.Properties;
 namespace Uchoose.Domain.Marketplace.Events.NftImageLayerType
 {
     /// <summary>
-    /// Событие обновления слоя изображения NFT.
+    /// Событие обновления типа слоя изображения NFT.
     /// </summary>
-    public class NftImageLayerUpdatedEvent :
+    public class NftImageLayerTypeUpdatedEvent :
         DomainEvent<Entities.NftImageLayerType>,
-        IMapFromTo<Entities.NftImageLayerType, NftImageLayerUpdatedEvent>,
+        IMapFromTo<Entities.NftImageLayerType, NftImageLayerTypeUpdatedEvent>,
         IHasName,
         IHasIsActive,
         IHasIsReadOnly
     {
         /// <summary>
-        /// Инициализирует экземпляр <see cref="NftImageLayerUpdatedEvent"/>.
+        /// Инициализирует экземпляр <see cref="NftImageLayerTypeUpdatedEvent"/>.
         /// </summary>
         /// <remarks>
         /// Для <see cref="IMapFromTo{TSource,TDestination}"/>.
         /// </remarks>
-        public NftImageLayerUpdatedEvent()
+        public NftImageLayerTypeUpdatedEvent()
             : base(Guid.Empty, null, null)
         {
             Name = string.Empty;
         }
 
         /// <summary>
-        /// Инициализирует экземпляр <see cref="NftImageLayerUpdatedEvent"/>.
+        /// Инициализирует экземпляр <see cref="NftImageLayerTypeUpdatedEvent"/>.
         /// </summary>
         /// <param name="nftImageLayerType">Тип слоя изображения NFT.</param>
         /// <param name="eventDescription">Описание события.</param>
-        public NftImageLayerUpdatedEvent(Entities.NftImageLayerType nftImageLayerType, string eventDescription)
+        public NftImageLayerTypeUpdatedEvent(Entities.NftImageLayerType nftImageLayerType, string eventDescription)
             : base(
                 nftImageLayerType.Id,
                 eventDescription,
@@ -80,10 +80,10 @@ namespace Uchoose.Domain.Marketplace.Events.NftImageLayerType
         public bool IsActive { get; private set; }
 
         /// <inheritdoc/>
-        void IMapFromTo<Entities.NftImageLayerType, NftImageLayerUpdatedEvent>.Mapping(Profile profile, bool useReverseMap)
+        void IMapFromTo<Entities.NftImageLayerType, NftImageLayerTypeUpdatedEvent>.Mapping(Profile profile, bool useReverseMap)
         {
             // меняем порядок сопоставления
-            profile.CreateMap<NftImageLayerUpdatedEvent, Entities.NftImageLayerType>()
+            profile.CreateMap<NftImageLayerTypeUpdatedEvent, Entities.NftImageLayerType>()
                 .ForMember(dest => dest.Version, source => source.MapFrom(c => c.AggregateVersion));
         }
     }

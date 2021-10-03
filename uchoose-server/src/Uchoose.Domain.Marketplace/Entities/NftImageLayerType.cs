@@ -7,9 +7,18 @@
 // ------------------------------------------------------------------------------------------------------
 
 #nullable enable
+using System;
+using System.Collections.Generic;
+using System.Data;
+
+using Microsoft.Extensions.Localization;
 using Uchoose.Domain.Abstractions;
 using Uchoose.Domain.Contracts;
+using Uchoose.Utils.Contracts.Exporting;
+using Uchoose.Utils.Contracts.Importing;
 using Uchoose.Utils.Contracts.Properties;
+using Uchoose.Utils.Contracts.Searching;
+using Uchoose.Utils.Extensions;
 
 namespace Uchoose.Domain.Marketplace.Entities
 {
@@ -18,6 +27,9 @@ namespace Uchoose.Domain.Marketplace.Entities
     /// </summary>
     public class NftImageLayerType :
         AuditableAggregate,
+        IImportable<Guid, NftImageLayerType>,
+        IExportable<Guid, NftImageLayerType>,
+        ISearchable<Guid, NftImageLayerType>,
         IHasName,
         IHasDescription<string?>,
         IHasIsActive,
@@ -40,6 +52,36 @@ namespace Uchoose.Domain.Marketplace.Entities
 
         /// <inheritdoc/>
         public bool IsActive { get; set; }
+
+        #region IImportable
+
+        /// <inheritdoc/>
+        public Dictionary<string, Func<DataRow, NftImageLayerType, (object? Object, int Order)>> GetDefaultImportMappers(IStringLocalizer localizer) => new()
+        {
+            { localizer["Name"]!, (row, item) => (item.Name = row[localizer["Name"]!].ToString() ?? string.Empty, item.GetImportExportOrderAttributeValue(nameof(Name))) },
+            { localizer["Description"]!, (row, item) => (item.Description = row[localizer["Description"]!].ToString() ?? string.Empty, item.GetImportExportOrderAttributeValue(nameof(Description))) },
+            { localizer["IsReadOnly"]!, (row, item) => (item.IsReadOnly = bool.TryParse(row[localizer["IsReadOnly"]!].ToString(), out bool isReadOnly) && isReadOnly, item.GetImportExportOrderAttributeValue(nameof(IsReadOnly))) },
+            { localizer["IsActive"]!, (row, item) => (item.IsActive = bool.TryParse(row[localizer["IsActive"]!].ToString(), out bool isActive) && isActive, item.GetImportExportOrderAttributeValue(nameof(IsActive))) }
+        };
+
+        #endregion IImportable
+
+        #region IExportable
+
+        /// <inheritdoc/>
+        public Dictionary<string, Func<NftImageLayerType, (object? Object, int Order)>> GetDefaultExportMappers(IStringLocalizer localizer)
+        {
+            return new()
+            {
+                { localizer["Id"]!, item => (item.Id, item.GetImportExportOrderAttributeValue(nameof(Id))) },
+                { localizer["Name"]!, item => (item.Name, item.GetImportExportOrderAttributeValue(nameof(Name))) },
+                { localizer["Description"]!, item => (item.Description, item.GetImportExportOrderAttributeValue(nameof(Description))) },
+                { localizer["IsReadOnly"]!, item => (item.IsReadOnly, item.GetImportExportOrderAttributeValue(nameof(IsReadOnly))) },
+                { localizer["IsActive"]!, item => (item.IsActive, item.GetImportExportOrderAttributeValue(nameof(IsActive))) }
+            };
+        }
+
+        #endregion IExportable
 
         /// <inheritdoc/>
         protected override void Apply(IDomainEvent @event)

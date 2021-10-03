@@ -1,0 +1,16 @@
+[
+  {
+    "Id": "EF3706BB-08B2-4919-A7CC-639895B7A252",
+    "Name": "Hands",
+    "Description": "",
+    "IsReadOnly": true,
+    "IsActive": true
+  },
+  {
+    "Id": "D8406322-5A18-4657-8C37-FE702F8716D9",
+    "Name": "Legs",
+    "Description": "",
+    "IsReadOnly": true,
+    "IsActive": true
+  }
+]
