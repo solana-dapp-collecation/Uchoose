@@ -6,6 +6,8 @@
 // </copyright>
 // ------------------------------------------------------------------------------------------------------
 
+using System.Text.RegularExpressions;
+
 namespace Uchoose.Utils.Extensions
 {
     /// <summary>
@@ -13,6 +15,19 @@ namespace Uchoose.Utils.Extensions
     /// </summary>
     public static class StringExtensions
     {
+        private static readonly Regex WhitespaceRegex = new(@"\s+");
+
+        /// <summary>
+        /// Заменить пробелы.
+        /// </summary>
+        /// <param name="input">Исходная строка.</param>
+        /// <param name="replacement">Строка для замены.</param>
+        /// <returns>Возвращает строку с заменёнными на заданный текст пробелами.</returns>
+        public static string ReplaceWhitespace(this string input, string replacement)
+        {
+            return WhitespaceRegex.Replace(input, replacement);
+        }
+
         /// <summary>
         /// Проверить, что строка не является пустой или null.
         /// </summary>
