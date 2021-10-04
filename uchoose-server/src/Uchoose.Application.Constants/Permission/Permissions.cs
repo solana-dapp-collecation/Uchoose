@@ -283,6 +283,49 @@ namespace Uchoose.Application.Constants.Permission
         }
 
         /// <summary>
+        /// Тип слоя изображения NFT.
+        /// </summary>
+        [DisplayName("NFT Image Layer Types")]
+        [Description("NFT Image Layer Types Permissions")]
+        public static class NftImageLayerTypes
+        {
+            /// <summary>
+            /// Просмотр.
+            /// </summary>
+            public const string View = "Permissions.NftImageLayerTypes.View";
+
+            /// <summary>
+            /// Просмотр всех.
+            /// </summary>
+            public const string ViewAll = "Permissions.NftImageLayerTypes.ViewAll";
+
+            /// <summary>
+            /// Добавление.
+            /// </summary>
+            public const string Add = "Permissions.NftImageLayerTypes.Add";
+
+            /// <summary>
+            /// Обновление.
+            /// </summary>
+            public const string Update = "Permissions.NftImageLayerTypes.Update";
+
+            /// <summary>
+            /// Удаление.
+            /// </summary>
+            public const string Remove = "Permissions.NftImageLayerTypes.Remove";
+
+            /// <summary>
+            /// Экспорт.
+            /// </summary>
+            public const string Export = "Permissions.NftImageLayerTypes.Export";
+
+            /// <summary>
+            /// Импорт.
+            /// </summary>
+            public const string Import = "Permissions.NftImageLayerTypes.Import";
+        }
+
+        /// <summary>
         /// Basic авторизация к ресурсам сервера.
         /// </summary>
         [DisplayName("Basic Auth")]

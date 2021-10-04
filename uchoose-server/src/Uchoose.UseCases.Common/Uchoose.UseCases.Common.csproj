@@ -18,8 +18,19 @@
     <ProjectReference Include="..\Uchoose.Application.Constants\Uchoose.Application.Constants.csproj" />
     <ProjectReference Include="..\Uchoose.CurrentUserService.Interfaces\Uchoose.CurrentUserService.Interfaces.csproj" />
     <ProjectReference Include="..\Uchoose.DataAccess.Identity.Interfaces\Uchoose.DataAccess.Identity.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.DataAccess.Marketplace.Interfaces\Uchoose.DataAccess.Marketplace.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.Domain.Marketplace\Uchoose.Domain.Marketplace.csproj" />
     <ProjectReference Include="..\Uchoose.ExcelService.Interfaces\Uchoose.ExcelService.Interfaces.csproj" />
     <ProjectReference Include="..\Uchoose.SerializationService.Interfaces\Uchoose.SerializationService.Interfaces.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Marketplace\NftImageLayer\Commands\Validators\" />
+    <Folder Include="Features\Marketplace\NftImageLayer\EventHandlers\" />
+    <Folder Include="Features\Marketplace\NftImageLayer\Queries\Filters\" />
+    <Folder Include="Features\Marketplace\NftImageLayer\Queries\Responses\" />
+    <Folder Include="Features\Marketplace\NftImageLayer\Queries\Specifications\" />
+    <Folder Include="Features\Marketplace\NftImageLayer\Queries\Validators\" />
   </ItemGroup>
 
 </Project>

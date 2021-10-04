@@ -48,6 +48,7 @@ using Uchoose.CurrentUserService.Extensions;
 using Uchoose.DataAccess.Interfaces;
 using Uchoose.DataAccess.PostgreSql.Extensions;
 using Uchoose.DataAccess.PostgreSql.Identity.Extensions;
+using Uchoose.DataAccess.PostgreSql.Marketplace.Extensions;
 using Uchoose.DateTimeService.Extensions;
 using Uchoose.Domain.Identity.Exceptions;
 using Uchoose.Domain.Settings;
@@ -56,6 +57,8 @@ using Uchoose.ExcelService.Extensions;
 using Uchoose.IdentityService.Extensions;
 using Uchoose.LocalFileStorageService.Extensions;
 using Uchoose.MailService.Interfaces.Settings;
+using Uchoose.MongoDbFileStorageService.Extensions;
+using Uchoose.MongoDbFileStorageService.Settings;
 using Uchoose.RoleClaimService.Extensions;
 using Uchoose.RoleService.Extensions;
 using Uchoose.SerializationService.Extensions;
@@ -240,12 +243,13 @@ namespace Uchoose.Api.Common
         /// <returns>Возвращает <see cref="IServiceCollection"/>.</returns>
         private static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services
+                .AddSettings<MongoDbSettings>(configuration)
+                .AddMongoDbFileStorageService();
             services.AddIdentityServices(configuration);
             services.AddExcelService();
-            services
-                .AddLocalFileStorageService();
 
-                // .AddMongoDbFileStorageService(); // TODO - заменить на Mongo?
+            // services.AddLocalFileStorageService(); // TODO - выбирать из настроек? Или сделать фабрику.
 
             services.AddEventLogService();
 
@@ -285,8 +289,7 @@ namespace Uchoose.Api.Common
         private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddIdentityPersistence(configuration);
-
-            // services.AddNFTPersistence(configuration);
+            services.AddMarketplacePersistence(configuration);
 
             // TODO: добавить больше persistence
             return services;

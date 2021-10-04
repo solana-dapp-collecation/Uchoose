@@ -9,7 +9,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-using Uchoose.FileStorageService.Interfaces.Responses;
 using Uchoose.Utils.Contracts.Services;
 using Uchoose.Utils.Contracts.Uploading;
 using Uchoose.Utils.Enums;
@@ -26,10 +25,9 @@ namespace Uchoose.FileStorageService.Interfaces
         /// Получить файл из хранилища по его идентификатору.
         /// </summary>
         /// <param name="fileId">Идентификатор файла в хранилище.</param>
-        /// <param name="fileName">Имя файла.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/>.</param>
-        /// <returns>Возвращает файл из хранилища по его идентификатору.</returns>
-        Task<FileResponse> DownloadAsync(string fileId, string fileName, CancellationToken cancellationToken = default); // TODO - сделать ответ Result<>
+        /// <returns>Возвращает данные файла из хранилища по его идентификатору.</returns>
+        Task<byte[]> DownloadAsync(string fileId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Загрузить файл в хранилище.
@@ -39,7 +37,7 @@ namespace Uchoose.FileStorageService.Interfaces
         /// <param name="supportedFileType">Поддерживаемый тип файла.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/>.</param>
         /// <returns>Возвращает путь к загруженному файлу или его идентификатор в файловом хранилище.</returns>
-        Task<string> UploadAsync<T>(IFileUploadRequest request, FileType supportedFileType, CancellationToken cancellationToken = default) // TODO - сделать ответ Result<>
+        Task<string> UploadAsync<T>(IFileUploadRequest request, FileType supportedFileType, CancellationToken cancellationToken = default)
             where T : class;
     }
 }

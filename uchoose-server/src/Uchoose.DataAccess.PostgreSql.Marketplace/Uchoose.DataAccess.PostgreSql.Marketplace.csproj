@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>Uchoose.DataAccess.PostgreSql.Marketplace.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Uchoose.AuditService\Uchoose.AuditService.csproj" />
+    <ProjectReference Include="..\Uchoose.DataAccess.Marketplace.Interfaces\Uchoose.DataAccess.Marketplace.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.DataAccess.PostgreSql\Uchoose.DataAccess.PostgreSql.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Persistence\SeedData\nftImageLayerTypes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
