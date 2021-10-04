@@ -50,6 +50,11 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
         /// <example>Example</example>
         public string NftImageLayerUri { get; set; }
 
+        /*/// <summary>
+        /// Слой изображения NFT.
+        /// </summary>
+        public FileUploadRequest NftImageLayer { get; set; }*/
+
         /// <inheritdoc cref="Domain.Marketplace.Entities.NftImageLayer.ArtistDid"/>
         /// <example>Example</example>
         public string ArtistDid { get; set; }

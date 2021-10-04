@@ -15,6 +15,7 @@ using Uchoose.Domain.Abstractions;
 using Uchoose.Utils.Contracts.Common;
 using Uchoose.Utils.Contracts.Mappings;
 using Uchoose.Utils.Contracts.Properties;
+using Uchoose.Utils.Contracts.Uploading;
 
 namespace Uchoose.Domain.Marketplace.Events.NftImageLayer
 {
@@ -78,6 +79,12 @@ namespace Uchoose.Domain.Marketplace.Events.NftImageLayer
         /// <inheritdoc cref="Entities.NftImageLayer.NftImageLayerUri"/>
         [JsonInclude]
         public string NftImageLayerUri { get; private set; }
+
+        /*/// <summary>
+        /// Слой изображения NFT.
+        /// </summary>
+        [JsonInclude]
+        public FileUploadRequest NftImageLayer { get; private set; }*/
 
         /// <inheritdoc cref="Entities.NftImageLayer.ArtistDid"/>
         [JsonInclude]
