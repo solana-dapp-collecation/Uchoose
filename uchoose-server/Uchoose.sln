@@ -102,53 +102,55 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.TwilioSmsService", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.AuditService", "src\Uchoose.AuditService\Uchoose.AuditService.csproj", "{CF0279EF-A788-4EC7-8A59-32903DA917F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.DateTimeService", "src\Uchoose.DateTimeService\Uchoose.DateTimeService.csproj", "{7B627336-5CED-468E-9A93-B1792CAA0ACE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.DateTimeService", "src\Uchoose.DateTimeService\Uchoose.DateTimeService.csproj", "{7B627336-5CED-468E-9A93-B1792CAA0ACE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.EventLogService", "src\Uchoose.EventLogService\Uchoose.EventLogService.csproj", "{91C49AEA-5A91-49D7-A964-33B4E0FEE374}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.EventLogService", "src\Uchoose.EventLogService\Uchoose.EventLogService.csproj", "{91C49AEA-5A91-49D7-A964-33B4E0FEE374}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.ExcelService", "src\Uchoose.ExcelService\Uchoose.ExcelService.csproj", "{B9839308-D3ED-4C46-8677-EDA79B2D7B30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.ExcelService", "src\Uchoose.ExcelService\Uchoose.ExcelService.csproj", "{B9839308-D3ED-4C46-8677-EDA79B2D7B30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.LocalFileStorageService", "src\Uchoose.LocalFileStorageService\Uchoose.LocalFileStorageService.csproj", "{2719D9A5-3BF1-4BB8-B4E1-42873ED537E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.LocalFileStorageService", "src\Uchoose.LocalFileStorageService\Uchoose.LocalFileStorageService.csproj", "{2719D9A5-3BF1-4BB8-B4E1-42873ED537E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.SerializationService", "src\Uchoose.SerializationService\Uchoose.SerializationService.csproj", "{0CFFBB4B-3FA2-4DB1-BF0B-99530E3C232B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.SerializationService", "src\Uchoose.SerializationService\Uchoose.SerializationService.csproj", "{0CFFBB4B-3FA2-4DB1-BF0B-99530E3C232B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.TokenService.Interfaces", "src\Uchoose.TokenService.Interfaces\Uchoose.TokenService.Interfaces.csproj", "{1C5EFA33-C8CF-4852-8DC3-FB37C801B6A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.TokenService.Interfaces", "src\Uchoose.TokenService.Interfaces\Uchoose.TokenService.Interfaces.csproj", "{1C5EFA33-C8CF-4852-8DC3-FB37C801B6A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.UserService.Interfaces", "src\Uchoose.UserService.Interfaces\Uchoose.UserService.Interfaces.csproj", "{83011D8D-2A73-4F48-8B84-403CD4F396D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.UserService.Interfaces", "src\Uchoose.UserService.Interfaces\Uchoose.UserService.Interfaces.csproj", "{83011D8D-2A73-4F48-8B84-403CD4F396D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.UserClaimService.Interfaces", "src\Uchoose.UserClaimService.Interfaces\Uchoose.UserClaimService.Interfaces.csproj", "{076E52DC-EA1F-4394-8CD1-8646B53E609B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.UserClaimService.Interfaces", "src\Uchoose.UserClaimService.Interfaces\Uchoose.UserClaimService.Interfaces.csproj", "{076E52DC-EA1F-4394-8CD1-8646B53E609B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.RoleService.Interfaces", "src\Uchoose.RoleService.Interfaces\Uchoose.RoleService.Interfaces.csproj", "{52E4C319-E587-4711-9BFA-CD1BBF793D5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.RoleService.Interfaces", "src\Uchoose.RoleService.Interfaces\Uchoose.RoleService.Interfaces.csproj", "{52E4C319-E587-4711-9BFA-CD1BBF793D5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.RoleClaimService.Interfaces", "src\Uchoose.RoleClaimService.Interfaces\Uchoose.RoleClaimService.Interfaces.csproj", "{2BF2082C-6B13-4611-A1F5-4EEBB2A9749D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.RoleClaimService.Interfaces", "src\Uchoose.RoleClaimService.Interfaces\Uchoose.RoleClaimService.Interfaces.csproj", "{2BF2082C-6B13-4611-A1F5-4EEBB2A9749D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.IdentityService.Interfaces", "src\Uchoose.IdentityService.Interfaces\Uchoose.IdentityService.Interfaces.csproj", "{1F6E840B-7FC9-4027-83CD-B7B2ED188F3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.IdentityService.Interfaces", "src\Uchoose.IdentityService.Interfaces\Uchoose.IdentityService.Interfaces.csproj", "{1F6E840B-7FC9-4027-83CD-B7B2ED188F3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.TokenService", "src\Uchoose.TokenService\Uchoose.TokenService.csproj", "{21351C6F-1525-4437-B771-6E548B041C6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.TokenService", "src\Uchoose.TokenService\Uchoose.TokenService.csproj", "{21351C6F-1525-4437-B771-6E548B041C6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.UserService", "src\Uchoose.UserService\Uchoose.UserService.csproj", "{B5A85151-A55C-4774-A292-2C12C3F0AED2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.UserService", "src\Uchoose.UserService\Uchoose.UserService.csproj", "{B5A85151-A55C-4774-A292-2C12C3F0AED2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.UserClaimService", "src\Uchoose.UserClaimService\Uchoose.UserClaimService.csproj", "{61D8B1C2-CBD3-4389-9BA1-F5FFDC4AE2AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.UserClaimService", "src\Uchoose.UserClaimService\Uchoose.UserClaimService.csproj", "{61D8B1C2-CBD3-4389-9BA1-F5FFDC4AE2AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.RoleService", "src\Uchoose.RoleService\Uchoose.RoleService.csproj", "{DD771BBC-230D-44A9-AFB0-EF634039FDD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.RoleService", "src\Uchoose.RoleService\Uchoose.RoleService.csproj", "{DD771BBC-230D-44A9-AFB0-EF634039FDD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.RoleClaimService", "src\Uchoose.RoleClaimService\Uchoose.RoleClaimService.csproj", "{D3A42D26-5E87-48EF-A52C-6A0ADAF298D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.RoleClaimService", "src\Uchoose.RoleClaimService\Uchoose.RoleClaimService.csproj", "{D3A42D26-5E87-48EF-A52C-6A0ADAF298D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.IdentityService", "src\Uchoose.IdentityService\Uchoose.IdentityService.csproj", "{99440801-83A0-4968-AD7A-1CC862F5AB6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.IdentityService", "src\Uchoose.IdentityService\Uchoose.IdentityService.csproj", "{99440801-83A0-4968-AD7A-1CC862F5AB6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.UseCases.Common", "src\Uchoose.UseCases.Common\Uchoose.UseCases.Common.csproj", "{ABB773F4-CADF-4CD6-991D-4A937396F090}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.UseCases.Common", "src\Uchoose.UseCases.Common\Uchoose.UseCases.Common.csproj", "{ABB773F4-CADF-4CD6-991D-4A937396F090}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{63FB3A12-5C32-4D59-A71A-CA7F1B8842C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.Api.Common", "src\Uchoose.Api.Common\Uchoose.Api.Common.csproj", "{0733A16E-C5A5-4B69-974B-4F7682863DEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.Api.Common", "src\Uchoose.Api.Common\Uchoose.Api.Common.csproj", "{0733A16E-C5A5-4B69-974B-4F7682863DEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.Bootstrapper", "src\Uchoose.Bootstrapper\Uchoose.Bootstrapper.csproj", "{2054FB80-75D2-4510-8799-7DCE2033FCB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.Bootstrapper", "src\Uchoose.Bootstrapper\Uchoose.Bootstrapper.csproj", "{2054FB80-75D2-4510-8799-7DCE2033FCB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.Domain.Marketplace", "src\Uchoose.Domain.Marketplace\Uchoose.Domain.Marketplace.csproj", "{B749BD8D-D09C-4322-ADB4-8A4D45C5E328}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.Domain.Marketplace", "src\Uchoose.Domain.Marketplace\Uchoose.Domain.Marketplace.csproj", "{B749BD8D-D09C-4322-ADB4-8A4D45C5E328}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.DataAccess.Marketplace.Interfaces", "src\Uchoose.DataAccess.Marketplace.Interfaces\Uchoose.DataAccess.Marketplace.Interfaces.csproj", "{BBC9EC19-5FE9-4011-BC3E-BD9C089B2C94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.DataAccess.Marketplace.Interfaces", "src\Uchoose.DataAccess.Marketplace.Interfaces\Uchoose.DataAccess.Marketplace.Interfaces.csproj", "{BBC9EC19-5FE9-4011-BC3E-BD9C089B2C94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.DataAccess.PostgreSql.Marketplace", "src\Uchoose.DataAccess.PostgreSql.Marketplace\Uchoose.DataAccess.PostgreSql.Marketplace.csproj", "{66201BC1-7EEF-4DE6-AD73-55897A88E9DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.DataAccess.PostgreSql.Marketplace", "src\Uchoose.DataAccess.PostgreSql.Marketplace\Uchoose.DataAccess.PostgreSql.Marketplace.csproj", "{66201BC1-7EEF-4DE6-AD73-55897A88E9DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.MongoDbFileStorageService", "src\Uchoose.MongoDbFileStorageService\Uchoose.MongoDbFileStorageService.csproj", "{45C2B99B-FA4B-4BA2-A996-606B7422A579}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -332,6 +334,10 @@ Global
 		{66201BC1-7EEF-4DE6-AD73-55897A88E9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66201BC1-7EEF-4DE6-AD73-55897A88E9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66201BC1-7EEF-4DE6-AD73-55897A88E9DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45C2B99B-FA4B-4BA2-A996-606B7422A579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C2B99B-FA4B-4BA2-A996-606B7422A579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C2B99B-FA4B-4BA2-A996-606B7422A579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C2B99B-FA4B-4BA2-A996-606B7422A579}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -402,6 +408,7 @@ Global
 		{B749BD8D-D09C-4322-ADB4-8A4D45C5E328} = {0E049FA4-C290-4A6D-AE23-EDE6A3E37E0D}
 		{BBC9EC19-5FE9-4011-BC3E-BD9C089B2C94} = {5B9C4B1D-D8BF-49D5-95CB-1E89E412E91A}
 		{66201BC1-7EEF-4DE6-AD73-55897A88E9DB} = {1218FC97-4D34-44CE-A3BB-F71A0D1AE58B}
+		{45C2B99B-FA4B-4BA2-A996-606B7422A579} = {73B7F080-739C-4AEC-AAA6-23F6091CE05F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}

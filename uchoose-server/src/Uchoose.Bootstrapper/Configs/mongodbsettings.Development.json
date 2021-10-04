@@ -1,0 +1,6 @@
+{
+  "MongoDbSettings": {
+    "DatabaseName": "MongoStoreDb",
+    "ConnectionString": "mongodb://localhost:27017"
+  }
+}

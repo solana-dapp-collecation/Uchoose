@@ -83,6 +83,8 @@ namespace Uchoose.Bootstrapper
                             .AddJsonFile(Path.Combine(configsDirectory, "protectionsettings.json"), false, true)
                             .AddJsonFile(Path.Combine(configsDirectory, $"protectionsettings.{env}.json"), true, true)
                             .AddJsonFile(Path.Combine(configsDirectory, "localizationsettings.json"), false, true)
+                            .AddJsonFile(Path.Combine(configsDirectory, "mongodbsettings.json"), false, true)
+                            .AddJsonFile(Path.Combine(configsDirectory, $"mongodbsettings.{env}.json"), true, true)
                             .AddEnvironmentVariables();
 
                         // .AddUserSecrets()

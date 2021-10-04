@@ -57,6 +57,8 @@ using Uchoose.ExcelService.Extensions;
 using Uchoose.IdentityService.Extensions;
 using Uchoose.LocalFileStorageService.Extensions;
 using Uchoose.MailService.Interfaces.Settings;
+using Uchoose.MongoDbFileStorageService.Extensions;
+using Uchoose.MongoDbFileStorageService.Settings;
 using Uchoose.RoleClaimService.Extensions;
 using Uchoose.RoleService.Extensions;
 using Uchoose.SerializationService.Extensions;
@@ -241,12 +243,13 @@ namespace Uchoose.Api.Common
         /// <returns>Возвращает <see cref="IServiceCollection"/>.</returns>
         private static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services
+                .AddSettings<MongoDbSettings>(configuration)
+                .AddMongoDbFileStorageService();
             services.AddIdentityServices(configuration);
             services.AddExcelService();
-            services
-                .AddLocalFileStorageService();
 
-                // .AddMongoDbFileStorageService(); // TODO - заменить на Mongo?
+            // services.AddLocalFileStorageService(); // TODO - выбирать из настроек? Или сделать фабрику.
 
             services.AddEventLogService();
 

@@ -15,7 +15,6 @@ using System.Threading.Tasks;
 
 using Microsoft.Extensions.Localization;
 using Uchoose.FileStorageService.Interfaces;
-using Uchoose.FileStorageService.Interfaces.Responses;
 using Uchoose.Utils.Contracts.Services;
 using Uchoose.Utils.Contracts.Uploading;
 using Uchoose.Utils.Enums;
@@ -46,21 +45,14 @@ namespace Uchoose.LocalFileStorageService
         }
 
         /// <inheritdoc/>
-        public async Task<FileResponse> DownloadAsync(string fileId, string fileName, CancellationToken cancellationToken = default)
+        public async Task<byte[]> DownloadAsync(string fileId, CancellationToken cancellationToken = default)
         {
             string fileFullPath = Path.Combine(Directory.GetCurrentDirectory(), fileId.Replace("/", @"\"));
             byte[] fileBytes = Array.Empty<byte>();
-            await using (var stream = new FileStream(fileFullPath, FileMode.Open))
-            {
-                int count = await stream.ReadAsync(fileBytes, cancellationToken); // TODO - разобраться, почему не считывает файл
-            }
+            await using var stream = new FileStream(fileFullPath, FileMode.Open);
+            int count = await stream.ReadAsync(fileBytes, cancellationToken); // TODO - разобраться, почему не считывает файл
 
-            return new() // TODO - дле тестов пока так
-            {
-                Name = fileName,
-                FileType = FileType.Image,
-                Data = fileBytes
-            };
+            return fileBytes;
         }
 
         /// <inheritdoc/>
