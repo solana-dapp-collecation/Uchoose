@@ -1,18 +1,17 @@
 .topBarContainer {
-    height: 120px;
     text-align: center;
     width: 350px;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
+    z-index: 9999;
+    margin-top: -23px;
 }
 
 .topBarContainer button {
     background: #33ce33;
     border: none;
-    // color: rgba(0, 0, 0, 0.8);
     color: rgba(255,255,255,0.8);
-    // background: white;
     box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
     padding: 0.5rem 1.5rem;
     font-size: inherit;

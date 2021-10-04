@@ -2,9 +2,8 @@ import React from "react";
 import styles from "../styles/Home.module.css";
 import Head from "next/head";
 import {NavigationBar} from "./NavigationBar";
-
-const HEADER_LOGO = '/main-logo-2.png'
-const FOOTER_LOGO = '/main-logo.png'
+import {Footer} from "./Footer";
+import {HEADER_LOGO} from "../constants/constants";
 
 
 const Layout = ({children}: any) => {
@@ -21,18 +20,7 @@ const Layout = ({children}: any) => {
                 <main className={styles.main}>
                     {children}
                 </main>
-                <footer>
-                    <a
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Made by{' '}
-                        <span className={styles.logo}>
-                        <img src={FOOTER_LOGO} alt="LifeLoopTeam" style={{width: '120px', marginTop: '-15px'}}/>
-                    </span>
-                    </a>
-                </footer>
+            <Footer/>
             </div>
         </>
     );

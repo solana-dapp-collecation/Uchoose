@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Card, Tag, Divider, Rate, Button, Menu, Dropdown, Radio } from "antd";
+import { Card, Tag, Divider, Rate, Button, Menu, Dropdown } from "antd";
 import { createFromIconfontCN, CheckCircleOutlined, ShareAltOutlined, MoneyCollectOutlined } from '@ant-design/icons';
 import {Form, Modal, Input} from "antd";
 
@@ -65,7 +65,7 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
     };
 
     return (
-        <div style={{width: '1000px'}}>
+        <div>
             <Modal title="Co-create" visible={isCoCreateModalVisible} okText={'Buy'} onOk={handleCoCreateOk} onCancel={handleCancelCoCreate}>
                 <Form
                     name="cocreate"

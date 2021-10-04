@@ -6,7 +6,7 @@ import React, {useEffect, useState} from "react";
 import topBarStyles from '../styles/top-bar.module.scss';
 import "react-multi-carousel/lib/styles.css";
 import CustomCarouselWithCards from "../components/carousel-component/CustomCarouselComponent";
-import {Button, Form, Modal} from "antd";
+import {Form, Modal} from "antd";
 import {CollectionStreamSchema, CollectionsStreamSchema} from '../schemas/schemas';
 import {DEFINITION_OF_SCHEMA_1, DID_TOKEN_KEY} from '../constants/constants';
 import {createDefinition, publishSchema} from '@ceramicstudio/idx-tools';
@@ -23,6 +23,7 @@ import client from "@hapi/wreck";
 import {getPartOfIdToShow, getBase64} from "../utils/utils";
 import TagsCloudComponent from "../components/tags-cloud-component/TagsCloudComponent";
 import Roadmap from "../components/roadmap-component/Roadmap";
+import {Container, Button} from "react-bootstrap";
 
 
 const DB_STORAGE_NAME: string = 'main_db';
@@ -49,7 +50,9 @@ export const DBConfig = {
 
 // initDB(DBConfig);
 
-const Home: NextPage = () => {
+const Home: NextPage = ({articles}: any) => {
+
+    // console.log(articles);
 
     const ceramic = useCeramic();
     const [isAuthenticated, setAuthenticated] = useState(ceramic.isAuthenticated);
@@ -290,111 +293,123 @@ const Home: NextPage = () => {
     }
 
     return (
-        <>
-            {/*TODO. Have to be moved into separated component*/}
-            {/*Top bar*/}
-            <div className={topBarStyles.topBarContainer}>
-                <div className={styles.logo}
-                     style={{display: 'inline-block', verticalAlign: 'middle', marginRight: '10px'}}>
-                    <img src={HEADER_LOGO} alt="Uch∞se" style={{width: '100px'}}/>
+        <Container className="p-3" style={{marginTop: '100px'}}>
+            <>
+                {/*TODO. Tob bar have to be moved into separated component*/}
+                {/*Top bar*/}
+                <div className={topBarStyles.topBarContainer}>
+                    <div style={{display: 'inline-block', verticalAlign: 'middle', marginTop: '30px'}}>
+                        {renderButton()}
+                    </div>
                 </div>
-                <div style={{display: 'inline-block', verticalAlign: 'middle', marginTop: '30px'}}>
-                    {renderButton()}
-                </div>
-            </div>
-            {/*Main body*/}
-            <div>
-                <div className={topBarStyles.mainSearchBar}>
-                    <Search placeholder="Search items, collections and accounts" enterButton/>
-                </div>
+                {/*Main body*/}
                 <div>
-                    {/*TODO. Fix this one. Causing unexpected warnings*/}
-                    <CustomCarouselWithCards/>
-                </div>
-
-                <Divider orientation="left"/>
-
-                <div className={styles.grid} style={{marginTop: '0px'}}>
-                    <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
-                        <h2>Manage collections &rarr;</h2>
-                        <p>Use to create your dynamic collection with setting its properties.</p>
-                        <br/>
-                        <Button disabled={!isAuthenticated} href="/manage-collections" type="primary">Manage</Button>
+                    <div>
+                        {/*TODO. Fix this one. Causing unexpected warnings*/}
+                        <CustomCarouselWithCards/>
                     </div>
-                    <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
-                        <h2>Transactions &rarr;</h2>
-                        <p>See transactions history for all each collection.</p>
-                        <br/>
-                        <Button disabled={!isAuthenticated} type="primary">Transactions</Button>
+
+                    <Divider orientation="left"/>
+
+                    <div className={styles.grid} style={{marginTop: '0px'}}>
+                        <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
+                            <h2>Manage collections &rarr;</h2>
+                            <p>Use to create your dynamic collection with setting its properties.</p>
+                            <br/>
+                            <Button disabled={!isAuthenticated} href="/manage-collections"
+                                    variant="primary">Manage</Button>
+                        </div>
+                        <div className={`${styles.card} ${!isAuthenticated ? styles.cardDisabled : ''}`}>
+                            <h2>Transactions &rarr;</h2>
+                            <p>See transactions history for all each collection.</p>
+                            <br/>
+                            <Button disabled={!isAuthenticated} variant="primary">Transactions</Button>
+                        </div>
                     </div>
-                </div>
 
-                <Roadmap/>
+                    <Roadmap/>
 
-                <Divider orientation="left"><b>For testing (dev) - delete later</b></Divider>
-                <Button onClick={() => createTestSchema()}>Test Saving Schemas. No sense to press. Already created
-                    during auth</Button>
-                <Button onClick={() => saveIntoDb()}>Store to db. To be deleted. Just a stub</Button>
+                    <Divider orientation="center"><b>For testing (dev) - delete later</b></Divider>
+                    <div style={{textAlign: 'center'}}>
+                        <Button className="me-4" onClick={() => createTestSchema()}>Test Saving Schemas. No sense to press. Already
+                            created
+                            during auth</Button>
+                        <Button onClick={() => saveIntoDb()}>Store to db. To be deleted. Just a stub</Button>
+                    </div>
 
-                <Divider orientation="left"><b>Create collection</b></Divider>
-                <Button type="primary" onClick={showModal}>
-                    Create Collection
-                </Button>
-                <Modal title="Creating collection" visible={isModalVisible} okText={'Create'}
-                       onOk={handleCreateNewNFTCollection}
-                       onCancel={handleCancel}
-                       width={800}
-                >
-                    <Form
-                        name="basic"
-                        labelCol={{span: 8}}
-                        wrapperCol={{span: 16}}
-                        initialValues={{remember: true}}
-                        autoComplete="off"
+                    <Divider orientation="center"><b>Create collection</b></Divider>
+                    <div style={{textAlign: 'center'}}>
+                        <Button variant="primary" onClick={showModal}>
+                            Create Collection
+                        </Button>
+                    </div>
+                    <Modal title="Creating collection" visible={isModalVisible} okText={'Create'}
+                           onOk={handleCreateNewNFTCollection}
+                           onCancel={handleCancel}
+                           width={800}
                     >
-                        <Form.Item
-                            label="Collection Name"
-                            name="collectionName"
-                            rules={[{required: true, message: 'Please input Collection Name!'}]}
+                        <Form
+                            name="basic"
+                            labelCol={{span: 8}}
+                            wrapperCol={{span: 16}}
+                            initialValues={{remember: true}}
+                            autoComplete="off"
                         >
-                            <Input onChange={handleCollectionNameInput}/>
-                        </Form.Item>
-                        <Form.Item
-                            label="Quantity of Nft"
-                            name="quantityOfNft"
-                            rules={[{required: true, message: 'Please input Quantity of Nft!'}]}
-                        >
-                            <Input type="number" onChange={handleQuantityOfNFTsInput}/>
-                        </Form.Item>
-                        <Form.Item
-                            label="NFT width px"
-                            name="nftWidth"
-                            rules={[{required: true, message: 'Please fill in NFT width'}]}
-                        >
-                            <Input type="number" min={64} onChange={handleImgWidthInput}/>
-                        </Form.Item>
-                        <Form.Item
-                            label="NFT height px"
-                            name="nftHeight"
-                            rules={[{required: true, message: 'Please fill in NFT height'}]}
-                        >
-                            <Input type="number" min={64} onChange={handleImgHeightInput}/>
-                        </Form.Item>
-                        <input
-                            type="file"
-                            id="imageFile"
-                            name='imageFile'
-                            onChange={imageUpload}/>
-                    </Form>
-                    <TagsCloudComponent width={600} height={500}/>
-                </Modal>
-                <TagsCloudComponent width={1000} height={800}/>
-            </div>
-        </>
-    )
+                            <Form.Item
+                                label="Collection Name"
+                                name="collectionName"
+                                rules={[{required: true, message: 'Please input Collection Name!'}]}
+                            >
+                                <Input onChange={handleCollectionNameInput}/>
+                            </Form.Item>
+                            <Form.Item
+                                label="Quantity of Nft"
+                                name="quantityOfNft"
+                                rules={[{required: true, message: 'Please input Quantity of Nft!'}]}
+                            >
+                                <Input type="number" onChange={handleQuantityOfNFTsInput}/>
+                            </Form.Item>
+                            <Form.Item
+                                label="NFT width px"
+                                name="nftWidth"
+                                rules={[{required: true, message: 'Please fill in NFT width'}]}
+                            >
+                                <Input type="number" min={64} onChange={handleImgWidthInput}/>
+                            </Form.Item>
+                            <Form.Item
+                                label="NFT height px"
+                                name="nftHeight"
+                                rules={[{required: true, message: 'Please fill in NFT height'}]}
+                            >
+                                <Input type="number" min={64} onChange={handleImgHeightInput}/>
+                            </Form.Item>
+                            <input
+                                type="file"
+                                id="imageFile"
+                                name='imageFile'
+                                onChange={imageUpload}/>
+                        </Form>
+                        <TagsCloudComponent width={600} height={500}/>
+                    </Modal>
+                    <TagsCloudComponent width={1000} height={800}/>
+                </div>
+            </>
+        </Container>
+    );
 }
 
 export default Home
+
+export const getStaticProps = async () => {
+    // TODO. Add here logic that retrieves publicly available images from server. Change endpoint to images retriever
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=6`);
+    const articles = await res.json();
+    return {
+        props: {
+            articles
+        }
+    }
+}
 
 
 // /**
