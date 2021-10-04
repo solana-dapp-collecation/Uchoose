@@ -52,7 +52,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\Marketplace\ExtendedAttributes\" />
-    <Folder Include="Swagger\Examples\Marketplace\NftImageLayers\" />
   </ItemGroup>
 
 </Project>

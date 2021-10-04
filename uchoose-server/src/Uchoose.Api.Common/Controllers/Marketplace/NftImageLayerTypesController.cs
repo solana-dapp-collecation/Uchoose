@@ -67,9 +67,9 @@ namespace Uchoose.Api.Common.Controllers.Marketplace
         /// <summary>
         /// Получить данные типа слоя изображения NFT по его идентификатору.
         /// </summary>
-        /// <param name="filter">Фильтр для получения слоя изображения NFT.</param>
-        /// <returns>Возвращает данные слоя изображения NFT.</returns>
-        /// <response code="200">Возвращает данные слоя изображения NFT.</response>
+        /// <param name="filter">Фильтр для получения типа слоя изображения NFT.</param>
+        /// <returns>Возвращает данные типа слоя изображения NFT.</returns>
+        /// <response code="200">Возвращает данные типа слоя изображения NFT.</response>
         [MapToApiVersion("1")]
         [HttpGet("{id:guid}", Name = "GetNftImageLayerTypeById")]
         [Authorize(Policy = Application.Constants.Permission.Permissions.NftImageLayerTypes.View)]
