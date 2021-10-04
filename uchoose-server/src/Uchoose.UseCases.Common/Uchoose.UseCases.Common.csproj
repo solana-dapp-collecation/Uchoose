@@ -24,13 +24,4 @@
     <ProjectReference Include="..\Uchoose.SerializationService.Interfaces\Uchoose.SerializationService.Interfaces.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Marketplace\NftImageLayer\Commands\Validators\" />
-    <Folder Include="Features\Marketplace\NftImageLayer\EventHandlers\" />
-    <Folder Include="Features\Marketplace\NftImageLayer\Queries\Filters\" />
-    <Folder Include="Features\Marketplace\NftImageLayer\Queries\Responses\" />
-    <Folder Include="Features\Marketplace\NftImageLayer\Queries\Specifications\" />
-    <Folder Include="Features\Marketplace\NftImageLayer\Queries\Validators\" />
-  </ItemGroup>
-
 </Project>
