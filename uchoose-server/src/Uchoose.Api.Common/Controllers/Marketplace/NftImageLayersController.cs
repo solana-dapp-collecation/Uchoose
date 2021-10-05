@@ -214,9 +214,10 @@ namespace Uchoose.Api.Common.Controllers.Marketplace
         [SwaggerOperation(
             OperationId = "AddNftImageLayer",
             Tags = new[] { MarketplaceTag, NftImageLayersTag })]
+        [Consumes("multipart/form-data")]
         [ProducesResponseType(typeof(Result<Guid>), StatusCodes.Status201Created)]
         [SwaggerResponseExample(StatusCodes.Status201Created, typeof(ResultWithGuidIdResponseExample))]
-        public async Task<IActionResult> AddAsync(AddNftImageLayerCommand command)
+        public async Task<IActionResult> AddAsync([FromForm] AddNftImageLayerCommand command)
         {
             var result = await Mediator.Send(command);
             return CreatedAtRoute("GetNftImageLayerById", new { id = result.Data, version = ApiVersion }, result);
@@ -234,9 +235,10 @@ namespace Uchoose.Api.Common.Controllers.Marketplace
         [SwaggerOperation(
             OperationId = "UpdateNftImageLayer",
             Tags = new[] { MarketplaceTag, NftImageLayersTag })]
+        [Consumes("multipart/form-data")]
         [ProducesResponseType(typeof(Result<Guid>), StatusCodes.Status200OK)]
         [SwaggerResponseExample(StatusCodes.Status200OK, typeof(ResultWithGuidIdResponseExample))]
-        public async Task<IActionResult> UpdateAsync(UpdateNftImageLayerCommand command)
+        public async Task<IActionResult> UpdateAsync([FromForm] UpdateNftImageLayerCommand command)
         {
             return Ok(await Mediator.Send(command));
         }

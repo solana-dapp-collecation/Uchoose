@@ -145,6 +145,8 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
 
             if (command.NftImageLayer != null)
             {
+                // TODO - удалить старую картинку из MongoDb
+
                 nftImageLayer.NftImageLayerUri = await _fileStorageService.UploadAsync<Domain.Marketplace.Entities.NftImageLayer>(command.NftImageLayer, FileType.Image, cancellationToken);
             }
 

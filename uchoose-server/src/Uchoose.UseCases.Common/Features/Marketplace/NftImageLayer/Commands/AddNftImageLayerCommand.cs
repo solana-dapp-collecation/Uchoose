@@ -9,6 +9,7 @@
 using System;
 
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Uchoose.Utils.Attributes.Mappings;
 using Uchoose.Utils.Contracts.Logging;
 using Uchoose.Utils.Contracts.Mappings;
@@ -43,7 +44,7 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
         /// <summary>
         /// Слой изображения NFT.
         /// </summary>
-        public FileUploadRequest NftImageLayer { get; set; }
+        public IFormFile NftImageLayer { get; set; }
 
         /// <inheritdoc cref="Domain.Marketplace.Entities.NftImageLayer.ArtistDid"/>
         /// <example>Example</example>
