@@ -6,16 +6,11 @@
 // </copyright>
 // ------------------------------------------------------------------------------------------------------
 
-using System;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
 using System.Threading.Tasks;
 
-using AutoMapper.Internal;
 using Microsoft.EntityFrameworkCore;
 using Uchoose.Utils.Contracts.Common;
-using Uchoose.Utils.Contracts.Searching;
 using Uchoose.Utils.Exceptions;
 using Uchoose.Utils.Filters.Contracts;
 using Uchoose.Utils.Specifications;
@@ -69,11 +64,6 @@ namespace Uchoose.Utils.Extensions
             var secondaryResult = specification.IncludeStrings
                 .Aggregate(queryableResultWithIncludes, (current, include) => current.Include(include));
 
-            if (specification is SearchSpecification<TEntity> { SearchFilter: { } } searchSpecification)
-            {
-                secondaryResult = secondaryResult.Search(searchSpecification.SearchFilter);
-            }
-
             return secondaryResult.Where(specification.Criteria);
         }
 
@@ -87,34 +77,8 @@ namespace Uchoose.Utils.Extensions
         public static IQueryable<TEntity> Search<TEntity>(this IQueryable<TEntity> query, ISearchFilter search)
             where TEntity : class, IEntity
         {
-            if (search?.Fields.Count > 0 && search.Keyword.IsPresent() && typeof(TEntity).GetGenericInterface(typeof(ISearchable<,>)) != null)
-            {
-                var predicate = ExpressionExtensions.True<TEntity>();
-                var properties = typeof(TEntity)
-                    .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                    .Where(p => search.Fields
-                        .Any(field => string.Equals(p.Name, field, StringComparison.CurrentCultureIgnoreCase)));
-
-                foreach (var propertyInfo in properties)
-                {
-                    var parameter = Expression.Parameter(typeof(TEntity), "x");
-                    var property = Expression.Property(parameter, propertyInfo);
-                    var propertyAsObject = Expression.Convert(property, typeof(object));
-                    var nullCheck = Expression.NotEqual(propertyAsObject, Expression.Constant(null, typeof(object)));
-                    var propertyAsString = Expression.Call(property, nameof(ToString), null, null);
-                    var keywordExpression = Expression.Constant(search.Keyword);
-                    var contains = propertyInfo.PropertyType == typeof(string)
-                        ? Expression.Call(property, nameof(string.Contains), null, keywordExpression)
-                        : Expression.Call(propertyAsString, nameof(string.Contains), null, keywordExpression);
-                    var lambda = Expression.Lambda(Expression.AndAlso(nullCheck, contains), parameter);
-
-                    predicate = predicate.And((Expression<Func<TEntity, bool>>)lambda);
-                }
-
-                return query.Where(predicate);
-            }
-
-            return query;
+            var predicate = SearchSpecification<TEntity>.SearchPredicate(search);
+            return query.Where(predicate);
         }
     }
 }
