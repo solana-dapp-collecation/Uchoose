@@ -15,7 +15,6 @@ using Uchoose.Domain.Abstractions;
 using Uchoose.Utils.Contracts.Common;
 using Uchoose.Utils.Contracts.Mappings;
 using Uchoose.Utils.Contracts.Properties;
-using Uchoose.Utils.Contracts.Uploading;
 
 namespace Uchoose.Domain.Marketplace.Events.NftImageLayer
 {

@@ -39,5 +39,7 @@ namespace Uchoose.FileStorageService.Interfaces
         /// <returns>Возвращает путь к загруженному файлу или его идентификатор в файловом хранилище.</returns>
         Task<string> UploadAsync<T>(IFileUploadRequest request, FileType supportedFileType, CancellationToken cancellationToken = default)
             where T : class;
+
+        // TODO - добавить метод для удаления из файлового хранилища
     }
 }
