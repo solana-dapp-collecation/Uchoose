@@ -5,7 +5,7 @@ const {Step} = Steps;
 
 const Roadmap = () => (
     <>
-        <Divider orientation="center"><b>Roadmap. Move roadmap to separate component</b></Divider>
+        <Divider orientation="center"><b>Roadmap</b></Divider>
         <div style={{width: '400px', margin: '0 auto'}}>
             <Steps direction="vertical" current={1}>
                 <Step title="Finished" description="MVP."/>

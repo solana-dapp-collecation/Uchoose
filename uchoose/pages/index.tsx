@@ -3,7 +3,7 @@ import type {NextPage} from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import React, {useEffect, useState} from "react";
-import topBarStyles from '../styles/top-bar.module.scss';
+import topBarStyles from '../styles/top-bar.module.css';
 import "react-multi-carousel/lib/styles.css";
 import CustomCarouselWithCards from "../components/carousel-component/CustomCarouselComponent";
 import {Form, Modal} from "antd";
@@ -24,6 +24,9 @@ import {getPartOfIdToShow, getBase64} from "../utils/utils";
 import TagsCloudComponent from "../components/tags-cloud-component/TagsCloudComponent";
 import Roadmap from "../components/roadmap-component/Roadmap";
 import {Container, Button} from "react-bootstrap";
+import ImagesProcessorComponent from "../components/images-processor-component/ImagesProcessorComponent";
+import CustomImagesProcessorComponent from "../components/images-processor-component/CustomImagesProcessorComponent";
+import {FullyCustomImagesProcessorComponent} from "../components/images-processor-component/FullyCustomImagesProcessorComponent";
 
 
 const DB_STORAGE_NAME: string = 'main_db';
@@ -391,6 +394,9 @@ const Home: NextPage = ({articles}: any) => {
                         </Form>
                         <TagsCloudComponent width={600} height={500}/>
                     </Modal>
+                    {/*<ImagesProcessorComponent/>*/}
+                    {/*<CustomImagesProcessorComponent/>*/}
+                    <FullyCustomImagesProcessorComponent/>
                     <TagsCloudComponent width={1000} height={800}/>
                 </div>
             </>
