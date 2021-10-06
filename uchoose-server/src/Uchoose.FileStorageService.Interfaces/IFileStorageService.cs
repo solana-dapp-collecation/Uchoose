@@ -9,8 +9,8 @@
 using System.Threading;
 using System.Threading.Tasks;
 
+using Microsoft.AspNetCore.Http;
 using Uchoose.Utils.Contracts.Services;
-using Uchoose.Utils.Contracts.Uploading;
 using Uchoose.Utils.Enums;
 
 namespace Uchoose.FileStorageService.Interfaces
@@ -30,14 +30,24 @@ namespace Uchoose.FileStorageService.Interfaces
         Task<byte[]> DownloadAsync(string fileId, CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Удалить файл из хранилища по его идентификатору.
+        /// </summary>
+        /// <param name="fileId">Идентификатор файла в хранилище.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/>.</param>
+        /// <returns>Возвращает <see cref="Task"/>.</returns>
+        Task DeleteAsync(string fileId, CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Загрузить файл в хранилище.
         /// </summary>
         /// <typeparam name="T">Тип данных, для которых осуществляется загрузка.</typeparam>
-        /// <param name="request">Запрос на загрузку файла.</param>
+        /// <param name="file"><see cref="IFormFile"/>.</param>
         /// <param name="supportedFileType">Поддерживаемый тип файла.</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/>.</param>
         /// <returns>Возвращает путь к загруженному файлу или его идентификатор в файловом хранилище.</returns>
-        Task<string> UploadAsync<T>(IFileUploadRequest request, FileType supportedFileType, CancellationToken cancellationToken = default)
+        Task<string> UploadAsync<T>(IFormFile file, FileType supportedFileType, CancellationToken cancellationToken = default)
             where T : class;
+
+        // TODO - добавить метод для удаления из файлового хранилища
     }
 }

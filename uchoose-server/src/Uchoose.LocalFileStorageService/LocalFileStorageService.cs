@@ -13,10 +13,10 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
 using Uchoose.FileStorageService.Interfaces;
 using Uchoose.Utils.Contracts.Services;
-using Uchoose.Utils.Contracts.Uploading;
 using Uchoose.Utils.Enums;
 using Uchoose.Utils.Exceptions;
 using Uchoose.Utils.Extensions;
@@ -56,20 +56,33 @@ namespace Uchoose.LocalFileStorageService
         }
 
         /// <inheritdoc/>
-        public async Task<string> UploadAsync<T>(IFileUploadRequest request, FileType supportedFileType, CancellationToken cancellationToken = default)
+        public Task DeleteAsync(string fileId, CancellationToken cancellationToken = default)
+        {
+            string fileFullPath = Path.Combine(Directory.GetCurrentDirectory(), fileId.Replace("/", @"\"));
+            if (File.Exists(fileFullPath))
+            {
+                File.Delete(fileFullPath);
+            }
+
+            return Task.CompletedTask;
+        }
+
+        /// <inheritdoc/>
+        public async Task<string> UploadAsync<T>(IFormFile file, FileType supportedFileType, CancellationToken cancellationToken = default)
             where T : class
         {
-            if (request?.Data == null)
+            if (file == null)
             {
                 return string.Empty;
             }
 
-            if (!supportedFileType.GetDescriptionList().Contains(request.Extension))
+            string extension = new FileInfo(file.FileName).Extension;
+            if (!supportedFileType.GetDescriptionList().Contains(extension))
             {
                 throw new CustomException(_localizer["File Format Not Supported."], statusCode: HttpStatusCode.BadRequest);
             }
 
-            var streamData = new MemoryStream(request.Data);
+            await using var streamData = file.OpenReadStream();
             if (streamData.Length > 0)
             {
                 string folder = typeof(T)
@@ -97,9 +110,9 @@ namespace Uchoose.LocalFileStorageService
                     Directory.CreateDirectory(pathToSave);
                 }
 
-                string fileName = request.Name.Trim('"');
+                string fileName = file.Name.Trim('"');
                 fileName = fileName.ReplaceWhitespace("-");
-                fileName += request.Extension.Trim();
+                fileName += extension.Trim();
                 string fullPath = Path.Combine(pathToSave, fileName);
                 string dbPath = Path.Combine(folderName, fileName);
                 if (File.Exists(dbPath))

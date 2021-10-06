@@ -7,14 +7,13 @@
 // ------------------------------------------------------------------------------------------------------
 
 using System;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Microsoft.AspNetCore.Http;
 using Uchoose.FileStorageService.Interfaces;
 using Uchoose.MongoDbFileStorageService.Storage;
 using Uchoose.Utils.Contracts.Services;
-using Uchoose.Utils.Contracts.Uploading;
 using Uchoose.Utils.Enums;
 
 namespace Uchoose.MongoDbFileStorageService
@@ -45,13 +44,18 @@ namespace Uchoose.MongoDbFileStorageService
         }
 
         /// <inheritdoc/>
-        public async Task<string> UploadAsync<T>(IFileUploadRequest request, FileType supportedFileType, CancellationToken cancellationToken = default)
+        public async Task<string> UploadAsync<T>(IFormFile file, FileType supportedFileType, CancellationToken cancellationToken = default)
             where T : class
         {
-            await using var stream = new MemoryStream(request.Data);
-            var imageId = await _mongoDbStorage.GridFs.UploadFromStreamAsync(request.Name, stream, cancellationToken: cancellationToken);
+            var imageId = await _mongoDbStorage.GridFs.UploadFromStreamAsync(file.FileName, file.OpenReadStream(), cancellationToken: cancellationToken);
 
             return imageId.ToString();
+        }
+
+        /// <inheritdoc/>
+        public async Task DeleteAsync(string fileId, CancellationToken cancellationToken = default)
+        {
+            await _mongoDbStorage.GridFs.DeleteAsync(new(fileId), cancellationToken: cancellationToken);
         }
     }
 }

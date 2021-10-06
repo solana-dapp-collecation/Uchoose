@@ -26,6 +26,9 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands.Va
             RuleFor(request => request.Name)
                 .NotEmpty().WithMessage(_ => localizer["The '{PropertyName}' property value cannot be empty."]);
             RuleFor(request => request.ArtistDid)
+                .NotEmpty().WithMessage(_ => localizer["The '{PropertyName}' property value cannot be empty."])
+                .Must(x => x.StartsWith("did")).WithMessage(_ => localizer["The '{PropertyName}' property value should starts with 'did'."]);
+            RuleFor(request => request.NftImageLayer)
                 .NotEmpty().WithMessage(_ => localizer["The '{PropertyName}' property value cannot be empty."]);
         }
     }

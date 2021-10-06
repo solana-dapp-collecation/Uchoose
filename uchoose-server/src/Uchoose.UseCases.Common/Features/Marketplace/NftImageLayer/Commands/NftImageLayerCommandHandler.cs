@@ -27,8 +27,10 @@ using Uchoose.Domain.Marketplace.Events.NftImageLayer;
 using Uchoose.Domain.Marketplace.Exceptions;
 using Uchoose.ExcelService.Interfaces;
 using Uchoose.ExcelService.Interfaces.Requests;
+using Uchoose.FileStorageService.Interfaces;
 using Uchoose.Utils.Constants.Caching;
 using Uchoose.Utils.Contracts.Importing;
+using Uchoose.Utils.Enums;
 using Uchoose.Utils.Extensions;
 using Uchoose.Utils.Wrapper;
 
@@ -45,6 +47,7 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
     {
         private readonly IDistributedCache _cache;
         private readonly IExcelService _excelService;
+        private readonly IFileStorageService _fileStorageService;
         private readonly ICurrentUserService _currentUserService;
         private readonly IMarketplaceDbContext _context;
         private readonly IMapper _mapper;
@@ -62,6 +65,7 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
         /// <param name="nftImageLayerLocalizer"><see cref="IStringLocalizer{T}"/> для <see cref="NftImageLayer"/>.</param>
         /// <param name="cache"><see cref="IDistributedCache"/>.</param>
         /// <param name="excelService"><see cref="IExcelService"/>.</param>
+        /// <param name="fileStorageService"><see cref="IFileStorageService"/>.</param>
         /// <param name="currentUserService"><see cref="ICurrentUserService"/>.</param>
         public NftImageLayerCommandHandler(
             IMarketplaceDbContext context,
@@ -71,6 +75,7 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
             IStringLocalizer<Domain.Marketplace.Entities.NftImageLayer> nftImageLayerLocalizer,
             IDistributedCache cache,
             IExcelService excelService,
+            IFileStorageService fileStorageService,
             ICurrentUserService currentUserService)
         {
             _context = context;
@@ -80,6 +85,7 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
             _nftImageLayerLocalizer = nftImageLayerLocalizer;
             _cache = cache;
             _excelService = excelService;
+            _fileStorageService = fileStorageService;
             _currentUserService = currentUserService;
         }
 
@@ -88,16 +94,18 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
         public async Task<Result<Guid>> Handle(AddNftImageLayerCommand command, CancellationToken cancellationToken)
 #pragma warning restore RCS1046 // Asynchronous method name should end with 'Async'.
         {
-            // TODO - доработать (проверять в рамках одного DID)
             bool isNftImageLayerNameUsed = await _context.NftImageLayers
                 .AsNoTracking()
-                .AnyAsync(x => x.Name.Equals(command.Name), cancellationToken);
+                .AnyAsync(x => x.Name.Equals(command.Name) && x.ArtistDid.Equals(command.ArtistDid), cancellationToken);
             if (isNftImageLayerNameUsed)
             {
                 throw new EntityAlreadyExistsException<Guid, Domain.Marketplace.Entities.NftImageLayer>(nameof(Domain.Marketplace.Entities.NftImageLayer.Name), command.Name, _localizer);
             }
 
             var nftImageLayer = _mapper.Map<Domain.Marketplace.Entities.NftImageLayer>(command);
+
+            nftImageLayer.NftImageLayerUri = await _fileStorageService.UploadAsync<Domain.Marketplace.Entities.NftImageLayer>(command.NftImageLayer, FileType.Image, cancellationToken);
+
             nftImageLayer.AddDomainEvent(new NftImageLayerAddedEvent(nftImageLayer, string.Format(_localizer["NFT Image Layer '{0}' added."]!, nftImageLayer.Name)));
             await _context.NftImageLayers.AddAsync(nftImageLayer, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
@@ -125,16 +133,23 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
                 throw new EntityIsDeletedException<Guid, Domain.Marketplace.Entities.NftImageLayer>(_localizer);
             }
 
-            // TODO - доработать (проверять в рамках одного DID)
             bool isNftImageLayerNameUsed = await _context.NftImageLayers
                 .AsNoTracking()
-                .AnyAsync(x => x.Id != command.Id && x.Name.Equals(command.Name), cancellationToken);
+                .AnyAsync(x => x.Id != command.Id && x.Name.Equals(command.Name) && x.ArtistDid.Equals(command.ArtistDid), cancellationToken);
             if (isNftImageLayerNameUsed)
             {
                 throw new EntityAlreadyExistsException<Guid, Domain.Marketplace.Entities.NftImageLayer>(nameof(Domain.Marketplace.Entities.NftImageLayer.Name), command.Name, _localizer);
             }
 
             nftImageLayer = _mapper.Map(command, nftImageLayer);
+
+            if (command.NftImageLayer != null)
+            {
+                await _fileStorageService.DeleteAsync(nftImageLayer.NftImageLayerUri, cancellationToken);
+
+                nftImageLayer.NftImageLayerUri = await _fileStorageService.UploadAsync<Domain.Marketplace.Entities.NftImageLayer>(command.NftImageLayer, FileType.Image, cancellationToken);
+            }
+
             nftImageLayer.AddDomainEvent(new NftImageLayerUpdatedEvent(nftImageLayer, string.Format(_localizer["NFT Image Layer '{0}' updated."]!, nftImageLayer.Name)));
             _context.NftImageLayers.Update(nftImageLayer);
             await _context.SaveChangesAsync(cancellationToken);
@@ -147,7 +162,8 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
         public async Task<Result<Guid>> Handle(RemoveNftImageLayerCommand command, CancellationToken cancellationToken)
 #pragma warning restore RCS1046 // Asynchronous method name should end with 'Async'.
         {
-            var nftImageLayer = await _context.NftImageLayers.FirstOrDefaultAsync(ea => ea.Id == command.Id, cancellationToken);
+            // TODO - учитывать DID, чтобы можно было удалять только свои записи?
+            var nftImageLayer = await _context.NftImageLayers.FirstOrDefaultAsync(x => x.Id.Equals(command.Id), cancellationToken);
             if (nftImageLayer == null)
             {
                 throw new EntityNotFoundException<Guid, Domain.Marketplace.Entities.NftImageLayer>(command.Id, _localizer);
@@ -172,7 +188,10 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
                 throw new MarketplaceException(_localizer["NFT Image Layer Used In NFT Image Layer"], statusCode: HttpStatusCode.BadRequest);
             }*/
 
+            await _fileStorageService.DeleteAsync(nftImageLayer.NftImageLayerUri, cancellationToken);
+
             _context.NftImageLayers.Remove(nftImageLayer);
+
             nftImageLayer.AddDomainEvent(new NftImageLayerRemovedEvent(command.Id, nftImageLayer.Version, string.Format(_localizer["NFT Image Layer '{0}' deleted."], nftImageLayer.Name)));
             await _context.SaveChangesAsync(cancellationToken);
             await _cache.RemoveAsync(CacheKeys.Common.GetEntityByIdCacheKey<Guid, Domain.Marketplace.Entities.NftImageLayer>(command.Id), cancellationToken);

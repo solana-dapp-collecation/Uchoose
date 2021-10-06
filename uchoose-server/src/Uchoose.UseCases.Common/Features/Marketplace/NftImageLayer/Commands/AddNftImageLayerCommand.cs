@@ -9,10 +9,12 @@
 using System;
 
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Uchoose.Utils.Attributes.Mappings;
 using Uchoose.Utils.Contracts.Logging;
 using Uchoose.Utils.Contracts.Mappings;
 using Uchoose.Utils.Contracts.Properties;
+using Uchoose.Utils.Contracts.Uploading;
 using Uchoose.Utils.Wrapper;
 
 namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
@@ -39,11 +41,10 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
         /// <example>00000000-0000-0000-0000-000000000000</example>
         public Guid TypeId { get; set; }
 
-        // TODO - вместо этого нужно загружать изображение (и его имя, расширение)
-
-        /// <inheritdoc cref="Domain.Marketplace.Entities.NftImageLayer.NftImageLayerUri"/>
-        /// <example>Example</example>
-        public string NftImageLayerUri { get; set; }
+        /// <summary>
+        /// Слой изображения NFT.
+        /// </summary>
+        public IFormFile NftImageLayer { get; set; }
 
         /// <inheritdoc cref="Domain.Marketplace.Entities.NftImageLayer.ArtistDid"/>
         /// <example>Example</example>

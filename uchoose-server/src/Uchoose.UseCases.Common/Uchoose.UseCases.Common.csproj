@@ -21,6 +21,7 @@
     <ProjectReference Include="..\Uchoose.DataAccess.Marketplace.Interfaces\Uchoose.DataAccess.Marketplace.Interfaces.csproj" />
     <ProjectReference Include="..\Uchoose.Domain.Marketplace\Uchoose.Domain.Marketplace.csproj" />
     <ProjectReference Include="..\Uchoose.ExcelService.Interfaces\Uchoose.ExcelService.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.FileStorageService.Interfaces\Uchoose.FileStorageService.Interfaces.csproj" />
     <ProjectReference Include="..\Uchoose.SerializationService.Interfaces\Uchoose.SerializationService.Interfaces.csproj" />
   </ItemGroup>
 

@@ -79,6 +79,12 @@ namespace Uchoose.Domain.Marketplace.Events.NftImageLayer
         [JsonInclude]
         public string NftImageLayerUri { get; private set; }
 
+        /*/// <summary>
+        /// Слой изображения NFT.
+        /// </summary>
+        [JsonInclude]
+        public FileUploadRequest NftImageLayer { get; private set; }*/
+
         /// <inheritdoc cref="Entities.NftImageLayer.ArtistDid"/>
         [JsonInclude]
         public string ArtistDid { get; private set; }

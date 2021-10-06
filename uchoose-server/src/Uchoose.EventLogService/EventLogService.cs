@@ -137,9 +137,7 @@ namespace Uchoose.EventLogService
             queryable = ordering.IsPresent() ? queryable.OrderBy(ordering) : queryable.OrderByDescending(a => a.Timestamp);
 
             return await queryable
-                .Specify(dateRangeSpecification)
-                .Specify(searchSpecification)
-                .Specify(aggregateVersionRangeSpecification)
+                .Specify(dateRangeSpecification && searchSpecification && aggregateVersionRangeSpecification)
                 .ToPaginatedListAsync(request.PageNumber, request.PageSize);
         }
 

@@ -145,7 +145,7 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayerType.Command
         public async Task<Result<Guid>> Handle(RemoveNftImageLayerTypeCommand command, CancellationToken cancellationToken)
 #pragma warning restore RCS1046 // Asynchronous method name should end with 'Async'.
         {
-            var nftImageLayerType = await _context.NftImageLayerTypes.FirstOrDefaultAsync(ea => ea.Id == command.Id, cancellationToken);
+            var nftImageLayerType = await _context.NftImageLayerTypes.FirstOrDefaultAsync(x => x.Id == command.Id, cancellationToken);
             if (nftImageLayerType == null)
             {
                 throw new EntityNotFoundException<Guid, Domain.Marketplace.Entities.NftImageLayerType>(command.Id, _localizer);

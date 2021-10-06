@@ -8,7 +8,7 @@
 
 using Uchoose.Utils.Contracts.Uploading;
 
-namespace Uchoose.FileStorageService.Interfaces.Requests
+namespace Uchoose.Utils.Contracts.Uploading
 {
     /// <inheritdoc cref="IFileUploadRequest"/>
     public class FileUploadRequest :

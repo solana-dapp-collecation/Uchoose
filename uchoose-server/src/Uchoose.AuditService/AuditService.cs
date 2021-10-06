@@ -88,8 +88,7 @@ namespace Uchoose.AuditService
             queryable = ordering.IsPresent() ? queryable.OrderBy(ordering) : queryable.OrderByDescending(a => a.Id);
 
             return await queryable
-                .Specify(dateRangeSpecification)
-                .Specify(searchSpecification)
+                .Specify(dateRangeSpecification && searchSpecification)
                 .ToPaginatedListAsync(request.PageNumber, request.PageSize);
         }
 
