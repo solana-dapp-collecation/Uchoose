@@ -51,5 +51,11 @@ namespace Uchoose.MongoDbFileStorageService
 
             return imageId.ToString();
         }
+
+        /// <inheritdoc/>
+        public async Task DeleteAsync(string fileId, CancellationToken cancellationToken = default)
+        {
+            await _mongoDbStorage.GridFs.DeleteAsync(new(fileId), cancellationToken: cancellationToken);
+        }
     }
 }

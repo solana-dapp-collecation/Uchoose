@@ -145,7 +145,7 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
 
             if (command.NftImageLayer != null)
             {
-                // TODO - удалить старую картинку из MongoDb
+                await _fileStorageService.DeleteAsync(nftImageLayer.NftImageLayerUri, cancellationToken);
 
                 nftImageLayer.NftImageLayerUri = await _fileStorageService.UploadAsync<Domain.Marketplace.Entities.NftImageLayer>(command.NftImageLayer, FileType.Image, cancellationToken);
             }
@@ -188,9 +188,9 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayer.Commands
                 throw new MarketplaceException(_localizer["NFT Image Layer Used In NFT Image Layer"], statusCode: HttpStatusCode.BadRequest);
             }*/
 
-            _context.NftImageLayers.Remove(nftImageLayer);
+            await _fileStorageService.DeleteAsync(nftImageLayer.NftImageLayerUri, cancellationToken);
 
-            // TODO - добавить удаление картинки из MongoDb
+            _context.NftImageLayers.Remove(nftImageLayer);
 
             nftImageLayer.AddDomainEvent(new NftImageLayerRemovedEvent(command.Id, nftImageLayer.Version, string.Format(_localizer["NFT Image Layer '{0}' deleted."], nftImageLayer.Name)));
             await _context.SaveChangesAsync(cancellationToken);

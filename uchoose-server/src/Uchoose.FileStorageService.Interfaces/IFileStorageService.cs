@@ -30,6 +30,14 @@ namespace Uchoose.FileStorageService.Interfaces
         Task<byte[]> DownloadAsync(string fileId, CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Удалить файл из хранилища по его идентификатору.
+        /// </summary>
+        /// <param name="fileId">Идентификатор файла в хранилище.</param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/>.</param>
+        /// <returns>Возвращает <see cref="Task"/>.</returns>
+        Task DeleteAsync(string fileId, CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Загрузить файл в хранилище.
         /// </summary>
         /// <typeparam name="T">Тип данных, для которых осуществляется загрузка.</typeparam>

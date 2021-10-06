@@ -56,6 +56,18 @@ namespace Uchoose.LocalFileStorageService
         }
 
         /// <inheritdoc/>
+        public Task DeleteAsync(string fileId, CancellationToken cancellationToken = default)
+        {
+            string fileFullPath = Path.Combine(Directory.GetCurrentDirectory(), fileId.Replace("/", @"\"));
+            if (File.Exists(fileFullPath))
+            {
+                File.Delete(fileFullPath);
+            }
+
+            return Task.CompletedTask;
+        }
+
+        /// <inheritdoc/>
         public async Task<string> UploadAsync<T>(IFormFile file, FileType supportedFileType, CancellationToken cancellationToken = default)
             where T : class
         {
