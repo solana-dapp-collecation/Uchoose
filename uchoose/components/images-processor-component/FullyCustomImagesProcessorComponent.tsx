@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {fabric} from 'fabric';
 import styles from "../../styles/images-processor-component/images-processor-component.module.css";
 import {CIRCLE, FILL, LINE, RECTANGLE, STROKE, TEXT} from "./DeafultShapesComponent";
+import {getBase64} from "../../utils/utils";
 
 // http://fabricjs.com/events
 // http://fabricjs.com/articles/
@@ -152,6 +153,8 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady}: Props)
     const [selectedObjects, setSelectedObject] = useState<fabric.Object[]>([]);
     const [editor, setEditor] = useState(null);
 
+    const [currentLoadedImage, setCurrentLoadedImage] = useState<null | string>(null);
+
     useEffect(() => {
         const canvas = new fabric.Canvas(canvasEl.current)
         const setCurrentDimensions = () => {
@@ -166,8 +169,7 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady}: Props)
 
         window.addEventListener('resize', resizeCanvas, false)
 
-
-        console.log('%c init canvas','background-color: red');
+        console.log('%c init canvas', 'background-color: red');
         console.log(canvas);
         setCanvas(canvas);
         // onReady: (canvasReady: fabric.Canvas): void => {
@@ -233,17 +235,7 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady}: Props)
     //         : undefined
     // }
 
-    const onAddCircle = () => {
-        // @ts-ignore
-        canvas.add();
-    };
-
-    const onAddRectangle = () => {
-        // @ts-ignore
-        editor.addRectangle();
-    };
-
-    const onAddImage = () => {
+    const onAddImageFromUrl = () => {
         // fabric.Image.fromURL("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png", function (oImg) {
         //     editor?.canvas.add(oImg);
         //     editor?.canvas.on('mouse:down', function (options: any) {
@@ -253,7 +245,7 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady}: Props)
         //         console.log(options.e.clientX, options.e.clientY);
         //     });
         // });
-        fabric.Image.fromURL('https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', function(oImg) {
+        fabric.Image.fromURL('https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', function (oImg) {
             // @ts-ignore
             canvas.add(oImg);
         });
@@ -261,13 +253,60 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady}: Props)
         console.log(editor?.canvas);
     };
 
+    const onAddImage = () => {
+        fabric.Image.fromURL('https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', function (oImg) {
+            // @ts-ignore
+            canvas.add(oImg);
+        });
+        // @ts-ignore
+        console.log(editor?.canvas);
+    };
+
+    const imageUpload = (e: any) => {
+        const file = e.target.files[0];
+        getBase64(file).then(base64 => {
+            // console.log("file stored", base64);
+            // @ts-ignore
+            setCurrentLoadedImage(base64);
+            fabric.Image.fromURL(base64 as string, function (oImg) {
+                // @ts-ignore
+                oImg.on("selected", function(){alert(this.clipName);});
+                canvas?.add(oImg);
+                console.log(oImg);
+            });
+            // canvas?.on('mouse:move', function(options:any) {
+            //     console.log(options.e.clientX, options.e.clientY);
+            //     console.log(options);
+            // });
+        });
+
+        console.log(canvas);
+        console.log(canvas?.getActiveObject());
+        console.log(canvas?.getObjects());
+    };
+
+    const printImageData = () => {
+        // console.log(currentLoadedImage);
+        console.log(canvas);
+        console.log(canvas?.getActiveObject());
+        console.log(canvas?.getObjects());
+    }
+
     return (
-        <div ref={canvasElParent} className={styles.drawingCanvasArea}>
-            <button onClick={onAddCircle}>Add circle</button>
-            <button onClick={onAddRectangle}>Add Rectangle</button>
-            <button onClick={onAddImage}>Add Image</button>
-            <canvas ref={canvasEl}/>
-        </div>
+        <>
+            <label htmlFor="file-upload-from-url" className={styles.customFileUpload}>
+                <i className="fa fa-cloud-upload"/> Add Image From Url
+            </label>
+            <input id="file-upload-from-url" className={styles.customFileUploadInput} onClick={onAddImageFromUrl}/>
+            <label htmlFor="file-upload" className={styles.customFileUpload}>
+                <i className="fa fa-cloud-upload"/> Add Image
+            </label>
+            <input id="file-upload" type="file" className={styles.customFileUploadInput} onChange={imageUpload}/>
+            <button onClick={printImageData}>Print data</button>
+            <div ref={canvasElParent} className={styles.drawingCanvasArea}>
+                <canvas ref={canvasEl}/>
+            </div>
+        </>
     )
 }
 

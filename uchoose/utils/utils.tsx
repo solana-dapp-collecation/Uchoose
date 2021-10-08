@@ -34,7 +34,6 @@ export const getPartOfIdToShow = (): string => {
 // }
 
 export const getBase64 = (file:any) => {
-  console.log('get base 64');
   return new Promise((resolve,reject) => {
     const reader = new FileReader();
     reader.onload = () => resolve(reader.result);
