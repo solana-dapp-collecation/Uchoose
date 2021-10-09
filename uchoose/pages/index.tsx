@@ -397,8 +397,15 @@ const Home: NextPage = ({articles}: any) => {
                     </Modal>
                     {/*<ImagesProcessorComponent/>*/}
                     {/*<CustomImagesProcessorComponent/>*/}
-                    <FullyCustomImagesProcessorComponent editorWidth={1000} editorHeight={1000}/>
-                    <TagsCloudComponent width={1000} height={800}/>
+                    {/*// TODO. We need a list of different configuration for NFTS sizes.*/}
+                    {/*1. Predefined settings. For instance 128x128, 300x200, 512x512, 600x480 (bigger sizes requires*/}
+                    {/*enhancing of the editor) 1920x1080, 2560x1440, 3440x1440, 3840x2160*/}
+                    {/*2. We cannot allow users to setup size of an image completely. There should be some restriction. Like not*/}
+                    {/*less than 128x128 pixels, not bigger than 4K*/}
+                    {/*3. Depending on this restriction we should separate areas of head, hands, body and legs correspondingly*/}
+                    <FullyCustomImagesProcessorComponent editorWidth={512} editorHeight={256}/>
+                    {/*TODO. Uncomment to see cloud of tags*/}
+                    {/*<TagsCloudComponent width={1000} height={800}/>*/}
                 </div>
             </>
         </Container>

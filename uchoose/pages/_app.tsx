@@ -9,6 +9,7 @@ import "antd/dist/antd.css";
 // @ts-ignore
 import Layout from '../components/Layout';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const web3Service = new Web3Service({
     network: "rinkeby",
