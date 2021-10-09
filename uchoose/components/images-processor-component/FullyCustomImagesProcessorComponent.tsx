@@ -120,26 +120,17 @@ interface FabricJSEditorState {
     editor?: FabricJSEditor
 }
 
-interface FabricJSEditorHook extends FabricJSEditorState {
-    selectedObjects?: fabric.Object[]
-    onReady: (canvas: fabric.Canvas) => void
-}
-
-interface FabricJSEditorHookProps {
-    defaultFillColor?: string
-    defaultStrokeColor?: string
-    scaleStep?: number
-}
-
 export interface Props {
     className?: string
     onReady?: (canvas: fabric.Canvas) => void
+    editorWidth: number
+    editorHeight: number
 }
 
 /**
  * Fabric canvas as component
  */
-export const FullyCustomImagesProcessorComponent = ({className, onReady}: Props) => {
+export const FullyCustomImagesProcessorComponent = ({className, onReady, editorWidth, editorHeight}: Props) => {
     const scaleStep = 1;
     const defaultFillColor: string = 'rgba(255, 255, 255, 0.0)';
     const defaultStrokeColor: string = 'rgba(255, 255, 255, 0.0)';
@@ -270,14 +261,17 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady}: Props)
             setCurrentLoadedImage(base64);
             fabric.Image.fromURL(base64 as string, function (oImg) {
                 // @ts-ignore
-                oImg.on("selected", function(){alert(this.clipName);});
+                oImg.on("selected", function () {
+                    console.log('it\'s selected')
+                });
                 canvas?.add(oImg);
                 console.log(oImg);
             });
-            // canvas?.on('mouse:move', function(options:any) {
-            //     console.log(options.e.clientX, options.e.clientY);
-            //     console.log(options);
-            // });
+            canvas?.on('object:moving', function (options: any) {
+                console.log(options.e.clientX, options.e.clientY);
+                console.log(options);
+                console.log('name1');
+            });
         });
 
         console.log(canvas);
@@ -293,7 +287,8 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady}: Props)
     }
 
     return (
-        <>
+        <div>
+            <h1>Editor panel</h1>
             <label htmlFor="file-upload-from-url" className={styles.customFileUpload}>
                 <i className="fa fa-cloud-upload"/> Add Image From Url
             </label>
@@ -303,66 +298,10 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady}: Props)
             </label>
             <input id="file-upload" type="file" className={styles.customFileUploadInput} onChange={imageUpload}/>
             <button onClick={printImageData}>Print data</button>
-            <div ref={canvasElParent} className={styles.drawingCanvasArea}>
+            <div ref={canvasElParent} className={styles.drawingCanvasArea} style={{}}>
                 <canvas ref={canvasEl}/>
             </div>
-        </>
+        </div>
     )
 }
 
-// export default function FullyCustomImagesProcessorComponent() {
-//
-//     useEffect(() => {
-//         // const bindEvents = (canvas: fabric.Canvas) => {
-//         //     canvas.on('selection:cleared', () => {
-//         //         setSelectedObject([])
-//         //     })
-//         //     canvas.on('selection:created', (e: any) => {
-//         //         setSelectedObject(e.selected)
-//         //     })
-//         //     canvas.on('selection:updated', (e: any) => {
-//         //         setSelectedObject(e.selected)
-//         //     })
-//         // }
-//         // if (canvas) {
-//         //     bindEvents(canvas)
-//         // }
-//         console.log(editor?.canvas);
-//         initCanvasData();
-//     }, []);
-//
-//     const initCanvasData = () => {
-//         console.log(editor);
-//     }
-//
-//     const onAddCircle = () => {
-//         editor.addCircle();
-//     };
-//
-//     const onAddRectangle = () => {
-//         editor.addRectangle();
-//     };
-//
-//     const onAddImage = () => {
-//         fabric.Image.fromURL("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png", function (oImg) {
-//             editor?.canvas.add(oImg);
-//             editor?.canvas.on('mouse:down', function (options: any) {
-//                 console.log(options.e.clientX, options.e.clientY);
-//             });
-//             editor?.canvas.on('mouse:move', function (options: any) {
-//                 console.log(options.e.clientX, options.e.clientY);
-//             });
-//         });
-//         console.log(editor?.canvas);
-//     };
-//
-//     return (
-//         <div>
-//             <h1>FabricJS React Sample</h1>
-//             <button onClick={onAddCircle}>Add circle</button>
-//             <button onClick={onAddRectangle}>Add Rectangle</button>
-//             <button onClick={onAddImage}>Add Image</button>
-//             <FabricJSCanvas className={styles.drawingCanvasArea} onReady={onReady}/>
-//         </div>
-//     );
-// }

@@ -1,6 +1,6 @@
 .drawingCanvasArea {
-    height: 800px;
-    background-color: red;
+    background-color: #eaeaea;
+    border: 1px solid black;
 }
 
 .customFileUploadInput {

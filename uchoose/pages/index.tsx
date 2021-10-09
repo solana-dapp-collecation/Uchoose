@@ -334,7 +334,8 @@ const Home: NextPage = ({articles}: any) => {
 
                     <Divider orientation="center"><b>For testing (dev) - delete later</b></Divider>
                     <div style={{textAlign: 'center'}}>
-                        <Button className="me-4" onClick={() => createTestSchema()}>Test Saving Schemas. No sense to press. Already
+                        <Button className="me-4" onClick={() => createTestSchema()}>Test Saving Schemas. No sense to
+                            press. Already
                             created
                             during auth</Button>
                         <Button onClick={() => saveIntoDb()}>Store to db. To be deleted. Just a stub</Button>
@@ -396,7 +397,7 @@ const Home: NextPage = ({articles}: any) => {
                     </Modal>
                     {/*<ImagesProcessorComponent/>*/}
                     {/*<CustomImagesProcessorComponent/>*/}
-                    <FullyCustomImagesProcessorComponent/>
+                    <FullyCustomImagesProcessorComponent editorWidth={1000} editorHeight={1000}/>
                     <TagsCloudComponent width={1000} height={800}/>
                 </div>
             </>
