@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {fabric} from 'fabric';
-import styles from "../../styles/images-processor-component/images-processor-component.module.css";
-import {CIRCLE, FILL, LINE, RECTANGLE, STROKE, TEXT} from "./DeafultShapesComponent";
+import styles from "../../styles/nft-editor-component/nft-editor-component.module.css";
+import {FILL, STROKE} from "./DeafultShapesComponent";
 import {getBase64} from "../../utils/utils";
 
 // http://fabricjs.com/events
@@ -16,117 +16,6 @@ import {getBase64} from "../../utils/utils";
 // TODO. to add ability to save image as background
 // https://stackoverflow.com/questions/44010057/add-background-image-with-fabric-js
 
-interface FabricJSEditor {
-    canvas: fabric.Canvas
-    addCircle: () => void
-    addRectangle: () => void
-    addLine: () => void
-    addText: (text: string) => void
-    updateText: (text: string) => void
-    deleteAll: () => void
-    deleteSelected: () => void
-    fillColor: string
-    strokeColor: string
-    setFillColor: (color: string) => void
-    setStrokeColor: (color: string) => void
-    zoomIn: () => void
-    zoomOut: () => void
-}
-
-/**
- * Creates editor
- */
-const buildEditor = (
-    canvas: fabric.Canvas,
-    fillColor: string,
-    strokeColor: string,
-    _setFillColor: (color: string) => void,
-    _setStrokeColor: (color: string) => void,
-    scaleStep: number
-): FabricJSEditor => {
-    return {
-        canvas,
-        addCircle: () => {
-            const object = new fabric.Circle({
-                ...CIRCLE,
-                fill: fillColor,
-                stroke: strokeColor
-            })
-            canvas.add(object)
-        },
-        addRectangle: () => {
-            const object = new fabric.Rect({
-                ...RECTANGLE,
-                fill: fillColor,
-                stroke: strokeColor
-            })
-            canvas.add(object)
-        },
-        addLine: () => {
-            const object = new fabric.Line(LINE.points, {
-                ...LINE.options,
-                stroke: strokeColor
-            })
-            canvas.add(object)
-        },
-        addText: (text: string) => {
-            // use stroke in text fill, fill default is most of the time transparent
-            const object = new fabric.Textbox(text, {...TEXT, fill: strokeColor})
-            object.set({text: text})
-            canvas.add(object)
-        },
-        updateText: (text: string) => {
-            const objects: any[] = canvas.getActiveObjects()
-            if (objects.length && objects[0].type === TEXT.type) {
-                const textObject: fabric.Textbox = objects[0]
-                textObject.set({text})
-                canvas.renderAll()
-            }
-        },
-        deleteAll: () => {
-            canvas.getObjects().forEach((object) => canvas.remove(object))
-            canvas.discardActiveObject()
-            canvas.renderAll()
-        },
-        deleteSelected: () => {
-            canvas.getActiveObjects().forEach((object) => canvas.remove(object))
-            canvas.discardActiveObject()
-            canvas.renderAll()
-        },
-        fillColor,
-        strokeColor,
-        setFillColor: (fill: string) => {
-            _setFillColor(fill)
-            canvas.getActiveObjects().forEach((object) => object.set({fill}))
-            canvas.renderAll()
-        },
-        setStrokeColor: (stroke: string) => {
-            _setStrokeColor(stroke)
-            canvas.getActiveObjects().forEach((object) => {
-                if (object.type === TEXT.type) {
-                    // use stroke in text fill
-                    object.set({fill: stroke})
-                    return
-                }
-                object.set({stroke})
-            })
-            canvas.renderAll()
-        },
-        zoomIn: () => {
-            const zoom = canvas.getZoom()
-            canvas.setZoom(zoom / scaleStep)
-        },
-        zoomOut: () => {
-            const zoom = canvas.getZoom()
-            canvas.setZoom(zoom * scaleStep)
-        }
-    }
-}
-
-interface FabricJSEditorState {
-    editor?: FabricJSEditor
-}
-
 export interface Props {
     className?: string
     onReady?: (canvas: fabric.Canvas) => void
@@ -137,7 +26,7 @@ export interface Props {
 /**
  * Fabric canvas as component
  */
-export const FullyCustomImagesProcessorComponent = ({className, onReady, editorWidth, editorHeight}: Props) => {
+export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeight}: Props) => {
     const scaleStep = 1;
     const defaultFillColor: string = 'rgba(255, 255, 255, 0.0)';
     const defaultStrokeColor: string = 'rgba(255, 255, 255, 0.0)';
@@ -186,6 +75,7 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady, editorW
         }
     }, [])
 
+
     useEffect(() => {
         const bindEvents = (canvas: fabric.Canvas) => {
             canvas.on('selection:cleared', () => {
@@ -199,7 +89,6 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady, editorW
             })
             // canvas.on()
         }
-        console.log('canvas???');
         if (canvas) {
             console.log('initializing editor');
             bindEvents(canvas);
@@ -211,7 +100,7 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady, editorW
         console.log('image upload');
         console.log(e);
         console.log('---');
-        if (!e || !e.target || !e.target.files[0]){
+        if (!e || !e.target || !e.target.files[0]) {
             console.log('File is empty');
             return;
         }
@@ -237,8 +126,6 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady, editorW
         console.log(canvas);
         console.log(canvas?.getActiveObject());
         console.log(canvas?.getObjects());
-        // clear files value in input after load
-        // e.target.value = null;
     };
 
     const printImageData = () => {
@@ -281,7 +168,12 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady, editorW
             canvas?.loadFromJSON(canvasStateBeforeSave, canvas.renderAll.bind(canvas));
         }, 100);
         console.log('%c ---', 'background-color: yellow');
+    }
 
+    const setBackgroundColor = (color: any) => {
+        console.log(color);
+        // canvas.backgroundColor = 'red';
+        // canvas.renderAll();
     }
 
     return (
@@ -317,11 +209,16 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady, editorW
                            onChange={(e) => imageUpload(e, 'body')}/>
                 </div>
                 <div>
-                    <button onClick={printImageData}>Print data to console (for devs)</button>
+                    <label htmlFor="set-background-color" className={styles.customFileUpload}>
+                        Set background color
+                    </label>
+                    <input style={{marginLeft: '10px', paddingTop: '2px', height: '20px'}} type="color"
+                           onChange={(e) => setBackgroundColor(e.target.value)}/>
                 </div>
+
                 <div>
                     <label htmlFor="save-to-json" className={styles.customFileUpload}>
-                        <i className="bi bi-check"/> Save to json
+                        <i className="bi bi-check"/> Create image
                     </label>
                     <input id="save-to-json" className={styles.customFileUploadInput}
                            onClick={saveToJson}/>
@@ -333,59 +230,17 @@ export const FullyCustomImagesProcessorComponent = ({className, onReady, editorW
                     <input id="restore-canvas" className={styles.customFileUploadInput}
                            onClick={restoreCanvasFromJson}/>
                 </div>
-                <div style={{marginTop: '10px'}}>
+                <div>
                     <label htmlFor="return-to-clean-canvas" className={styles.customFileUpload}>
                         <i className="bi bi-bucket"/> Return to clean canvas
                     </label>
                     <input id="return-to-clean-canvas" className={styles.customFileUploadInput}
                            onClick={clearCanvas}/>
                 </div>
+                <div style={{marginTop: '10px'}}>
+                    <button onClick={printImageData}>Print data to console (for devs)</button>
+                </div>
             </div>
         </div>
     )
 }
-
-// return {
-//     selectedObjects,
-//     // onReady: (canvasReady: fabric.Canvas): void => {
-//     //     console.log('Fabric canvas ready')
-//     //     setCanvas(canvasReady)
-//     // },
-//     editor: canvas
-//         ? buildEditor(
-//             canvas,
-//             fillColor,
-//             strokeColor,
-//             setFillColor,
-//             setStrokeColor,
-//             scaleStep
-//         )
-//         : undefined
-// }
-
-// const onAddImageFromUrl = () => {
-//     // fabric.Image.fromURL("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png", function (oImg) {
-//     //     editor?.canvas.add(oImg);
-//     //     editor?.canvas.on('mouse:down', function (options: any) {
-//     //         console.log(options.e.clientX, options.e.clientY);
-//     //     });
-//     //     editor?.canvas.on('mouse:move', function (options: any) {
-//     //         console.log(options.e.clientX, options.e.clientY);
-//     //     });
-//     // });
-//     fabric.Image.fromURL('https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', function (oImg) {
-//         // @ts-ignore
-//         canvas.add(oImg);
-//     });
-//     // @ts-ignore
-//     console.log(editor?.canvas);
-// };
-//
-// const onAddImage = () => {
-//     fabric.Image.fromURL('https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', function (oImg) {
-//         // @ts-ignore
-//         canvas.add(oImg);
-//     });
-//     // @ts-ignore
-//     console.log(editor?.canvas);
-// };

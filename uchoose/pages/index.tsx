@@ -27,6 +27,7 @@ import {Container, Button} from "react-bootstrap";
 import ImagesProcessorComponent from "../components/images-processor-component/ImagesProcessorComponent";
 import CustomImagesProcessorComponent from "../components/images-processor-component/CustomImagesProcessorComponent";
 import {FullyCustomImagesProcessorComponent} from "../components/images-processor-component/FullyCustomImagesProcessorComponent";
+import {NFTEditorComponent} from "../components/images-processor-component/NFTEditorComponent";
 
 
 const DB_STORAGE_NAME: string = 'main_db';
@@ -397,13 +398,8 @@ const Home: NextPage = ({articles}: any) => {
                     </Modal>
                     {/*<ImagesProcessorComponent/>*/}
                     {/*<CustomImagesProcessorComponent/>*/}
-                    {/*// TODO. We need a list of different configuration for NFTS sizes.*/}
-                    {/*1. Predefined settings. For instance 128x128, 300x200, 512x512, 600x480 (bigger sizes requires*/}
-                    {/*enhancing of the editor) 1920x1080, 2560x1440, 3440x1440, 3840x2160*/}
-                    {/*2. We cannot allow users to setup size of an image completely. There should be some restriction. Like not*/}
-                    {/*less than 128x128 pixels, not bigger than 4K*/}
-                    {/*3. Depending on this restriction we should separate areas of head, hands, body and legs correspondingly*/}
-                    <FullyCustomImagesProcessorComponent editorWidth={512} editorHeight={256}/>
+                    {/*<FullyCustomImagesProcessorComponent editorWidth={600} editorHeight={300}/>*/}
+                    <NFTEditorComponent editorWidth={600} editorHeight={300}/>
                     {/*TODO. Uncomment to see cloud of tags*/}
                     {/*<TagsCloudComponent width={1000} height={800}/>*/}
                 </div>
