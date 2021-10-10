@@ -3,6 +3,8 @@ import {fabric} from 'fabric';
 import styles from "../../styles/nft-editor-component/nft-editor-component.module.css";
 import {FILL, STROKE} from "./DeafultShapesComponent";
 import {getBase64} from "../../utils/utils";
+//@ts-ignore
+import uuid from 'react-uuid';
 
 // http://fabricjs.com/events
 // http://fabricjs.com/articles/
@@ -16,11 +18,17 @@ import {getBase64} from "../../utils/utils";
 // TODO. to add ability to save image as background
 // https://stackoverflow.com/questions/44010057/add-background-image-with-fabric-js
 
-export interface Props {
+interface Props {
     className?: string
     onReady?: (canvas: fabric.Canvas) => void
     editorWidth: number
     editorHeight: number
+}
+
+interface ILayer {
+    id: string,
+    name: string,
+    src: string | null,
 }
 
 /**
@@ -28,10 +36,11 @@ export interface Props {
  */
 export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeight}: Props) => {
     const scaleStep = 1;
-    const defaultFillColor: string = 'rgba(255, 255, 255, 0.0)';
+    const defaultFillColor: string = 'rgba(155, 155, 155, 0.5)';
     const defaultStrokeColor: string = 'rgba(255, 255, 255, 0.0)';
     const [canvas, setCanvas] = useState<null | fabric.Canvas>(null);
     const [fillColor, setFillColor] = useState<string>(defaultFillColor || FILL);
+    const [backgroundColor, setBackgroundColor] = useState<string>('#FFFFFF');
     const [strokeColor, setStrokeColor] = useState<string>(
         defaultStrokeColor || STROKE
     );
@@ -43,8 +52,11 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
     const [currentLoadedImage, setCurrentLoadedImage] = useState<null | string>(null);
     const [canvasStateBeforeSave, setCanvasStateBeforeSave] = useState<undefined | string>();
 
+    const [listOfLayers, setListOfLayers] = useState<Array<ILayer>>([]);
+
     // TODO. Get info about parts/properties of image
     useEffect(() => {
+        console.log('use effect invoked');
         const canvas = new fabric.Canvas(canvasEl.current);
         const setCurrentDimensions = () => {
             canvas.setHeight(canvasElParent.current?.clientHeight || 0)
@@ -55,11 +67,10 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
             setCurrentDimensions();
         }
         setCurrentDimensions();
-
         window.addEventListener('resize', resizeCanvas, false);
 
-        console.log('%c init canvas', 'background-color: red');
-        console.log(canvas);
+        canvas.backgroundColor = backgroundColor;
+        canvas.renderAll();
         setCanvas(canvas);
         // onReady: (canvasReady: fabric.Canvas): void => {
         //         console.log('Fabric canvas ready')
@@ -75,7 +86,6 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
         }
     }, [])
 
-
     useEffect(() => {
         const bindEvents = (canvas: fabric.Canvas) => {
             canvas.on('selection:cleared', () => {
@@ -90,9 +100,7 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
             // canvas.on()
         }
         if (canvas) {
-            console.log('initializing editor');
             bindEvents(canvas);
-            console.log('initialization finished');
         }
     }, [canvas])
 
@@ -151,13 +159,7 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
         const test2 = canvas?.toDatalessJSON();
         console.log(JSON.stringify(test2));
         console.log('%c ---', 'background-color: yellow');
-
         setCanvasStateBeforeSave(test1);
-        // clearCanvas();
-        // setTimeout(() => {
-        //     console.log('trying to restore canvas');
-        //     canvas?.loadFromJSON(test1, canvas.renderAll.bind(canvas));
-        // }, 3000);
     }
 
     const restoreCanvasFromJson = () => {
@@ -170,10 +172,44 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
         console.log('%c ---', 'background-color: yellow');
     }
 
-    const setBackgroundColor = (color: any) => {
-        console.log(color);
-        // canvas.backgroundColor = 'red';
-        // canvas.renderAll();
+    const onChangePalette = (color: any) => {
+        canvas!.backgroundColor = color;
+        canvas?.renderAll();
+    }
+
+    const renderLayersPart = () => {
+        if (listOfLayers.length === 0) {
+            return (
+                <>
+                    No layers for now
+                </>
+            )
+        }
+        return listOfLayers.map((layerItem: any, index: number) => {
+            return <div key={layerItem.id} style={{marginTop: '10px'}}>
+                <label htmlFor={`${layerItem.id}_add_image`} className={styles.customFileUpload}>
+                    <i className="bi bi-image"/> Add body
+                </label>
+                <input id={`${layerItem.id}_add_image`} type="file" className={styles.customFileUploadInput}
+                       onChange={(e) => imageUpload(e, 'body')}/>
+                <label htmlFor={`${layerItem.id}_remove_layer`} className={styles.customFileUpload}>
+                    <i className="bi bi-bucket"/>
+                </label>
+                <input id={`${layerItem.id}_remove_layer`} type="button" className={styles.customFileUploadInput}
+                       onChange={(e) => imageUpload(e, 'body')}/>
+            </div>
+        });
+    }
+
+    const addNewLayer = () => {
+        let obj: ILayer = {
+            id: uuid(),
+            name: '',
+            src: null
+        }
+        let tempArray = [...listOfLayers];
+        tempArray.push(obj);
+        setListOfLayers([...tempArray]);
     }
 
     return (
@@ -192,33 +228,38 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
             </div>
             {/*Images settings. Right Part*/}
             <div className={styles.NFTSettingsContainer} style={{width: editorWidth, height: editorHeight}}>
-                <p>NFT Image settings</p>
-                <p>Image parts</p>
+                <p><b>NFT Image settings</b></p>
                 <div>
-                    <label htmlFor="file-upload-head" className={styles.customFileUpload}>
-                        <i className="bi bi-image"/> Add Head
+                    <label htmlFor="add-layer-button" className={styles.customFileUpload}
+                           style={{backgroundColor: 'green', color: 'white'}}>
+                        <i className="bi bi-plus-circle" style={{color: 'white'}}/> Add layer
                     </label>
-                    <input id="file-upload-head" type="file" className={styles.customFileUploadInput}
-                           onChange={(e) => imageUpload(e, 'head')}/>
+                    <input id="add-layer-button" className={styles.customFileUploadInput}
+                           onClick={addNewLayer}/>
                 </div>
                 <div>
-                    <label htmlFor="file-upload-body" className={styles.customFileUpload}>
-                        <i className="bi bi-image"/> Add body
-                    </label>
-                    <input id="file-upload-body" type="file" className={styles.customFileUploadInput}
-                           onChange={(e) => imageUpload(e, 'body')}/>
+                    {renderLayersPart()}
                 </div>
-                <div>
+
+                {/*<div>*/}
+                {/*    <label htmlFor="file-upload-head" className={styles.customFileUpload}>*/}
+                {/*        <i className="bi bi-image"/> Add Head*/}
+                {/*    </label>*/}
+                {/*    <input id="file-upload-head" type="file" className={styles.customFileUploadInput}*/}
+                {/*           onChange={(e) => imageUpload(e, 'head')}/>*/}
+                {/*</div>*/}
+                <div style={{marginTop: '30px'}}>
                     <label htmlFor="set-background-color" className={styles.customFileUpload}>
                         Set background color
                     </label>
                     <input style={{marginLeft: '10px', paddingTop: '2px', height: '20px'}} type="color"
-                           onChange={(e) => setBackgroundColor(e.target.value)}/>
+                           defaultValue={backgroundColor}
+                           onChange={(e) => onChangePalette(e.target.value)}/>
                 </div>
 
-                <div>
+                <div style={{}}>
                     <label htmlFor="save-to-json" className={styles.customFileUpload}>
-                        <i className="bi bi-check"/> Create image
+                        <i className="bi bi-check"/> Create NFT image image
                     </label>
                     <input id="save-to-json" className={styles.customFileUploadInput}
                            onClick={saveToJson}/>
