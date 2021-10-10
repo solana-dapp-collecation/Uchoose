@@ -1,4 +1,21 @@
-TODO. 
-https://stackoverflow.com/questions/44704296/how-to-load-image-on-canvas-in-react
-https://stackoverflow.com/questions/13938686/can-i-load-a-local-file-into-an-html-canvas-element
-https://codesandbox.io/s/flamboyant-wind-ff3x8?file=/src/App.js
+#Uchoose main frontend project
+
+#Architecture description and technologies
+Next.js
+React.js
+Redux sage
+bootstrap
+ant design
+
+#Key features
+Application contains login page, marketplace, editor panel, user profile
+
+#Troubleshooting
+In case of issues with npm packages related to ethereumjs-abi.git or similar you could try to use the following command:
+npm i eth-sig-util
+
+#Important links
+Links that could be helpful
+
+#Important settings
+Some settings for application
