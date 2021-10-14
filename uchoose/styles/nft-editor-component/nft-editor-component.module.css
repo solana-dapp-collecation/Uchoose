@@ -9,6 +9,24 @@
     display: none;
 }
 
+.displayNone {
+    display: none;
+}
+
+.removeButton {
+    background-color: red;
+    color: white;
+    border: 1px solid #f80707;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.addLayer {
+    background-color: #33ce33;
+    color: white;
+}
+
 .customFileUpload {
     border: 1px solid #ccc;
     display: inline-block;
