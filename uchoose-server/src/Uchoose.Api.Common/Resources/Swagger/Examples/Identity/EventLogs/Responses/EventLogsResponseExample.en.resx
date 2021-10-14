@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&lt;Event description&gt;" xml:space="preserve">
+    <value>&lt;Event description&gt;</value>
+  </data>
   <data name="&lt;Event log 1 data&gt;" xml:space="preserve">
     <value>&lt;Event log 1 data&gt;</value>
   </data>
   <data name="&lt;Event log 2 data&gt;" xml:space="preserve">
     <value>&lt;Event log 2 data&gt;</value>
+  </data>
+  <data name="&lt;Event type name&gt;" xml:space="preserve">
+    <value>&lt;Event type name&gt;</value>
   </data>
   <data name="&lt;Message&gt;" xml:space="preserve">
     <value>&lt;Message&gt;</value>

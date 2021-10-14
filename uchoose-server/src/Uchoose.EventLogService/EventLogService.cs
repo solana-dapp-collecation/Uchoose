@@ -7,6 +7,7 @@
 // ------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ using Uchoose.Domain.Entities;
 using Uchoose.Domain.Exceptions;
 using Uchoose.EventLogService.Interfaces;
 using Uchoose.EventLogService.Interfaces.Requests;
+using Uchoose.EventLogService.Interfaces.Responses;
 using Uchoose.EventLogService.Specifications;
 using Uchoose.ExcelService.Interfaces;
 using Uchoose.SerializationService.Interfaces;
@@ -76,7 +78,7 @@ namespace Uchoose.EventLogService
         }
 
         /// <inheritdoc/>
-        public async Task<Result<EventLog>> GetByIdAsync(Guid id)
+        public async Task<Result<EventLogResponse>> GetByIdAsync(Guid id)
         {
             var eventLog = await _context.EventLogs.AsNoTracking().SingleOrDefaultAsync(x => x.Id == id);
             if (eventLog == null)
@@ -84,7 +86,7 @@ namespace Uchoose.EventLogService
                 throw new EntityNotFoundException<Guid, EventLog>(id, _eventLogLocalizer);
             }
 
-            return await Result<EventLog>.SuccessAsync(eventLog);
+            return await Result<EventLogResponse>.SuccessAsync(_mapper.Map<EventLogResponse>(eventLog));
         }
 
         /// <inheritdoc/>
@@ -110,7 +112,7 @@ namespace Uchoose.EventLogService
         }
 
         /// <inheritdoc/>
-        public async Task<PaginatedResult<EventLog>> GetAllAsync(GetEventLogsRequest request)
+        public async Task<PaginatedResult<EventLogResponse>> GetAllAsync(GetEventLogsRequest request)
         {
             var queryable = _context.EventLogs.AsNoTracking().AsQueryable();
 
@@ -138,6 +140,7 @@ namespace Uchoose.EventLogService
 
             return await queryable
                 .Specify(dateRangeSpecification && searchSpecification && aggregateVersionRangeSpecification)
+                .Select(e => _mapper.Map<EventLogResponse>(e))
                 .ToPaginatedListAsync(request.PageNumber, request.PageSize);
         }
 
@@ -156,7 +159,7 @@ namespace Uchoose.EventLogService
 
             return await _excelService.ExportAsync<Guid, EventLog>(new()
             {
-                Data = eventLogs.Data,
+                Data = _mapper.Map<List<EventLog>>(eventLogs.Data),
                 Mappers = IExportable<Guid, EventLog>.ExportMappers(request.Properties, _eventLogLocalizer),
                 TitlesRowNumber = request.TitlesRowNumber,
                 TitlesFirstColNumber = request.TitlesFirstColNumber,
