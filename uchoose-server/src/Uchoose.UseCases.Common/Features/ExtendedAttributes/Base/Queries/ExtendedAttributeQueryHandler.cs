@@ -9,7 +9,6 @@
 using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
-using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -77,8 +76,6 @@ namespace Uchoose.UseCases.Common.Features.ExtendedAttributes.Base.Queries
         public async Task<PaginatedResult<ExtendedAttributeResponse<TEntityId>>> Handle(GetExtendedAttributesQuery<TEntityId, TEntity> query, CancellationToken cancellationToken)
 #pragma warning restore RCS1046 // Asynchronous method name should end with 'Async'.
         {
-            Expression<Func<TExtendedAttribute, ExtendedAttributeResponse<TEntityId>>> expression = e =>
-                _mapper.Map<ExtendedAttributeResponse<TEntityId>>(e);
             var queryable = _context.ExtendedAttributes.AsNoTracking().AsQueryable();
 
             // применяем параметры фильтрации
@@ -111,7 +108,7 @@ namespace Uchoose.UseCases.Common.Features.ExtendedAttributes.Base.Queries
 
             var extendedAttributeList = await queryable
                 .Specify(searchSpecification)
-                .Select(expression)
+                .Select(e => _mapper.Map<ExtendedAttributeResponse<TEntityId>>(e))
                 .AsNoTracking()
                 .ToPaginatedListAsync(query.PageNumber, query.PageSize);
 

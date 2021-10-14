@@ -9,8 +9,8 @@
 using System;
 using System.Threading.Tasks;
 
-using Uchoose.Domain.Entities;
 using Uchoose.EventLogService.Interfaces.Requests;
+using Uchoose.EventLogService.Interfaces.Responses;
 using Uchoose.Utils.Contracts.Events;
 using Uchoose.Utils.Contracts.Services;
 using Uchoose.Utils.Wrapper;
@@ -20,14 +20,15 @@ namespace Uchoose.EventLogService.Interfaces
     /// <summary>
     /// Сервис для работы с логами событий.
     /// </summary>
-    public interface IEventLogService : IApplicationService
+    public interface IEventLogService :
+        IApplicationService
     {
         /// <summary>
         /// Получить данные лога событий по его идентификатору.
         /// </summary>
         /// <param name="id">Идентификатор лога события.</param>
         /// <returns>Возвращает данные лога событий.</returns>
-        Task<Result<EventLog>> GetByIdAsync(Guid id);
+        Task<Result<EventLogResponse>> GetByIdAsync(Guid id);
 
         /// <summary>
         /// Получить данные события по идентификатору лога этого события.
@@ -43,7 +44,7 @@ namespace Uchoose.EventLogService.Interfaces
         /// </summary>
         /// <param name="request">Запрос для получения логов событий с пагинацией.</param>
         /// <returns>Возвращает список данных логов событий.</returns>
-        Task<PaginatedResult<EventLog>> GetAllAsync(GetEventLogsRequest request);
+        Task<PaginatedResult<EventLogResponse>> GetAllAsync(GetEventLogsRequest request);
 
         /// <summary>
         /// Добавить пользовательское событие в логи событий.

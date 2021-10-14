@@ -10,6 +10,7 @@ using System;
 
 using Microsoft.Extensions.Localization;
 using Swashbuckle.AspNetCore.Filters;
+using Uchoose.AuditService.Interfaces.Responses;
 using Uchoose.Utils.Wrapper;
 
 namespace Uchoose.Api.Common.Swagger.Examples.Audit.Responses
@@ -25,7 +26,8 @@ namespace Uchoose.Api.Common.Swagger.Examples.Audit.Responses
         /// Инициализирует экземпляр <see cref="AuditTrailsResponseExample"/>.
         /// </summary>
         /// <param name="localizer"><see cref="IStringLocalizer{T}"/>.</param>
-        public AuditTrailsResponseExample(IStringLocalizer<AuditTrailsResponseExample> localizer)
+        public AuditTrailsResponseExample(
+            IStringLocalizer<AuditTrailsResponseExample> localizer)
         {
             _localizer = localizer;
         }
@@ -33,7 +35,7 @@ namespace Uchoose.Api.Common.Swagger.Examples.Audit.Responses
         /// <inheritdoc/>
         public object GetExamples()
         {
-            return PaginatedResult<Domain.Entities.Audit>.Success(
+            return PaginatedResult<AuditResponse>.Success(
                 new()
                 {
                     new()

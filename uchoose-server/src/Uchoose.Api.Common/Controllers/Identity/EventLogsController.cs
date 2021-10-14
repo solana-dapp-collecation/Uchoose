@@ -25,6 +25,7 @@ using Uchoose.Domain.Entities;
 using Uchoose.EventLogService.Interfaces;
 using Uchoose.EventLogService.Interfaces.Filters;
 using Uchoose.EventLogService.Interfaces.Requests;
+using Uchoose.EventLogService.Interfaces.Responses;
 using Uchoose.Utils.Contracts.Exporting;
 using Uchoose.Utils.Contracts.Searching;
 using Uchoose.Utils.Extensions;
@@ -73,7 +74,7 @@ namespace Uchoose.Api.Common.Controllers.Identity
         [SwaggerOperation(
             OperationId = "GetEventLogById",
             Tags = new[] { EventLogsTag })]
-        [ProducesResponseType(typeof(Result<EventLog>), 200)]
+        [ProducesResponseType(typeof(Result<EventLogResponse>), 200)]
         [SwaggerResponseExample(StatusCodes.Status200OK, typeof(EventLogResponseExample))]
         public async Task<IActionResult> GetByIdAsync(Guid id)
         {
@@ -93,7 +94,7 @@ namespace Uchoose.Api.Common.Controllers.Identity
         [SwaggerOperation(
             OperationId = "GetEventLogs",
             Tags = new[] { EventLogsTag })]
-        [ProducesResponseType(typeof(Result<List<EventLog>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(PaginatedResult<EventLogResponse>), StatusCodes.Status200OK)]
         [SwaggerResponseExample(StatusCodes.Status200OK, typeof(EventLogsResponseExample))]
         public async Task<IActionResult> GetAllAsync([FromQuery] EventLogsPaginationFilter filter)
         {

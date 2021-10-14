@@ -11,7 +11,8 @@ using System;
 using Microsoft.Extensions.Localization;
 using Swashbuckle.AspNetCore.Filters;
 using Uchoose.Api.Common.Controllers.Identity;
-using Uchoose.Domain.Entities;
+using Uchoose.EventLogService.Interfaces.Responses;
+using Uchoose.Utils.Enums;
 using Uchoose.Utils.Wrapper;
 
 namespace Uchoose.Api.Common.Swagger.Examples.Identity.EventLogs.Responses
@@ -19,7 +20,8 @@ namespace Uchoose.Api.Common.Swagger.Examples.Identity.EventLogs.Responses
     /// <summary>
     /// Пример ответа для <see cref="EventLogsController.GetByIdAsync"/>.
     /// </summary>
-    public class EventLogResponseExample : IExamplesProvider<object>
+    public class EventLogResponseExample :
+        IExamplesProvider<object>
     {
         private readonly IStringLocalizer<EventLogResponseExample> _localizer;
 
@@ -27,7 +29,8 @@ namespace Uchoose.Api.Common.Swagger.Examples.Identity.EventLogs.Responses
         /// Инициализирует экземпляр <see cref="EventLogResponseExample"/>.
         /// </summary>
         /// <param name="localizer"><see cref="IStringLocalizer{T}"/>.</param>
-        public EventLogResponseExample(IStringLocalizer<EventLogResponseExample> localizer)
+        public EventLogResponseExample(
+            IStringLocalizer<EventLogResponseExample> localizer)
         {
             _localizer = localizer;
         }
@@ -35,8 +38,22 @@ namespace Uchoose.Api.Common.Swagger.Examples.Identity.EventLogs.Responses
         /// <inheritdoc/>
         public object GetExamples()
         {
-            return Result<EventLog>.Success(
-                new(new EventLog(), _localizer["<Event log data>"], (_localizer["<Serialized old values>"], _localizer["<Serialized new values>"]), _localizer["<User email>"], Guid.Empty),
+            return Result<EventLogResponse>.Success(
+                new()
+                {
+                    Data = _localizer["<Event log data>"],
+                    OldValues = _localizer["<Serialized old values>"],
+                    NewValues = _localizer["<Serialized new values>"],
+                    Email = _localizer["<User email>"],
+                    UserId = Guid.Empty,
+                    Id = Guid.Empty,
+                    AggregateId = Guid.Empty,
+                    EventType = EventType.Domain,
+                    AggregateVersion = 0,
+                    Timestamp = DateTime.MinValue,
+                    MessageType = _localizer["<Event type name>"],
+                    EventDescription = _localizer["<Event description>"]
+                },
                 _localizer["<Message>"]);
         }
     }

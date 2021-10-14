@@ -9,7 +9,6 @@
 using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
-using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -71,8 +70,6 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayerType.Queries
         public async Task<PaginatedResult<NftImageLayerTypeResponse>> Handle(GetNftImageLayerTypesQuery query, CancellationToken cancellationToken)
 #pragma warning restore RCS1046 // Asynchronous method name should end with 'Async'.
         {
-            Expression<Func<Domain.Marketplace.Entities.NftImageLayerType, NftImageLayerTypeResponse>> expression = e =>
-                _mapper.Map<NftImageLayerTypeResponse>(e);
             var queryable = _context.NftImageLayerTypes.AsNoTracking().AsQueryable();
 
             if (query.IsReadOnly != null)
@@ -92,7 +89,7 @@ namespace Uchoose.UseCases.Common.Features.Marketplace.NftImageLayerType.Queries
 
             var nftImageLayerTypeList = await queryable
                 .Specify(searchSpecification)
-                .Select(expression)
+                .Select(e => _mapper.Map<NftImageLayerTypeResponse>(e))
                 .ToPaginatedListAsync(query.PageNumber, query.PageSize);
 
             return _mapper.Map<PaginatedResult<NftImageLayerTypeResponse>>(nftImageLayerTypeList);

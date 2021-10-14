@@ -23,6 +23,7 @@ using Uchoose.Api.Common.Swagger.Examples.Common.Responses;
 using Uchoose.AuditService.Interfaces;
 using Uchoose.AuditService.Interfaces.Filters;
 using Uchoose.AuditService.Interfaces.Requests;
+using Uchoose.AuditService.Interfaces.Responses;
 using Uchoose.DataAccess.Identity.Interfaces.Contexts;
 using Uchoose.Domain.Entities;
 using Uchoose.IdentityService.Interfaces;
@@ -175,7 +176,7 @@ namespace Uchoose.Api.Common.Controllers.Identity
         [SwaggerOperation(
             OperationId = "GetIdentityAuditTrails",
             Tags = new[] { IdentityTag, AuditTag })]
-        [ProducesResponseType(typeof(PaginatedResult<Domain.Entities.Audit>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(PaginatedResult<AuditResponse>), StatusCodes.Status200OK)]
         [SwaggerResponseExample(StatusCodes.Status200OK, typeof(AuditTrailsResponseExample))]
         public async Task<IActionResult> GetAuditTrailsAsync([FromQuery] AuditTrailsPaginationFilter filter)
         {
