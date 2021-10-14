@@ -7,6 +7,7 @@
 // ------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Uchoose.AuditService.Interfaces;
 using Uchoose.AuditService.Interfaces.Requests;
+using Uchoose.AuditService.Interfaces.Responses;
 using Uchoose.AuditService.Specifications;
 using Uchoose.DataAccess.Interfaces;
 using Uchoose.DataAccess.Interfaces.Contexts;
@@ -72,7 +74,7 @@ namespace Uchoose.AuditService
         }
 
         /// <inheritdoc/>
-        public async Task<PaginatedResult<Audit>> GetAllAsync(GetAuditTrailsRequest request)
+        public async Task<PaginatedResult<AuditResponse>> GetAllAsync(GetAuditTrailsRequest request)
         {
             var queryable = _context.AuditTrails.AsNoTracking().AsQueryable();
 
@@ -89,6 +91,7 @@ namespace Uchoose.AuditService
 
             return await queryable
                 .Specify(dateRangeSpecification && searchSpecification)
+                .Select(e => _mapper.Map<AuditResponse>(e))
                 .ToPaginatedListAsync(request.PageNumber, request.PageSize);
         }
 
@@ -99,7 +102,7 @@ namespace Uchoose.AuditService
 
             return await _excelService.ExportAsync<Guid, Audit>(new()
             {
-                Data = auditTrails.Data,
+                Data = _mapper.Map<List<Audit>>(auditTrails.Data),
                 Mappers = IExportable<Guid, Audit>.ExportMappers(request.Properties, _auditLocalizer),
                 TitlesRowNumber = request.TitlesRowNumber,
                 TitlesFirstColNumber = request.TitlesFirstColNumber,

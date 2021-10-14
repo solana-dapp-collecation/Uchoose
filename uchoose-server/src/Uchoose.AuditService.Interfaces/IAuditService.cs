@@ -9,9 +9,9 @@
 using System.Threading.Tasks;
 
 using Uchoose.AuditService.Interfaces.Requests;
+using Uchoose.AuditService.Interfaces.Responses;
 using Uchoose.DataAccess.Interfaces;
 using Uchoose.DataAccess.Interfaces.Contexts;
-using Uchoose.Domain.Entities;
 using Uchoose.Utils.Contracts.Services;
 using Uchoose.Utils.Wrapper;
 
@@ -30,7 +30,7 @@ namespace Uchoose.AuditService.Interfaces
         /// </summary>
         /// <param name="request">Запрос для получения данных аудита.</param>
         /// <returns>Возвращает коллекцию с данными аудита.</returns>
-        Task<PaginatedResult<Audit>> GetAllAsync(GetAuditTrailsRequest request);
+        Task<PaginatedResult<AuditResponse>> GetAllAsync(GetAuditTrailsRequest request);
 
         /// <summary>
         /// Экспортировать данные аудита в excel файл.
