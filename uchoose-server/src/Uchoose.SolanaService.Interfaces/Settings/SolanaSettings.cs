@@ -17,6 +17,11 @@ namespace Uchoose.SolanaService.Interfaces.Settings
         ISettings
     {
         /// <summary>
+        /// Текущий кластер Solana.
+        /// </summary>
+        public int CurrentCluster { get; set; }
+
+        /// <summary>
         /// Точки доступа кластеров Solana.
         /// </summary>
         public SolanaEndpoints Endpoints { get; set; }
@@ -76,5 +81,26 @@ namespace Uchoose.SolanaService.Interfaces.Settings
     public class SolanaAccounts
     {
         // TODO - добавить аккаунты
+
+        /// <summary>
+        /// Аккаунт, от которого будет производиться minting.
+        /// </summary>
+        public SolanaAccount MinterAccount { get; set; }
+    }
+
+    /// <summary>
+    /// Аккаунт Solana.
+    /// </summary>
+    public class SolanaAccount
+    {
+        /// <summary>
+        /// Адрес учётной записи в блокчейне.
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// Мнемоническая фраза.
+        /// </summary>
+        public string MnemonicWords { get; set; }
     }
 }

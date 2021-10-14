@@ -6,7 +6,11 @@
 // </copyright>
 // ------------------------------------------------------------------------------------------------------
 
+using System.Threading.Tasks;
+
+using Uchoose.SolanaService.Interfaces.Requests;
 using Uchoose.Utils.Contracts.Services;
+using Uchoose.Utils.Wrapper;
 
 namespace Uchoose.SolanaService.Interfaces
 {
@@ -16,6 +20,13 @@ namespace Uchoose.SolanaService.Interfaces
     public interface ISolanaService :
         IInfrastructureService
     {
+        /// <summary>
+        /// Сминтить NFT.
+        /// </summary>
+        /// <param name="request">Запрос на minting NFT.</param>
+        /// <returns>Возвращает hash транзакции.</returns>
+        Task<Result<string>> MintNftAsync(MintNftRequest request);
+
         // TODO - добавить методы
     }
 }

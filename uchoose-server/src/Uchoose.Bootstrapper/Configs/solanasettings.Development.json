@@ -1,11 +1,17 @@
 {
   "SolanaSettings": {
+    "CurrentCluster": 0,
     "Endpoints": {
       "DevNetCluster": "https://api.devnet.solana.com",
       "TestNetCluster": "https://testnet.solana.com",
       "MainNetCluster": "https://mainnet.solana.com"
     },
     "Programs": null, // TODO - заполнить
-    "Accounts": null // TODO - заполнить
+    "Accounts": {
+      "MinterAccount": {
+        "Address": "Paste_Account_Here",
+        "MnemonicWords": "Paste_Mnemonic_Words_Here"
+      }
+    }
   }
 }

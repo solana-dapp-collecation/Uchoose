@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Uchoose.SerializationService.Interfaces\Uchoose.SerializationService.Interfaces.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Solana\" />
+  </ItemGroup>
+
 </Project>
