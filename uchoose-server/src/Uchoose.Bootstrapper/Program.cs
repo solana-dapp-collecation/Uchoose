@@ -53,7 +53,7 @@ namespace Uchoose.Bootstrapper
                     {
                         const string configsDirectory = "Configs";
                         string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production";
-                        builder
+                        builder // TODO - вынести в методы расширения
                             .AddJsonFile(Path.Combine(configsDirectory, "appsettings.json"), false, true)
                             .AddJsonFile(Path.Combine(configsDirectory, $"appsettings.{env}.json"), true, true)
                             .AddJsonFile(Path.Combine(configsDirectory, "loggingsettings.json"), false, true)
@@ -85,6 +85,8 @@ namespace Uchoose.Bootstrapper
                             .AddJsonFile(Path.Combine(configsDirectory, "localizationsettings.json"), false, true)
                             .AddJsonFile(Path.Combine(configsDirectory, "mongodbsettings.json"), false, true)
                             .AddJsonFile(Path.Combine(configsDirectory, $"mongodbsettings.{env}.json"), true, true)
+                            .AddJsonFile(Path.Combine(configsDirectory, "solanasettings.json"), false, true)
+                            .AddJsonFile(Path.Combine(configsDirectory, $"solanasettings.{env}.json"), true, true)
                             .AddEnvironmentVariables();
 
                         // .AddUserSecrets()

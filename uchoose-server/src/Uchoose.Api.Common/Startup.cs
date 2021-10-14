@@ -64,6 +64,8 @@ using Uchoose.RoleService.Extensions;
 using Uchoose.SerializationService.Extensions;
 using Uchoose.SmsService.Interfaces.Settings;
 using Uchoose.SmtpMailService.Extensions;
+using Uchoose.SolanaService.Extensions;
+using Uchoose.SolanaService.Interfaces.Settings;
 using Uchoose.TokenService.Extensions;
 using Uchoose.TokenService.Interfaces.Settings;
 using Uchoose.TwilioSmsService.Extensions;
@@ -232,6 +234,26 @@ namespace Uchoose.Api.Common
             services
                 .AddSettings<SmsSettings>(configuration)
                 .AddTwilioSmsService();
+
+            services.AddBlockchainServices(configuration);
+
+            return services;
+        }
+
+        /// <summary>
+        /// Добавить сервисы блокчейнов.
+        /// </summary>
+        /// <param name="services"><see cref="IServiceCollection"/>.</param>
+        /// <param name="configuration"><see cref="IConfiguration"/>.</param>
+        /// <returns>Возвращает <see cref="IServiceCollection"/>.</returns>
+        private static IServiceCollection AddBlockchainServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            services
+                .AddSettings<SolanaSettings>(configuration)
+                .AddSolanaService();
+
+            // TODO - добавить RaribleService и прочие
+
             return services;
         }
 

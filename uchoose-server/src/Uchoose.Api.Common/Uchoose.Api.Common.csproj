@@ -43,6 +43,7 @@
     <ProjectReference Include="..\Uchoose.RoleService\Uchoose.RoleService.csproj" />
     <ProjectReference Include="..\Uchoose.SerializationService\Uchoose.SerializationService.csproj" />
     <ProjectReference Include="..\Uchoose.SmtpMailService\Uchoose.SmtpMailService.csproj" />
+    <ProjectReference Include="..\Uchoose.SolanaService\Uchoose.SolanaService.csproj" />
     <ProjectReference Include="..\Uchoose.TokenService\Uchoose.TokenService.csproj" />
     <ProjectReference Include="..\Uchoose.TwilioSmsService\Uchoose.TwilioSmsService.csproj" />
     <ProjectReference Include="..\Uchoose.UseCases.Common\Uchoose.UseCases.Common.csproj" />

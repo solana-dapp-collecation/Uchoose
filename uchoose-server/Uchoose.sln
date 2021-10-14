@@ -150,7 +150,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.DataAccess.Marketpl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.DataAccess.PostgreSql.Marketplace", "src\Uchoose.DataAccess.PostgreSql.Marketplace\Uchoose.DataAccess.PostgreSql.Marketplace.csproj", "{66201BC1-7EEF-4DE6-AD73-55897A88E9DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.MongoDbFileStorageService", "src\Uchoose.MongoDbFileStorageService\Uchoose.MongoDbFileStorageService.csproj", "{45C2B99B-FA4B-4BA2-A996-606B7422A579}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.MongoDbFileStorageService", "src\Uchoose.MongoDbFileStorageService\Uchoose.MongoDbFileStorageService.csproj", "{45C2B99B-FA4B-4BA2-A996-606B7422A579}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.SolanaService.Interfaces", "src\Uchoose.SolanaService.Interfaces\Uchoose.SolanaService.Interfaces.csproj", "{39A2D236-E5D5-48CF-BFF8-F2703EA53ADF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.SolanaService", "src\Uchoose.SolanaService\Uchoose.SolanaService.csproj", "{5ABE4E1B-560D-4610-9DD8-5F0758A944BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -338,6 +342,14 @@ Global
 		{45C2B99B-FA4B-4BA2-A996-606B7422A579}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45C2B99B-FA4B-4BA2-A996-606B7422A579}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45C2B99B-FA4B-4BA2-A996-606B7422A579}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39A2D236-E5D5-48CF-BFF8-F2703EA53ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39A2D236-E5D5-48CF-BFF8-F2703EA53ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39A2D236-E5D5-48CF-BFF8-F2703EA53ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39A2D236-E5D5-48CF-BFF8-F2703EA53ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ABE4E1B-560D-4610-9DD8-5F0758A944BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ABE4E1B-560D-4610-9DD8-5F0758A944BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ABE4E1B-560D-4610-9DD8-5F0758A944BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ABE4E1B-560D-4610-9DD8-5F0758A944BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -409,6 +421,8 @@ Global
 		{BBC9EC19-5FE9-4011-BC3E-BD9C089B2C94} = {5B9C4B1D-D8BF-49D5-95CB-1E89E412E91A}
 		{66201BC1-7EEF-4DE6-AD73-55897A88E9DB} = {1218FC97-4D34-44CE-A3BB-F71A0D1AE58B}
 		{45C2B99B-FA4B-4BA2-A996-606B7422A579} = {73B7F080-739C-4AEC-AAA6-23F6091CE05F}
+		{39A2D236-E5D5-48CF-BFF8-F2703EA53ADF} = {909BBE33-9724-4FEA-8015-AA27A2426A65}
+		{5ABE4E1B-560D-4610-9DD8-5F0758A944BC} = {6F0611A0-1539-4944-9310-847AB7F135A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {864485A4-C751-4824-9CDE-AF69C30545DD}

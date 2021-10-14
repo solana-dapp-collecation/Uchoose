@@ -1,0 +1,11 @@
+{
+  "SolanaSettings": {
+    "Endpoints": {
+      "DevNetCluster": "https://api.devnet.solana.com",
+      "TestNetCluster": "https://testnet.solana.com",
+      "MainNetCluster": "https://mainnet.solana.com"
+    },
+    "Programs": null, // TODO - заполнить
+    "Accounts": null // TODO - заполнить
+  }
+}
