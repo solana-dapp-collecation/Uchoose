@@ -181,7 +181,7 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
         if (listOfLayers.length === 0) {
             return (
                 <>
-                    No layers for now
+                    Click button above to add new layers
                 </>
             )
         }
@@ -190,18 +190,20 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
                 <label htmlFor={`${layerItem.id}_add_image`} className={styles.customFileUpload}>
                     <i className="bi bi-image"/> Add body
                 </label>
+                <input type="text"/>
                 <input id={`${layerItem.id}_add_image`} type="file" className={styles.customFileUploadInput}
                        onChange={(e) => imageUpload(e, 'body')}/>
-                <label htmlFor={`${layerItem.id}_remove_layer`} className={styles.customFileUpload}>
+                <label htmlFor={`${layerItem.id}_remove_layer`} className={styles.removeButton}
+                       style={{marginLeft: '10px'}}>
                     <i className="bi bi-bucket"/>
                 </label>
-                <input id={`${layerItem.id}_remove_layer`} type="button" className={styles.customFileUploadInput}
-                       onChange={(e) => imageUpload(e, 'body')}/>
+                <input id={`${layerItem.id}_remove_layer`} type="button" className={styles.displayNone}
+                       onClick={(e) => removeLayer(layerItem.id)}/>
             </div>
         });
     }
 
-    const addNewLayer = () => {
+    const addLayer = () => {
         let obj: ILayer = {
             id: uuid(),
             name: '',
@@ -209,6 +211,11 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
         }
         let tempArray = [...listOfLayers];
         tempArray.push(obj);
+        setListOfLayers([...tempArray]);
+    }
+
+    const removeLayer = (layerId: string) => {
+        let tempArray = listOfLayers.filter((item) => item.id !== layerId);
         setListOfLayers([...tempArray]);
     }
 
@@ -230,12 +237,11 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
             <div className={styles.NFTSettingsContainer} style={{width: editorWidth, height: editorHeight}}>
                 <p><b>NFT Image settings</b></p>
                 <div>
-                    <label htmlFor="add-layer-button" className={styles.customFileUpload}
-                           style={{backgroundColor: 'green', color: 'white'}}>
+                    <label htmlFor="add-layer-button" className={`${styles.customFileUpload} ${styles.addLayer}`}>
                         <i className="bi bi-plus-circle" style={{color: 'white'}}/> Add layer
                     </label>
                     <input id="add-layer-button" className={styles.customFileUploadInput}
-                           onClick={addNewLayer}/>
+                           onClick={addLayer}/>
                 </div>
                 <div>
                     {renderLayersPart()}
