@@ -1,0 +1,41 @@
+.drawingCanvasArea {
+    background-color: #eaeaea;
+    border: 1px solid black;
+    /*display: inline-block;*/
+    box-shadow: 3px 3px 5px 3px rgba(31, 202, 20, .2);
+}
+
+.customFileUploadInput {
+    display: none;
+}
+
+.displayNone {
+    display: none;
+}
+
+.removeButton {
+    background-color: red;
+    color: white;
+    border: 1px solid #f80707;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.addLayer {
+    background-color: #33ce33;
+    color: white;
+}
+
+.customFileUpload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.NFTSettingsContainer {
+    margin-left: 30px;
+    display: inline-block;
+    position: absolute;
+}

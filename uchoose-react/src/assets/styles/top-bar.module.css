@@ -1,0 +1,58 @@
+.topBarContainer {
+    text-align: center;
+    width: 350px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    margin-top: -23px;
+}
+
+.topBarContainer button {
+    background: #33ce33;
+    border: none;
+    color: rgba(255,255,255,0.8);
+    box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+    padding: 0.5rem 1.5rem;
+    font-size: inherit;
+    border-radius: 0.5rem;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.topBarContainer button:disabled {
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.topBarContainer button:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0 10px 36px 0, rgba(0, 0, 0, 0.06) 0 0 0 1px;
+    cursor: pointer;
+}
+
+.topBarContainer button:disabled:hover {
+    /* Vanilla shadow*/
+    box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+}
+
+.topBarContainer button:active {
+    box-shadow: none;
+    margin-top: -2px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mainSearchBar {
+    display: inline-block;
+    margin-top: 27px;
+    width: 100vh;
+    margin-right: 20px;
+}

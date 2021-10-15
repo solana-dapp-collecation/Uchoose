@@ -15,6 +15,10 @@ import React, {FC, useCallback, useMemo} from 'react';
 import toast, {Toaster} from 'react-hot-toast';
 import Navigation from '../Navigation';
 import Notification from '../Notification';
+import NavigationBar from "../NavigationBar";
+import { Footer } from '../Footer';
+import styles from "*.module.css";
+import MainComponent from "../MainConponent";
 
 
 const Wallet: FC = () => {
@@ -53,7 +57,9 @@ const Wallet: FC = () => {
         <ConnectionProvider endpoint={endpoint}>
             <WalletProvider wallets={wallets} onError={onError} autoConnect>
                 <WalletModalProvider>
-                    <Navigation/>
+                    <NavigationBar/>
+                    {/*<Navigation/>*/}
+                    <MainComponent/>
                 </WalletModalProvider>
                 <Toaster position="bottom-left" reverseOrder={false}/>
             </WalletProvider>
