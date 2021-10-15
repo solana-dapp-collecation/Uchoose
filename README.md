@@ -1,3 +1,3 @@
-Uchoose frontend app
+Uchoose
 
-TODO. Add more data
+TODO. ќформить README

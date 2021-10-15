@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		src\.editorconfig = src\.editorconfig
 		src\Directory.Build.props = src\Directory.Build.props
+		..\README.md = ..\README.md
 		src\stylecop.json = src\stylecop.json
 		src\uchoose.ruleset = src\uchoose.ruleset
 	EndProjectSection
@@ -156,9 +157,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.SolanaService.Inter
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.SolanaService", "src\Uchoose.SolanaService\Uchoose.SolanaService.csproj", "{5ABE4E1B-560D-4610-9DD8-5F0758A944BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.RaribleService.Interfaces", "src\Uchoose.RaribleService.Interfaces\Uchoose.RaribleService.Interfaces.csproj", "{31C9C9E7-2951-465D-9FBD-ADDAD131A8B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.RaribleService.Interfaces", "src\Uchoose.RaribleService.Interfaces\Uchoose.RaribleService.Interfaces.csproj", "{31C9C9E7-2951-465D-9FBD-ADDAD131A8B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uchoose.RaribleService", "src\Uchoose.RaribleService\Uchoose.RaribleService.csproj", "{AD1BE36A-7509-46ED-B683-D2EC2D8B0A7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uchoose.RaribleService", "src\Uchoose.RaribleService\Uchoose.RaribleService.csproj", "{AD1BE36A-7509-46ED-B683-D2EC2D8B0A7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
