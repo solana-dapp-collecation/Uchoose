@@ -1,16 +1,26 @@
 import React, {useEffect, useState} from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Card, Tag, Divider, Rate, Button, Menu, Dropdown } from "antd";
-import { createFromIconfontCN, CheckCircleOutlined, ShareAltOutlined, MoneyCollectOutlined } from '@ant-design/icons';
+import {Card, Tag, Divider, Rate, Button, Menu, Dropdown} from "antd";
+import {createFromIconfontCN, CheckCircleOutlined, ShareAltOutlined, MoneyCollectOutlined} from '@ant-design/icons';
 import {Form, Modal, Input} from "antd";
+import eth_pic from '../assets/public/eth.svg';
+import pixel_doge_5916 from '../assets/public/Pixel-Doge-5916.png';
+import pixel_doge_4954 from '../assets/public/Pixel-Doge-4954.png';
+import pixel_doge_1604 from '../assets/public/Pixel-Doge-1604.png';
+import pixel_doge_715 from '../assets/public/Pixel-Doge-715.png';
+import pixel_doge_5481 from '../assets/public/Pixel-Doge-5481.png';
+import pixel_doge_5154 from '../assets/public/Pixel-Doge-5154.png';
+import pixel_doge_598 from '../assets/public/Pixel-Doge-598.png';
+import pixel_doge_5447 from '../assets/public/Pixel-Doge-5447.png';
 
 const IconFont = createFromIconfontCN({
-  scriptUrl: [
-      '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
-      '//at.alicdn.com/t/font_1788592_a5xf2bdic3u.js' // icon-shoppingcart
+    scriptUrl: [
+        '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
+        '//at.alicdn.com/t/font_1788592_a5xf2bdic3u.js' // icon-shoppingcart
     ]
 });
+
 
 const {Meta} = Card;
 
@@ -37,8 +47,8 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
     };
     const menu = (
         <Menu onClick={handleMenuClick}>
-            <Menu.Item key="facebook"><IconFont type="icon-facebook" /> Facebook</Menu.Item>
-            <Menu.Item key="twitter"><IconFont type="icon-twitter" /> Twitter</Menu.Item>
+            <Menu.Item key="facebook"><IconFont type="icon-facebook"/> Facebook</Menu.Item>
+            <Menu.Item key="twitter"><IconFont type="icon-twitter"/> Twitter</Menu.Item>
         </Menu>
     );
 
@@ -66,7 +76,8 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
 
     return (
         <div>
-            <Modal title="Co-create" visible={isCoCreateModalVisible} okText={'Buy'} onOk={handleCoCreateOk} onCancel={handleCancelCoCreate}>
+            <Modal title="Co-create" visible={isCoCreateModalVisible} okText={'Buy'} onOk={handleCoCreateOk}
+                   onCancel={handleCancelCoCreate}>
                 <Form
                     name="cocreate"
                     labelCol={{span: 8}}
@@ -88,8 +99,9 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
             </Modal>
 
             {/* https://www.npmjs.com/package/react-multi-carousel */}
-            <Divider orientation="left"><MoneyCollectOutlined /> <a href="https://opensea.io/collection/pixeldoges"><b>PixelDoges</b></a></Divider>
-            
+            <Divider orientation="left"><MoneyCollectOutlined/> <a
+                href="https://opensea.io/collection/pixeldoges"><b>PixelDoges</b></a></Divider>
+
             <Carousel
                 swipeable={false}
                 draggable={false}
@@ -119,9 +131,9 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             marginRight: '10px',
                             marginBottom: '30px'
                         }}
-                        cover={<img alt="example" src="/Pixel-Doge-5916.png"/>}
+                        cover={<img alt="example" src={pixel_doge_5916}/>}
                     >
-                        <Meta title="Pixel Doge #5916" description="Generated Dodge 5916" />
+                        <Meta title="Pixel Doge #5916" description="Generated Dodge 5916"/>
                         <br/>
                         <div>
                             <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
@@ -134,29 +146,19 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Tag color="brown">hat</Tag>
                             <Tag>crying face</Tag>
                             <Divider>Price</Divider>
-                            <b>Price</b>: 1<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
+                            <b>Price</b>: 1<img alt="example" src={eth_pic} style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={4.8} /> 4.8
+                            <Rate allowHalf defaultValue={4.8}/> 4.8
                             <Divider/>
                             <>
-                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
+                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart"/> Buy</Button>
+                                <Button type="primary" value="co-create" style={{marginLeft: '5px'}}
+                                        onClick={handleCoCreate}><CheckCircleOutlined/> Buy & Co-create</Button>
                                 <br/><br/>
-                                <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
+                                <Dropdown.Button overlay={menu}><ShareAltOutlined/> Share</Dropdown.Button>
                             </>
                         </div>
                     </Card>
-                    {/*<img*/}
-                    {/*    draggable={false}*/}
-                    {/*    style={{*/}
-                    {/*        width: "90%",*/}
-                    {/*        cursor: "pointer",*/}
-                    {/*        marginLeft: '10px',*/}
-                    {/*        marginRight: '10px',*/}
-                    {/*        marginBottom: '30px'*/}
-                    {/*    }}*/}
-                    {/*    src="/pic_1_ex.jpg"*/}
-                    {/*/>*/}
                 </div>
                 <div>
                     <Card
@@ -168,9 +170,9 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             marginRight: '10px',
                             marginBottom: '30px'
                         }}
-                        cover={<img alt="example" src="/Pixel-Doge-4954.png"/>}
+                        cover={<img alt="example" src={pixel_doge_4954}/>}
                     >
-                        <Meta title="Pixel Doge #4954" description="Generated Dodge 4954" />
+                        <Meta title="Pixel Doge #4954" description="Generated Dodge 4954"/>
                         <br/>
                         <div>
                             <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
@@ -183,15 +185,16 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Tag color="green">cap</Tag>
                             <Tag>face with one eye</Tag>
                             <Divider>Price</Divider>
-                            <b>Price</b>: 2<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
+                            <b>Price</b>: 2<img alt="example" src={eth_pic} style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={4.7} /> 4.7
+                            <Rate allowHalf defaultValue={4.7}/> 4.7
                             <Divider/>
                             <>
-                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
+                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart"/> Buy</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}}
+                                        onClick={handleCoCreate}><CheckCircleOutlined/> Buy & Co-create</Button>
                                 <br/><br/>
-                                <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
+                                <Dropdown.Button overlay={menu}><ShareAltOutlined/> Share</Dropdown.Button>
                             </>
                         </div>
                     </Card>
@@ -206,9 +209,9 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             marginRight: '10px',
                             marginBottom: '30px'
                         }}
-                        cover={<img alt="example" src="/Pixel-Doge-1604.png"/>}
+                        cover={<img alt="example" src={pixel_doge_1604}/>}
                     >
-                        <Meta title="Pixel Doge #1604" description="Generated Dodge 1604" />
+                        <Meta title="Pixel Doge #1604" description="Generated Dodge 1604"/>
                         <br/>
                         <div>
                             <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
@@ -221,15 +224,16 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Tag color="black">iroquois</Tag>
                             <Tag>crying face</Tag>
                             <Divider>Price</Divider>
-                            <b>Price</b>: 3<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
+                            <b>Price</b>: 3<img alt="example" src={eth_pic} style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={4} /> 4.0
+                            <Rate allowHalf defaultValue={4}/> 4.0
                             <Divider/>
                             <>
-                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
+                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart"/> Buy</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}}
+                                        onClick={handleCoCreate}><CheckCircleOutlined/> Buy & Co-create</Button>
                                 <br/><br/>
-                                <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
+                                <Dropdown.Button overlay={menu}><ShareAltOutlined/> Share</Dropdown.Button>
                             </>
                         </div>
                     </Card>
@@ -244,9 +248,9 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             marginRight: '10px',
                             marginBottom: '30px'
                         }}
-                        cover={<img alt="example" src="/Pixel-Doge-715.png"/>}
+                        cover={<img alt="example" src={pixel_doge_715}/>}
                     >
-                        <Meta title="Pixel Doge #715" description="Generated Dodge 715" />
+                        <Meta title="Pixel Doge #715" description="Generated Dodge 715"/>
                         <br/>
                         <div>
                             <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
@@ -259,15 +263,16 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Tag color="purple">cap</Tag>
                             <Tag>sleepy face</Tag>
                             <Divider>Price</Divider>
-                            <b>Price</b>: 2<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
+                            <b>Price</b>: 2<img alt="example" src={eth_pic} style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={4.4} /> 4.4
+                            <Rate allowHalf defaultValue={4.4}/> 4.4
                             <Divider/>
                             <>
-                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
+                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart"/> Buy</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}}
+                                        onClick={handleCoCreate}><CheckCircleOutlined/> Buy & Co-create</Button>
                                 <br/><br/>
-                                <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
+                                <Dropdown.Button overlay={menu}><ShareAltOutlined/> Share</Dropdown.Button>
                             </>
                         </div>
                     </Card>
@@ -282,9 +287,9 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             marginRight: '10px',
                             marginBottom: '30px'
                         }}
-                        cover={<img alt="example" src="/Pixel-Doge-5481.png"/>}
+                        cover={<img alt="example" src={pixel_doge_5481}/>}
                     >
-                        <Meta title="Pixel Doge #5481" description="Generated Dodge 5481" />
+                        <Meta title="Pixel Doge #5481" description="Generated Dodge 5481"/>
                         <br/>
                         <div>
                             <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
@@ -297,15 +302,16 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Tag color="red">horns</Tag>
                             <Tag>domino face</Tag>
                             <Divider>Price</Divider>
-                            <b>Price</b>: 2<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
+                            <b>Price</b>: 2<img alt="example" src={eth_pic} style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={5} /> 5.0
+                            <Rate allowHalf defaultValue={5}/> 5.0
                             <Divider/>
                             <>
-                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
+                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart"/> Buy</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}}
+                                        onClick={handleCoCreate}><CheckCircleOutlined/> Buy & Co-create</Button>
                                 <br/><br/>
-                                <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
+                                <Dropdown.Button overlay={menu}><ShareAltOutlined/> Share</Dropdown.Button>
                             </>
                         </div>
                     </Card>
@@ -320,9 +326,9 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             marginRight: '10px',
                             marginBottom: '30px'
                         }}
-                        cover={<img alt="example" src="/Pixel-Doge-5154.png"/>}
+                        cover={<img alt="example" src={pixel_doge_5154}/>}
                     >
-                        <Meta title="Pixel Doge #5154" description="Generated Dodge 5154" />
+                        <Meta title="Pixel Doge #5154" description="Generated Dodge 5154"/>
                         <br/>
                         <div>
                             <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
@@ -335,15 +341,16 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Tag color="brown">arrow</Tag>
                             <Tag>face with tongue</Tag>
                             <Divider>Price</Divider>
-                            <b>Price</b>: 2<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
+                            <b>Price</b>: 2<img alt="example" src={eth_pic} style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={4.5} /> 4.5
+                            <Rate allowHalf defaultValue={4.5}/> 4.5
                             <Divider/>
                             <>
-                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
+                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart"/> Buy</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}}
+                                        onClick={handleCoCreate}><CheckCircleOutlined/> Buy & Co-create</Button>
                                 <br/><br/>
-                                <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
+                                <Dropdown.Button overlay={menu}><ShareAltOutlined/> Share</Dropdown.Button>
                             </>
                         </div>
                     </Card>
@@ -358,9 +365,9 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             marginRight: '10px',
                             marginBottom: '30px'
                         }}
-                        cover={<img alt="example" src="/Pixel-Doge-598.png"/>}
+                        cover={<img alt="example" src={pixel_doge_598}/>}
                     >
-                        <Meta title="Pixel Doge #598" description="Generated Dodge 598" />
+                        <Meta title="Pixel Doge #598" description="Generated Dodge 598"/>
                         <br/>
                         <div>
                             <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
@@ -373,15 +380,16 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Tag color="black">iroquois</Tag>
                             <Tag>war face</Tag>
                             <Divider>Price</Divider>
-                            <b>Price</b>: 2<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
+                            <b>Price</b>: 2<img alt="example" src={eth_pic} style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={4.2} /> 4.2
+                            <Rate allowHalf defaultValue={4.2}/> 4.2
                             <Divider/>
                             <>
-                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
+                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart"/> Buy</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}}
+                                        onClick={handleCoCreate}><CheckCircleOutlined/> Buy & Co-create</Button>
                                 <br/><br/>
-                                <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
+                                <Dropdown.Button overlay={menu}><ShareAltOutlined/> Share</Dropdown.Button>
                             </>
                         </div>
                     </Card>
@@ -396,9 +404,9 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             marginRight: '10px',
                             marginBottom: '30px'
                         }}
-                        cover={<img alt="example" src="/Pixel-Doge-5447.png"/>}
+                        cover={<img alt="example" src={pixel_doge_5447}/>}
                     >
-                        <Meta title="Pixel Doge #5447" description="Generated Dodge 5447" />
+                        <Meta title="Pixel Doge #5447" description="Generated Dodge 5447"/>
                         <br/>
                         <div>
                             <b>Author</b>: <a href="https://opensea.io/kementari">kementari</a>
@@ -411,15 +419,16 @@ export default function CustomCarouselWithCards(props: React.PropsWithChildren<{
                             <Tag color="yellow">cap</Tag>
                             <Tag>face with tongue</Tag>
                             <Divider>Price</Divider>
-                            <b>Price</b>: 2<img alt="example" src="/eth.svg" style={{marginLeft: '2px', width: '10px'}}/>
+                            <b>Price</b>: 2<img alt="example" src={eth_pic} style={{marginLeft: '2px', width: '10px'}}/>
                             <Divider>Rating</Divider>
-                            <Rate allowHalf defaultValue={4.1} /> 4.1
+                            <Rate allowHalf defaultValue={4.1}/> 4.1
                             <Divider/>
                             <>
-                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart" /> Buy</Button>
-                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}} onClick={handleCoCreate}><CheckCircleOutlined /> Buy & Co-create</Button>
+                                <Button type="primary" value="buy"><IconFont type="icon-shoppingcart"/> Buy</Button>
+                                <Button type="primary" disabled value="co-create" style={{marginLeft: '5px'}}
+                                        onClick={handleCoCreate}><CheckCircleOutlined/> Buy & Co-create</Button>
                                 <br/><br/>
-                                <Dropdown.Button overlay={menu}><ShareAltOutlined /> Share</Dropdown.Button>
+                                <Dropdown.Button overlay={menu}><ShareAltOutlined/> Share</Dropdown.Button>
                             </>
                         </div>
                     </Card>

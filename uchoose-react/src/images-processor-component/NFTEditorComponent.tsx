@@ -215,7 +215,7 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
             </div>
             {/*Canvas. Left Part*/}
             <div style={{display: 'inline-block', width: editorWidth, height: editorHeight}}>
-                <p>Canvas width = {editorWidth}, height = {editorHeight}. (Fixed for testing)</p>
+                <p>Canvas width = {editorWidth}, height = {editorHeight}. (configurable)</p>
                 <div ref={canvasElParent} className={styles.drawingCanvasArea}
                      style={{width: editorWidth, height: editorHeight}}>
                     <canvas ref={canvasEl}/>
