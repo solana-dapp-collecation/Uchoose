@@ -1,5 +1,5 @@
 import React from 'react';
-import tagsCloudStyles from '../../styles/tags-cloud-component/tags-cloud-component.module.css';
+import tagsCloudStyles from '../assets/styles/tags-cloud-component/tags-cloud-component.module.css';
 
 const CloudItem = (props: any) => (
     <div {...props} className={tagsCloudStyles.tagItemWrapper}>

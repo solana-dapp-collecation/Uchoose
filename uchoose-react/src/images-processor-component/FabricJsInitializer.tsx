@@ -43,4 +43,5 @@ const FabricJSCanvas = ({ className, onReady }: Props) => {
     )
 }
 
+// @ts-ignore
 export { FabricJSEditor, FabricJSCanvas, FabricJSEditorHook, useFabricJSEditor }

@@ -1,22 +1,10 @@
 import React, {useEffect, useRef, useState} from "react";
 import {fabric} from 'fabric';
-import styles from "../../styles/nft-editor-component/nft-editor-component.module.css";
+import styles from "../assets/styles/nft-editor-component/nft-editor-component.module.css";
 import {FILL, STROKE} from "./DeafultShapesComponent";
-import {getBase64} from "../../utils/utils";
+import {getBase64} from "../utils/utils";
 //@ts-ignore
 import uuid from 'react-uuid';
-
-// http://fabricjs.com/events
-// http://fabricjs.com/articles/
-// https://stackoverflow.com/questions/33940313/how-to-restrict-rectangle-resizing-moving-outside-a-image-in-fabricjs
-// https://stackoverflow.com/questions/20756042/how-to-display-an-image-stored-as-byte-array-in-html-javascript
-
-
-// TODO. to add custom properties if needed
-// https://stackoverflow.com/questions/30336983/adding-custom-attributes-to-fabricjs-object
-
-// TODO. to add ability to save image as background
-// https://stackoverflow.com/questions/44010057/add-background-image-with-fabric-js
 
 interface Props {
     className?: string
