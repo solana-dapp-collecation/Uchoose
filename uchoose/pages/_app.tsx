@@ -10,6 +10,7 @@ import "antd/dist/antd.css";
 import Layout from '../components/Layout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import dynamic from 'next/dynamic';
 
 const web3Service = new Web3Service({
     network: "rinkeby",
@@ -33,6 +34,11 @@ const ceramicService = new CeramicService(
     "https://ceramic-dev.3boxlabs.com"
 );
 
+const WalletConnectionProvider = dynamic(() => import('../components/phantom-connector/WalletConnectionProvider'), {
+    ssr: false,
+});
+
+
 // @ts-ignore
 ceramicService.connect = async () => {
     await web3Service.connect();
@@ -44,13 +50,15 @@ ceramicService.connect = async () => {
 
 function MyApp({Component, pageProps}: AppProps) {
     return (
-        <Web3Provider service={web3Service}>
-            <CeramicProvider service={ceramicService}>
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
-            </CeramicProvider>
-        </Web3Provider>
+        <WalletConnectionProvider>
+            <Web3Provider service={web3Service}>
+                <CeramicProvider service={ceramicService}>
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                </CeramicProvider>
+            </Web3Provider>
+        </WalletConnectionProvider>
     );
 }
 

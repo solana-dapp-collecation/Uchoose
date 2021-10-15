@@ -11,6 +11,7 @@ import {CollectionStreamSchema, CollectionsStreamSchema} from '../schemas/schema
 import {DEFINITION_OF_SCHEMA_1, DID_TOKEN_KEY} from '../constants/constants';
 import {createDefinition, publishSchema} from '@ceramicstudio/idx-tools';
 import {IDX} from '@ceramicstudio/idx';
+// import { WalletDisconnectButton, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
 import {Divider, Input} from 'antd';
 
@@ -28,6 +29,7 @@ import ImagesProcessorComponent from "../components/images-processor-component/I
 import CustomImagesProcessorComponent from "../components/images-processor-component/CustomImagesProcessorComponent";
 import {FullyCustomImagesProcessorComponent} from "../components/images-processor-component/FullyCustomImagesProcessorComponent";
 import {NFTEditorComponent} from "../components/images-processor-component/NFTEditorComponent";
+import Wallet from "../components/phantom-connector/Wallet";
 
 
 const DB_STORAGE_NAME: string = 'main_db';
@@ -304,6 +306,8 @@ const Home: NextPage = ({articles}: any) => {
                 <div className={topBarStyles.topBarContainer}>
                     <div style={{display: 'inline-block', verticalAlign: 'middle', marginTop: '30px'}}>
                         {renderButton()}
+                        {/*<WalletMultiButton />*/}
+                        {/*<Wallet/>*/}
                     </div>
                 </div>
                 {/*Main body*/}
