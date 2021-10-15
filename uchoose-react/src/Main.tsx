@@ -263,7 +263,7 @@ const Main: FC = () => {
                 {/*Top bar*/}
                 <div className={topBarStyles.topBarContainer}>
                     <div style={{display: 'inline-block', verticalAlign: 'middle', marginTop: '30px'}}>
-                        {renderButton()}
+                        {/*{renderButton()}*/}
                     </div>
                 </div>
                 {/*Main body*/}
@@ -340,11 +340,8 @@ const Main: FC = () => {
                         </Form>
                         <TagsCloudComponent width={600} height={500}/>
                     </Modal>
-                    {/*<ImagesProcessorComponent/>*/}
-                    {/*<CustomImagesProcessorComponent/>*/}
-                    {/*<FullyCustomImagesProcessorComponent editorWidth={600} editorHeight={300}/>*/}
                     <NFTEditorComponent editorWidth={600} editorHeight={300}/>
-                    {/*TODO. Uncomment to see cloud of tags*/}
+                    {/*TODO. Uncomment to see cloud of tags. Populate cloud of tags from backend side*/}
                     {/*<TagsCloudComponent width={1000} height={800}/>*/}
                 </div>
             </>

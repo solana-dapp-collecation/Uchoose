@@ -1,6 +1,7 @@
 import React from "react";
-import "./assets/styles/Footer.module.scss";
+import './assets/styles/footer.scss';
 import {FOOTER_LOGO} from "./constants/constants";
+import team_logo from './assets/public/team-logo.png';
 
 export function Footer() {
 
@@ -13,7 +14,7 @@ export function Footer() {
         >
             Made by{' '}
             <span className="logo">
-            <img src={FOOTER_LOGO} alt="LifeLoopTeam" style={{width: '120px', marginTop: '-15px'}}/>
+            <img src={team_logo} alt="LifeLoopTeam" style={{width: '120px', marginTop: '-15px'}}/>
         </span>
         </a>
     </footer>
