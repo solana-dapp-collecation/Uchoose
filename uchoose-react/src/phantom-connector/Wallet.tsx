@@ -1,6 +1,6 @@
-import { WalletAdapterNetwork, WalletError } from '@solana/wallet-adapter-base';
-import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
-import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
+import {WalletAdapterNetwork, WalletError} from '@solana/wallet-adapter-base';
+import {ConnectionProvider, WalletProvider} from '@solana/wallet-adapter-react';
+import {WalletModalProvider} from '@solana/wallet-adapter-react-ui';
 import {
     getLedgerWallet,
     getPhantomWallet,
@@ -10,11 +10,12 @@ import {
     getSolletExtensionWallet,
     getTorusWallet,
 } from '@solana/wallet-adapter-wallets';
-import { clusterApiUrl } from '@solana/web3.js';
-import React, { FC, useCallback, useMemo } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
-import Navigation from './Navigation';
-import Notification from './Notification';
+import {clusterApiUrl} from '@solana/web3.js';
+import React, {FC, useCallback, useMemo} from 'react';
+import toast, {Toaster} from 'react-hot-toast';
+import Navigation from '../Navigation';
+import Notification from '../Notification';
+
 
 const Wallet: FC = () => {
     const network = WalletAdapterNetwork.Devnet;
@@ -28,11 +29,11 @@ const Wallet: FC = () => {
             getSlopeWallet(),
             getSolflareWallet(),
             getTorusWallet({
-                options: { clientId: 'Get a client ID @ https://developer.tor.us' },
+                options: {clientId: 'Get a client ID @ https://developer.tor.us'},
             }),
             getLedgerWallet(),
-            getSolletWallet({ network }),
-            getSolletExtensionWallet({ network }),
+            getSolletWallet({network}),
+            getSolletExtensionWallet({network}),
         ],
         [network]
     );
@@ -52,9 +53,9 @@ const Wallet: FC = () => {
         <ConnectionProvider endpoint={endpoint}>
             <WalletProvider wallets={wallets} onError={onError} autoConnect>
                 <WalletModalProvider>
-                    <Navigation />
+                    <Navigation/>
                 </WalletModalProvider>
-                <Toaster position="bottom-left" reverseOrder={false} />
+                <Toaster position="bottom-left" reverseOrder={false}/>
             </WalletProvider>
         </ConnectionProvider>
     );
