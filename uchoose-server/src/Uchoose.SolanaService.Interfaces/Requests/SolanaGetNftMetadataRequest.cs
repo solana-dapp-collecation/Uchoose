@@ -16,7 +16,7 @@ namespace Uchoose.SolanaService.Interfaces.Requests
         /// <summary>
         /// Адрес аккаунта.
         /// </summary>
-        /// <example>7Kqp...irsM</example>
+        /// <example>HyzkFkW3daaAy6HuRKNJFbrAzwuois6N5cHDeg5TPG2Z</example>
         public string AccountAddress { get; set; }
     }
 }

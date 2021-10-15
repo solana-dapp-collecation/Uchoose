@@ -16,13 +16,12 @@ namespace Uchoose.SolanaService.Interfaces.Requests.Base
         /// <summary>
         /// Публичный ключ.
         /// </summary>
-        /// <example>7UX2...oDUi</example>
+        /// <example>mvines9iiHiQTysrwkJjGf2gb9Ex9jXJX8ns3qwf2kN</example>
         public string PublicKey { get; set; }
 
         /// <summary>
         /// Получить индекс.
         /// </summary>
-        /// <example>CqAx...RJYJ</example>
         public int GetAccountIndex()
         {
             return 0;

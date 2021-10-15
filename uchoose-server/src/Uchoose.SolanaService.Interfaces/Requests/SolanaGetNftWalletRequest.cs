@@ -23,21 +23,24 @@ namespace Uchoose.SolanaService.Interfaces.Requests
         /// <summary>
         /// Символ для минтинга.
         /// </summary>
-        public string MintSymbol { get; set; }
+        public string MintSymbol { get; set; } = string.Empty;
 
         /// <summary>
         /// Токен для минтинга.
         /// </summary>
+        /// <example>HyzkFkW3daaAy6HuRKNJFbrAzwuois6N5cHDeg5TPG2Z</example>
         public string MintToken { get; set; }
 
         /// <summary>
         /// Наименование токена.
         /// </summary>
+        /// <example>Ape 0</example>
         public string MintName { get; set; }
 
         /// <summary>
         /// Количество знаков после запятой.
         /// </summary>
+        /// <example>0</example>
         public int MintDecimal { get; set; }
     }
 }

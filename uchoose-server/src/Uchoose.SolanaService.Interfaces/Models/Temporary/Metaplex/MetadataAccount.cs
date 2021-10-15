@@ -153,7 +153,11 @@ namespace Solnet.Metaplex
 
             if (accInfoResponse.WasSuccessful)
             {
-                var accInfo = accInfoResponse.Result.Value;
+                var accInfo = accInfoResponse.Result?.Value;
+                if (accInfo == null)
+                {
+                    return null;
+                }
 
                 if (accInfo.Owner.Contains("meta"))
                 {

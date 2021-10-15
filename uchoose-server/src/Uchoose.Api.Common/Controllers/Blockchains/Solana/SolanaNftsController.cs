@@ -27,7 +27,7 @@ namespace Uchoose.Api.Common.Controllers.Blockchains.Solana
     /// </summary>
     [ApiVersion("1")]
     [ApiVersion("2")]
-    [Route(BasePath + "/nft")]
+    [Route(BasePath + "/nfts")]
     [SwaggerTag("NFT в Solana.")]
     internal sealed class SolanaNftsController :
         SolanaBaseController
@@ -93,13 +93,34 @@ namespace Uchoose.Api.Common.Controllers.Blockchains.Solana
         [ProducesResponseType(typeof(Result<SolanaGetNftMetadataResponse>), StatusCodes.Status200OK)]
 
         // [SwaggerResponseExample(StatusCodes.Status200OK, typeof())] // TODO - добавить пример
-        public async Task<IActionResult> GetNftMetadataAsync(SolanaGetNftMetadataRequest request)
+        public async Task<IActionResult> GetNftMetadataAsync([FromQuery] SolanaGetNftMetadataRequest request)
         {
             // TODO - добавить реализацию через CQRS (потом)
             var result = await _solanaService.GetNftMetadataAsync(request);
             return Ok(result);
         }
 
-        // TODO - добавить остальные методы в контроллер
+        /// <summary>
+        /// Получить кошелёк NFT.
+        /// </summary>
+        /// <param name="request">Запрос на получение кошелька NFT.</param>
+        /// <returns>Возвращает данные кошелька NFT.</returns>
+        /// <response code="200">Возвращает данные кошелька NFT.</response>
+        [HttpGet("wallet", Name = "GetSolanaNftWallet")]
+
+        // [Authorize(Policy = Application.Constants.Permission.Permissions.SolanaNfts.Wallet.Get)]
+        [AllowAnonymous] // TODO - потом поменять
+        [SwaggerOperation(
+            OperationId = "GetSolanaNftMetadata",
+            Tags = new[] { SolanaTag, SolanaNftsTag })]
+        [ProducesResponseType(typeof(Result<SolanaGetNftWalletResponse>), StatusCodes.Status200OK)]
+
+        // [SwaggerResponseExample(StatusCodes.Status200OK, typeof())] // TODO - добавить пример
+        public async Task<IActionResult> GetNftWalletAsync([FromQuery] SolanaGetNftWalletRequest request)
+        {
+            // TODO - добавить реализацию через CQRS (потом)
+            var result = await _solanaService.GetNftWalletAsync(request);
+            return Ok(result);
+        }
     }
 }
