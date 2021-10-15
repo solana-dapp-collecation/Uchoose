@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver.GridFS" Version="2.13.1" />
+    <PackageReference Include="MongoDB.Driver.GridFS" Version="2.13.2" />
   </ItemGroup>
 
   <ItemGroup>
