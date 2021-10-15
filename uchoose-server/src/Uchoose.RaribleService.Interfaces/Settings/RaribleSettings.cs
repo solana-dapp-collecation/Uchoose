@@ -1,18 +1,21 @@
 ﻿// ------------------------------------------------------------------------------------------------------
-// <copyright file="MintNftRequest.cs" company="Life Loop">
+// <copyright file="RaribleSettings.cs" company="Life Loop">
 // Copyright (c) Life Loop, 2021. All rights reserved.
 // The core dev team: Nikolay Chebotov (unchase), Leonov Dmitry (gunfighter).
 // Licensed under the MIT license. See LICENSE file in the solution root for full license information.
 // </copyright>
 // ------------------------------------------------------------------------------------------------------
 
-namespace Uchoose.SolanaService.Interfaces.Requests
+using Uchoose.Utils.Contracts.Common;
+
+namespace Uchoose.RaribleService.Interfaces.Settings
 {
     /// <summary>
-    /// Запрос на minting NFT.
+    /// Настройки Rarible.
     /// </summary>
-    public class MintNftRequest
+    public class RaribleSettings :
+        ISettings
     {
-        // TODO - добавить параметры
+        // TODO - добавить настройки
     }
 }

@@ -59,6 +59,8 @@ using Uchoose.LocalFileStorageService.Extensions;
 using Uchoose.MailService.Interfaces.Settings;
 using Uchoose.MongoDbFileStorageService.Extensions;
 using Uchoose.MongoDbFileStorageService.Settings;
+using Uchoose.RaribleService.Extensions;
+using Uchoose.RaribleService.Interfaces.Settings;
 using Uchoose.RoleClaimService.Extensions;
 using Uchoose.RoleService.Extensions;
 using Uchoose.SerializationService.Extensions;
@@ -252,7 +254,11 @@ namespace Uchoose.Api.Common
                 .AddSettings<SolanaSettings>(configuration)
                 .AddSolanaService();
 
-            // TODO - добавить RaribleService и прочие
+            services
+                .AddSettings<RaribleSettings>(configuration)
+                .AddRaribleService();
+
+            // TODO - добавить прочие
 
             return services;
         }

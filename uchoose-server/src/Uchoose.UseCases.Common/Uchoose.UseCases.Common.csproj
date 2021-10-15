@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Rarible\" />
     <Folder Include="Features\Solana\" />
   </ItemGroup>
 

@@ -39,6 +39,7 @@
     <ProjectReference Include="..\Uchoose.IdentityService\Uchoose.IdentityService.csproj" />
     <ProjectReference Include="..\Uchoose.LocalFileStorageService\Uchoose.LocalFileStorageService.csproj" />
     <ProjectReference Include="..\Uchoose.MongoDbFileStorageService\Uchoose.MongoDbFileStorageService.csproj" />
+    <ProjectReference Include="..\Uchoose.RaribleService\Uchoose.RaribleService.csproj" />
     <ProjectReference Include="..\Uchoose.RoleClaimService\Uchoose.RoleClaimService.csproj" />
     <ProjectReference Include="..\Uchoose.RoleService\Uchoose.RoleService.csproj" />
     <ProjectReference Include="..\Uchoose.SerializationService\Uchoose.SerializationService.csproj" />

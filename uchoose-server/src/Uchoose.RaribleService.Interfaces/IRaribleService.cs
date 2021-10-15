@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------------------------------------
-// <copyright file="ISolanaService.cs" company="Life Loop">
+// <copyright file="IRaribleService.cs" company="Life Loop">
 // Copyright (c) Life Loop, 2021. All rights reserved.
 // The core dev team: Nikolay Chebotov (unchase), Leonov Dmitry (gunfighter).
 // Licensed under the MIT license. See LICENSE file in the solution root for full license information.
@@ -8,16 +8,16 @@
 
 using System.Threading.Tasks;
 
-using Uchoose.SolanaService.Interfaces.Requests;
+using Uchoose.RaribleService.Interfaces.Requests;
 using Uchoose.Utils.Contracts.Services;
 using Uchoose.Utils.Wrapper;
 
-namespace Uchoose.SolanaService.Interfaces
+namespace Uchoose.RaribleService.Interfaces
 {
     /// <summary>
-    /// Сервис для работы с блокчейном Solana.
+    /// Сервис для работы с Rarible.
     /// </summary>
-    public interface ISolanaService :
+    public interface IRaribleService :
         IInfrastructureService
     {
         /// <summary>
@@ -25,7 +25,7 @@ namespace Uchoose.SolanaService.Interfaces
         /// </summary>
         /// <param name="request">Запрос на minting NFT.</param>
         /// <returns>Возвращает hash транзакции.</returns>
-        Task<Result<string>> MintNftAsync(SolanaMintNftRequest request);
+        Task<Result<string>> MintNftAsync(RaribleMintNftRequest request);
 
         // TODO - добавить методы
     }

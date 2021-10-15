@@ -87,6 +87,8 @@ namespace Uchoose.Bootstrapper
                             .AddJsonFile(Path.Combine(configsDirectory, $"mongodbsettings.{env}.json"), true, true)
                             .AddJsonFile(Path.Combine(configsDirectory, "solanasettings.json"), false, true)
                             .AddJsonFile(Path.Combine(configsDirectory, $"solanasettings.{env}.json"), true, true)
+                            .AddJsonFile(Path.Combine(configsDirectory, "rariblesettings.json"), false, true)
+                            .AddJsonFile(Path.Combine(configsDirectory, $"rariblesettings.{env}.json"), true, true)
                             .AddEnvironmentVariables();
 
                         // .AddUserSecrets()

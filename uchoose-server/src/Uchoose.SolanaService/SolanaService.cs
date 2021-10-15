@@ -45,8 +45,10 @@ namespace Uchoose.SolanaService
         }
 
         /// <inheritdoc />
-        public async Task<Result<string>> MintNftAsync(MintNftRequest request)
+        public async Task<Result<string>> MintNftAsync(SolanaMintNftRequest request)
         {
+            // TODO - Waiting for Solnet.Metaplex nuget-package to implement NFT minting logic!
+
             return await Result<string>.SuccessAsync("TODO");
 
             /*var recentHash = await _client.GetRecentBlockHashAsync();
