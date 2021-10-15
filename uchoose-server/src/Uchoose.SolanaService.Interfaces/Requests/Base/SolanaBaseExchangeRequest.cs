@@ -26,11 +26,13 @@ namespace Uchoose.SolanaService.Interfaces.Requests.Base
         /// <summary>
         /// Текст memo.
         /// </summary>
+        /// <example>Sample</example>
         public string MemoText { get; set; }
 
         /// <summary>
         /// Количество токенов.
         /// </summary>
+        /// <example>1</example>
         public ulong Amount { get; set; }
     }
 }

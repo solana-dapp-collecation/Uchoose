@@ -16,18 +16,20 @@ using Uchoose.SolanaService.Interfaces.Models;
 namespace Uchoose.SolanaService.Interfaces.Responses
 {
     /// <summary>
-    /// Ответ с результатом отправки транзакции.
+    /// Ответ с метаданными NFT.
     /// </summary>
     public class SolanaGetNftMetadataResponse
     {
         /// <summary>
         /// Владелец NFT.
         /// </summary>
+        /// <example>559u...ZD9z</example>
         public string Owner { get; }
 
         /// <summary>
         /// TODO.
         /// </summary>
+        /// <example>621s...fN12</example>
         public string UpdateAuthority { get; }
 
         /// <summary>
@@ -38,11 +40,13 @@ namespace Uchoose.SolanaService.Interfaces.Responses
         /// <summary>
         /// Наименование NFT.
         /// </summary>
+        /// <example>NFTs #1</example>
         public string Name { get; }
 
         /// <summary>
         /// Символьное имя NFT.
         /// </summary>
+        /// <example>NFT1</example>
         public string Symbol { get; }
 
         /// <summary>

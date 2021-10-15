@@ -16,6 +16,7 @@ namespace Uchoose.SolanaService.Interfaces.Responses.Base
         /// <summary>
         /// Hash транзакции.
         /// </summary>
+        /// <example>4yPWj2...CXvfWW</example>
         public string TransactionHash { get; set; }
 
         /// <summary>

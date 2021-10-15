@@ -27,8 +27,6 @@ using Uchoose.Utils.Wrapper;
 
 namespace Uchoose.SolanaService
 {
-    // TODO - реализовать методы интерфейса
-
     /// <inheritdoc cref="ISolanaService"/>
     public class SolanaService :
         ISolanaService,

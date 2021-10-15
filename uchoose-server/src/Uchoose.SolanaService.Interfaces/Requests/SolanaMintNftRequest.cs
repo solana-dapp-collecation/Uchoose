@@ -19,6 +19,7 @@ namespace Uchoose.SolanaService.Interfaces.Requests
         /// <summary>
         /// Аккаунт для минтинга.
         /// </summary>
+        /// <example>7Kqp...irsM</example>
         public SolanaBaseAccountRequest MintAccount { get; set; }
 
         /// <summary>
@@ -27,6 +28,7 @@ namespace Uchoose.SolanaService.Interfaces.Requests
         /// <remarks>
         /// Для NFT равен 0.
         /// </remarks>
+        /// <example>0</example>
         public int MintDecimals { get; set; }
     }
 }
