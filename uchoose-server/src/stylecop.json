@@ -8,10 +8,10 @@
     },
     "documentationRules": {
       "companyName": "Life Loop",
-      "copyrightText": "Copyright (c) {companyName}, 2021. All rights reserved.\nThe core dev team: {unchase}, {gunfighter}.\nLicensed under the {licenseName} license. See {licenseFile} file in the solution root for full license information.",
+      "copyrightText": "Copyright (c) {companyName}, 2021. All rights reserved.\nThe core dev team: {unchase}, {gunfighter}.\nThe Application under the {licenseName} license. See {licenseFile} file in the solution root for full license information.",
       "headerDecoration": "------------------------------------------------------------------------------------------------------",
       "variables": {
-        "licenseName": "MIT", // TODO - поменять
+        "licenseName": "Commercial",
         "licenseFile": "LICENSE",
         "unchase": "Nikolay Chebotov (unchase)",
         "gunfighter": "Leonov Dmitry (gunfighter)"
