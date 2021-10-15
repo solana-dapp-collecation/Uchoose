@@ -9,6 +9,7 @@
 using System.Threading.Tasks;
 
 using Uchoose.SolanaService.Interfaces.Requests;
+using Uchoose.SolanaService.Interfaces.Responses;
 using Uchoose.Utils.Contracts.Services;
 using Uchoose.Utils.Wrapper;
 
@@ -23,10 +24,36 @@ namespace Uchoose.SolanaService.Interfaces
         /// <summary>
         /// Сминтить NFT.
         /// </summary>
-        /// <param name="request">Запрос на minting NFT.</param>
-        /// <returns>Возвращает hash транзакции.</returns>
-        Task<Result<string>> MintNftAsync(SolanaMintNftRequest request);
+        /// <param name="request">Запрос на минтинг NFT.</param>
+        /// <returns>Возвращает результат выполнения операции.</returns>
+        Task<Result<SolanaMintNftResponse>> MintNftAsync(SolanaMintNftRequest request);
 
-        // TODO - добавить методы
+        /// <summary>
+        /// Получить метаданные NFT.
+        /// </summary>
+        /// <param name="request">Запрос на получение метаданных NFT.</param>
+        /// <returns>Возвращает результат выполнения операции.</returns>
+        Task<Result<SolanaGetNftMetadataResponse>> GetNftMetadataAsync(SolanaGetNftMetadataRequest request);
+
+        /// <summary>
+        /// Получить кошелёк NFT.
+        /// </summary>
+        /// <param name="request">Запрос на получение кошелька NFT.</param>
+        /// <returns>Возвращает результат выполнения операции.</returns>
+        Task<Result<SolanaGetNftWalletResponse>> GetNftWalletAsync(SolanaGetNftWalletRequest request);
+
+        /// <summary>
+        /// Обменять токены.
+        /// </summary>
+        /// <param name="request">Запрос на обмен токенов.</param>
+        /// <returns>Возвращает результат выполнения операции.</returns>
+        Task<Result<SolanaExchangeTokenResponse>> ExchangeTokensAsync(SolanaExchangeTokenRequest request);
+
+        /// <summary>
+        /// Отправить транзакцию.
+        /// </summary>
+        /// <param name="request">Запрос на отправку транзакции.</param>
+        /// <returns>Возвращает результат выполнения операции.</returns>
+        Task<Result<SolanaSendTransactionResponse>> SendTransactionAsync(SolanaSendTransactionRequest request);
     }
 }

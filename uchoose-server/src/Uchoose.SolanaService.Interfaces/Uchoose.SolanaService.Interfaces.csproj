@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Solnet.Extensions" Version="0.4.11" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Uchoose.Utils\Uchoose.Utils.csproj" />
   </ItemGroup>
 

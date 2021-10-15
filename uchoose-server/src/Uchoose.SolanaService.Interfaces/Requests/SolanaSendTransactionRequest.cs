@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------------------------------------
-// <copyright file="SolanaMintNftRequest.cs" company="Life Loop">
+// <copyright file="SolanaSendTransactionRequest.cs" company="Life Loop">
 // Copyright (c) Life Loop, 2021. All rights reserved.
 // The core dev team: Nikolay Chebotov (unchase), Leonov Dmitry (gunfighter).
 // Licensed under the MIT license. See LICENSE file in the solution root for full license information.
@@ -11,22 +11,14 @@ using Uchoose.SolanaService.Interfaces.Requests.Base;
 namespace Uchoose.SolanaService.Interfaces.Requests
 {
     /// <summary>
-    /// Запрос на минтинг NFT.
+    /// Запрос на отправку транзакции.
     /// </summary>
-    public class SolanaMintNftRequest
+    public class SolanaSendTransactionRequest
         : SolanaBaseExchangeRequest
     {
         /// <summary>
-        /// Аккаунт для минтинга.
+        /// Количество отправляемых lampposts.
         /// </summary>
-        public SolanaBaseAccountRequest MintAccount { get; set; }
-
-        /// <summary>
-        /// Кол-во знаков после запятой у токена.
-        /// </summary>
-        /// <remarks>
-        /// Для NFT равен 0.
-        /// </remarks>
-        public int MintDecimals { get; set; }
+        public ulong Lampposts { get; set; }
     }
 }
