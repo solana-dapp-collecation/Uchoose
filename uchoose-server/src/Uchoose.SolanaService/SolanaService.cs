@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.Extensions.Options;
@@ -54,6 +55,7 @@ namespace Uchoose.SolanaService
         public async Task<Result<SolanaMintNftResponse>> MintNftAsync(SolanaMintNftRequest request)
         {
             var blockHash = await _client.GetRecentBlockHashAsync();
+
             ulong minBalanceForExemptionAcc = (await _client.GetMinimumBalanceForRentExemptionAsync(TokenProgram.TokenAccountDataSize)).Result;
             ulong minBalanceForExemptionMint = (await _client.GetMinimumBalanceForRentExemptionAsync(TokenProgram.MintAccountDataSize)).Result;
 
@@ -99,7 +101,7 @@ namespace Uchoose.SolanaService
                 return await Result<SolanaMintNftResponse>.FailAsync(sendTransactionResult.Reason);
             }
 
-            return await Result<SolanaMintNftResponse>.SuccessAsync(new(sendTransactionResult.Result.Value.Error.InstructionError.BorshIoError), "Success");
+            return await Result<SolanaMintNftResponse>.SuccessAsync(new(sendTransactionResult.Result.Value.Error.InstructionError.BorshIoError), sendTransactionResult.Result.Value.Logs.ToList());
         }
 
         /// <inheritdoc />
@@ -136,7 +138,7 @@ namespace Uchoose.SolanaService
 
                 var tokenWallet = await TokenWallet.LoadAsync(_client, tokens, ownerAccount);
                 var balances = tokenWallet.Balances();
-                var sublist = tokenWallet.TokenAccounts().WithSymbol(request.MintSymbol).WithMint(request.MintToken);
+                var sublist = tokenWallet.TokenAccounts();
                 if (!string.IsNullOrEmpty(request.MintSymbol))
                 {
                     sublist = sublist.WithSymbol(request.MintSymbol);
