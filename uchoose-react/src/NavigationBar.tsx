@@ -4,7 +4,7 @@ import {useWallet} from '@solana/wallet-adapter-react';
 import {WalletDisconnectButton, WalletMultiButton} from '@solana/wallet-adapter-react-ui';
 import React, {FC} from 'react';
 import main_logo from './assets/images/logo.svg';
-import main_logo_png from './assets/images/logo.png';
+import main_logo_png from './assets/images/logo_2.png';
 import logo_title from './assets/images/logo_title.svg';
 
 const NavigationBar: FC = () => {
@@ -17,17 +17,17 @@ const NavigationBar: FC = () => {
                     <Navbar.Brand href="/">
                         <img
                             src={main_logo_png}
-                            height="30"
+                            height="35"
                             className="d-inline-block align-top"
                             alt="Uch∞se"
                         />
-                        <img
-                            src={logo_title}
-                            height="30"
-                            className="d-inline-block align-top"
-                            alt="Uch∞se"
-                            style={{marginLeft: '20px'}}
-                        />
+                        {/*<img*/}
+                        {/*    src={logo_title}*/}
+                        {/*    height="30"*/}
+                        {/*    className="d-inline-block align-top"*/}
+                        {/*    alt="Uch∞se"*/}
+                        {/*    style={{marginLeft: '20px'}}*/}
+                        {/*/>*/}
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                     <Navbar.Collapse id="responsive-navbar-nav" style={{marginRight: '30px'}}>
