@@ -22,7 +22,7 @@ using Solnet.Wallet;
 // ReSharper disable InconsistentNaming
 
 // ReSharper disable once CheckNamespace
-namespace Solnet.Metaplex
+namespace Solnet.Metaplex // TODO - replace with Solnet.Metaplex nuget when published
 {
     /// <summary>
     /// Creator class.

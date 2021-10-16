@@ -109,7 +109,7 @@ namespace Uchoose.SolanaService
         {
             try
             {
-                var account = await MetadataAccount.GetAccount(_client, new(request.AccountAddress));
+                var account = await MetadataAccount.GetAccount(_client, new(request.AccountAddress)); // TODO - replace with Solnet.Metaplex nuget when published
                 return await Result<SolanaGetNftMetadataResponse>.SuccessAsync(new(account), "Success");
             }
             catch (ArgumentNullException)
