@@ -34,9 +34,9 @@ const ceramicService = new CeramicService(
     "https://ceramic-dev.3boxlabs.com"
 );
 
-const WalletConnectionProvider = dynamic(() => import('../components/phantom-connector/WalletConnectionProvider'), {
-    ssr: false,
-});
+// const WalletConnectionProvider = dynamic(() => import('../components/phantom-connector/WalletConnectionProvider'), {
+//     ssr: false,
+// });
 
 
 // @ts-ignore
@@ -50,7 +50,7 @@ ceramicService.connect = async () => {
 
 function MyApp({Component, pageProps}: AppProps) {
     return (
-        <WalletConnectionProvider>
+        // <WalletConnectionProvider>
             <Web3Provider service={web3Service}>
                 <CeramicProvider service={ceramicService}>
                     <Layout>
@@ -58,7 +58,7 @@ function MyApp({Component, pageProps}: AppProps) {
                     </Layout>
                 </CeramicProvider>
             </Web3Provider>
-        </WalletConnectionProvider>
+        // </WalletConnectionProvider>
     );
 }
 

@@ -2,7 +2,7 @@
     text-align: center;
     width: 350px;
     position: fixed;
-    top: 0;
+    /*top: 0;*/
     right: 0;
     z-index: 9999;
     margin-top: -23px;
