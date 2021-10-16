@@ -83,7 +83,7 @@ const Main: FC = () => {
         } else {
             return (
                 <>
-                    <button onClick={handleLogin}><b>Connect Wallet</b></button>
+                    <button onClick={handleLogin}><b>Select Wallet</b></button>
                 </>
             )
         }
