@@ -9,7 +9,7 @@
 #pragma warning disable SA1303 // Const field names should begin with upper-case letter
 
 // ReSharper disable once CheckNamespace
-namespace Solnet.Metaplex
+namespace Solnet.Metaplex // TODO - replace with Solnet.Metaplex nuget when published
 {
     internal class MetadataAccountLayout
     {

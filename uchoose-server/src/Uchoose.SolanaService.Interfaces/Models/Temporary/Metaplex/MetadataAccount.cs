@@ -23,7 +23,7 @@ using Solnet.Wallet;
 #pragma warning disable SA1307 // Accessible fields should begin with upper-case letter
 
 // ReSharper disable once CheckNamespace
-namespace Solnet.Metaplex
+namespace Solnet.Metaplex // TODO - replace with Solnet.Metaplex nuget when published
 {
     public enum MetadataKey
     {

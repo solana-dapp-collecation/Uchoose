@@ -14,7 +14,7 @@ using System.Collections.Generic;
 // ReSharper disable InconsistentNaming
 
 // ReSharper disable once CheckNamespace
-namespace Solnet.Metaplex
+namespace Solnet.Metaplex // TODO - replace with Solnet.Metaplex nuget when published
 {
     internal static class MetadataProgramInstructions
     {

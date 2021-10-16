@@ -68,7 +68,7 @@ namespace Uchoose.SolanaService.Interfaces.Responses
         /// Инициализирует экземпляр <see cref="SolanaGetNftMetadataResponse"/>.
         /// </summary>
         /// <param name="metadataAccount">Аккаунт с метаданными.</param>
-        public SolanaGetNftMetadataResponse(MetadataAccount metadataAccount)
+        public SolanaGetNftMetadataResponse(MetadataAccount metadataAccount) // TODO - replace with Solnet.Metaplex nuget when published
         {
             if (metadataAccount == null)
             {
