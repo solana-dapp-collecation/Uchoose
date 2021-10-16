@@ -30,7 +30,7 @@ const NavigationBar: FC = () => {
                         />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-                    <Navbar.Collapse id="responsive-navbar-nav">
+                    <Navbar.Collapse id="responsive-navbar-nav" style={{marginRight: '30px'}}>
                         <Nav className="mx-lg-auto">
                             <Form className="d-flex">
                                 <FormControl
@@ -38,15 +38,15 @@ const NavigationBar: FC = () => {
                                     placeholder="Search items, collections and accounts"
                                     className="me-4"
                                     aria-label="Search"
-                                    style={{width: '45vw', marginLeft: '5vw'}}
+                                    style={{width: '30vw', marginLeft: '3vw'}}
                                     // size="lg"
                                 />
                                 <Button variant="outline-success">Search</Button>
                             </Form>
                         </Nav>
                     </Navbar.Collapse>
-                    <Navbar.Collapse className="justify-content-end">
-                        <div>
+                    <Navbar.Collapse className="center">
+                        <div style={{minWidth: '150px'}}>
                             <WalletMultiButton/>
                             {wallet && <WalletDisconnectButton/>}
                         </div>

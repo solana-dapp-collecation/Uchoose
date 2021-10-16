@@ -5,6 +5,7 @@ import {FILL, STROKE} from "./DeafultShapesComponent";
 import {getBase64} from "../utils/utils";
 //@ts-ignore
 import uuid from 'react-uuid';
+import {Input} from "antd";
 
 interface Props {
     className?: string
@@ -44,7 +45,6 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
 
     // TODO. Get info about parts/properties of image
     useEffect(() => {
-        console.log('use effect invoked');
         const canvas = new fabric.Canvas(canvasEl.current);
         const setCurrentDimensions = () => {
             canvas.setHeight(canvasElParent.current?.clientHeight || 0)
@@ -165,6 +165,14 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
         canvas?.renderAll();
     }
 
+    const onLayerNameChange = (layerName: any, layerId: string) => {
+        let layer = listOfLayers.find((item) => item.id === layerId);
+        if (layer) {
+            layer.name = layerName;
+            setListOfLayers([...listOfLayers]);
+        }
+    }
+
     const renderLayersPart = () => {
         if (listOfLayers.length === 0) {
             return (
@@ -173,12 +181,14 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
                 </>
             )
         }
-        return listOfLayers.map((layerItem: any, index: number) => {
+        return listOfLayers.map((layerItem: ILayer, index: number) => {
             return <div key={layerItem.id} style={{marginTop: '10px'}}>
+                <Input placeholder="Provide layer name" value={layerItem.name}
+                       onChange={(e) => onLayerNameChange(e.target.value, layerItem.id)}
+                       style={{width: '200px', marginRight: '10px'}}/>
                 <label htmlFor={`${layerItem.id}_add_image`} className={styles.customFileUpload}>
-                    <i className="bi bi-image"/> Add body
+                    <i className="bi bi-image"/> Add
                 </label>
-                <input type="text"/>
                 <input id={`${layerItem.id}_add_image`} type="file" className={styles.customFileUploadInput}
                        onChange={(e) => imageUpload(e, 'body')}/>
                 <label htmlFor={`${layerItem.id}_remove_layer`} className={styles.removeButton}
@@ -251,9 +261,9 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
                            onChange={(e) => onChangePalette(e.target.value)}/>
                 </div>
 
-                <div style={{}}>
+                <div style={{marginTop: '10px'}}>
                     <label htmlFor="save-to-json" className={styles.customFileUpload}>
-                        <i className="bi bi-check"/> Create NFT image image
+                        <i className="bi bi-check"/> Create NFT image
                     </label>
                     <input id="save-to-json" className={styles.customFileUploadInput}
                            onClick={saveToJson}/>
@@ -272,9 +282,9 @@ export const NFTEditorComponent = ({className, onReady, editorWidth, editorHeigh
                     <input id="return-to-clean-canvas" className={styles.customFileUploadInput}
                            onClick={clearCanvas}/>
                 </div>
-                <div style={{marginTop: '10px'}}>
-                    <button onClick={printImageData}>Print data to console (for devs)</button>
-                </div>
+                {/*<div style={{marginTop: '10px'}}>*/}
+                {/*    <button onClick={printImageData}>Print data to console (for devs)</button>*/}
+                {/*</div>*/}
             </div>
         </div>
     )
