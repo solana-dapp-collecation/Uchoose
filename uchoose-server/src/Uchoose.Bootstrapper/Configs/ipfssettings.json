@@ -1,0 +1,5 @@
+{
+  "IpfsSettings": {
+    "IpfsHttpUrl": "http://localhost:5003"
+  }
+}

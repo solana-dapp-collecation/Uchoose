@@ -55,7 +55,8 @@ using Uchoose.Domain.Settings;
 using Uchoose.EventLogService.Extensions;
 using Uchoose.ExcelService.Extensions;
 using Uchoose.IdentityService.Extensions;
-using Uchoose.LocalFileStorageService.Extensions;
+using Uchoose.IpfsService.Extensions;
+using Uchoose.IpfsService.Interfaces.Settings;
 using Uchoose.MailService.Interfaces.Settings;
 using Uchoose.MongoDbFileStorageService.Extensions;
 using Uchoose.MongoDbFileStorageService.Settings;
@@ -236,6 +237,10 @@ namespace Uchoose.Api.Common
             services
                 .AddSettings<SmsSettings>(configuration)
                 .AddTwilioSmsService();
+
+            services
+                .AddSettings<IpfsSettings>(configuration)
+                .AddIpfsService();
 
             services.AddBlockchainServices(configuration);
 

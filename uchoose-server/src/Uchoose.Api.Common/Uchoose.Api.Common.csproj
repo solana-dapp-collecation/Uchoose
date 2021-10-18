@@ -37,6 +37,7 @@
     <ProjectReference Include="..\Uchoose.EventLogService\Uchoose.EventLogService.csproj" />
     <ProjectReference Include="..\Uchoose.ExcelService\Uchoose.ExcelService.csproj" />
     <ProjectReference Include="..\Uchoose.IdentityService\Uchoose.IdentityService.csproj" />
+    <ProjectReference Include="..\Uchoose.IpfsService\Uchoose.IpfsService.csproj" />
     <ProjectReference Include="..\Uchoose.LocalFileStorageService\Uchoose.LocalFileStorageService.csproj" />
     <ProjectReference Include="..\Uchoose.MongoDbFileStorageService\Uchoose.MongoDbFileStorageService.csproj" />
     <ProjectReference Include="..\Uchoose.RaribleService\Uchoose.RaribleService.csproj" />

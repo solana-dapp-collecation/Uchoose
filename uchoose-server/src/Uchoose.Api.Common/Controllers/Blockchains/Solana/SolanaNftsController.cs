@@ -50,7 +50,7 @@ namespace Uchoose.Api.Common.Controllers.Blockchains.Solana
             ISolanaService solanaService)
         {
             _localizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
-            _solanaService = solanaService;
+            _solanaService = solanaService ?? throw new ArgumentNullException(nameof(solanaService));
         }
 
         /// <summary>

@@ -5,12 +5,16 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <DocumentationFile>Uchoose.SolanaService.xml</DocumentationFile>
+    <DocumentationFile>Uchoose.IpfsService.Interfaces.xml</DocumentationFile>
     <CodeAnalysisRuleSet>..\uchoose.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Uchoose.SolanaService.Interfaces\Uchoose.SolanaService.Interfaces.csproj" />
+    <ProjectReference Include="..\Uchoose.Utils\Uchoose.Utils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Settings\" />
   </ItemGroup>
 
 </Project>
